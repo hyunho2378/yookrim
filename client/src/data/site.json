@@ -1,0 +1,28 @@
+{
+  "name": "육림랜드",
+  "nameEn": "Yuklim Land",
+  "tagline": "50년 된 숲속 놀이공원, 계절마다 새로 열려요.",
+  "founded": 1975,
+  "address": "강원특별자치도 춘천시 영서로 2965 (사농동)",
+  "postalCode": "24235",
+  "phone": "033-252-7226",
+  "officialSite": "http://www.yuklimland.com",
+  "hours": {
+    "weekday": "10:00-18:00",
+    "weekend": "10:00-19:00",
+    "lastEntry": "17:30",
+    "closedDay": "화요일",
+    "closedDayNote": "국경일인 경우 정상 운영"
+  },
+  "facilitiesInfo": [
+    "주차",
+    "수유실",
+    "기저귀교환대",
+    "유모차 대여",
+    "화장실"
+  ],
+  "character": {
+    "name": "{캐릭터명}",
+    "greeting": "안녕! 나는 육림랜드의 {캐릭터명}이야. 오늘은 숲에서 같이 놀자!"
+  }
+}

@@ -1,0 +1,163 @@
+/* theme.css  총게임 분위기의 쨍한 색(라임, 먹색, 주황 포인트)과 한 화면 배치.
+   값은 모두 tokens.js 가 만든 CSS 변수에서 읽는다. 색은 라임과 먹색, 흰색이 중심이고 주황은 긴급 공지와 남은 날수에만 쓴다. */
+
+:root { --hdr-h: calc(var(--z-topbar) + var(--z-nav)); --notice-h: 2.5rem; }
+@media (max-width: 1180px) { :root { --hdr-h: var(--z-navM); } }
+
+/* 머리말 */
+.hdr__top { background: var(--c-ink); color: var(--c-textOnColor); }
+.hdr__top a:hover, .hdr__hours:hover { color: var(--c-lime); }
+.hdr__bar { background: var(--c-lime); }
+.hdr__item.is-open, .hdr__item:hover { background: var(--c-limePress); }
+.hdr__cta { background: var(--c-ink); color: var(--c-lime); }
+.hdr__cta:hover { background: var(--c-primaryPress); }
+.logo__en { color: var(--c-ink); }
+.hdr__mbtn { color: var(--c-ink); }
+
+/* 메뉴 판 */
+.mega { background: var(--c-ink); color: var(--c-textOnColor); }
+.mega a:hover { color: var(--c-lime); }
+.mega__cap { background: var(--c-lime); color: var(--c-ink); }
+.mega__top .c-action { color: var(--c-lime); }
+
+/* 단추 */
+.btn { background: var(--c-ink); color: var(--c-lime); }
+.btn:hover { background: var(--c-lime); color: var(--c-ink); }
+.btn--deep, .btn--primary { background: var(--c-ink); color: var(--c-lime); }
+.btn--deep:hover, .btn--primary:hover { background: var(--c-lime); color: var(--c-ink); }
+.btn--light { background: var(--c-page); color: var(--c-ink); }
+.btn--light:hover { background: var(--c-lime); color: var(--c-ink); }
+.hero .btn, .ehero .btn, .bbar .btn, .band-blue .btn { background: var(--c-lime); color: var(--c-ink); }
+.hero .btn:hover, .ehero .btn:hover, .bbar .btn:hover, .band-blue .btn:hover { background: var(--c-page); }
+.bbar { background: var(--c-ink); }
+.hero__arrow { background: var(--c-lime); color: var(--c-ink); }
+.hero__arrow:hover { background: var(--c-page); }
+.more { color: var(--c-actionText); }
+.more:hover { color: var(--c-ink); }
+.c-action { color: var(--c-actionText); }
+
+/* 안내 띠 */
+.usp { background: var(--c-ink); }
+.usp__list svg { color: var(--c-lime); }
+.notice { background: var(--c-action); color: var(--c-ink); }
+
+/* 푸터 */
+.ftr__signup { background: var(--c-lime); color: var(--c-ink); }
+.ftr__form .btn { background: var(--c-ink); color: var(--c-lime); }
+.ftr__form .btn:hover { background: var(--c-page); color: var(--c-ink); }
+.ftr__err { color: var(--c-ink); }
+.ftr__sky { background: var(--c-ink); color: var(--c-textOnColor); }
+.ftr__sky a:hover, .ftr__nav a:hover { color: var(--c-lime); }
+.ftr__nav { background: var(--c-ink2); }
+.ftr__nav h2 { color: var(--c-lime); }
+.ftr__info { color: var(--c-textSub); }
+
+/* 고르기와 표시 */
+.choice[aria-pressed='true'], .choice[aria-checked='true'], .choice[aria-selected='true'] { background: var(--c-ink); color: var(--c-lime); }
+.choice:hover { background: var(--c-lime); color: var(--c-ink); }
+.sess__btn[aria-pressed='true'] { background: var(--c-ink); color: var(--c-lime); }
+.sess__btn[aria-pressed='true'] .c-action { color: var(--c-lime); }
+.sess__btn:hover { background: var(--c-lime); color: var(--c-ink); }
+.stamp:hover { background: var(--c-lime); color: var(--c-ink); }
+.stamp.is-done, .result__stamp.is-on { background: var(--c-lime); color: var(--c-ink); }
+.stamps__bar span { background: var(--c-ink); }
+.stepper li.is-on { background: var(--c-ink); color: var(--c-lime); }
+.stepper li.is-on .stepper__no { background: var(--c-lime); color: var(--c-ink); }
+.stepper li.is-done .stepper__no { background: var(--c-ink); color: var(--c-lime); }
+.rsv-head { background: var(--c-lime); }
+.rsv-sum { background: var(--c-ink); }
+.rsv-sum .c-action { color: var(--c-lime); }
+.ticket__top { background: var(--c-lime); color: var(--c-ink); }
+.cal__head { background: var(--c-ink); color: var(--c-lime); }
+.cal__nav:hover { background: var(--c-primaryPress); }
+.cal__info { color: var(--c-ink); }
+.cal__cell.is-sel, .cal__cell.is-sel .cal__info, .cal__cell.is-sel .cal__date { background: var(--c-ink); color: var(--c-lime); }
+.cal__cell:not(.is-static):not(:disabled):hover { background: var(--c-lime); }
+.rules li::before { background: var(--c-ink); color: var(--c-lime); }
+.kv dt { background: var(--c-ink); color: var(--c-lime); }
+.band-blue { background: var(--c-ink); }
+.band-red { background: var(--c-lime); color: var(--c-ink); }
+.band-red .btn { background: var(--c-ink); color: var(--c-lime); }
+.ehero__box { background: var(--c-ink); }
+.ehero__tag, .mosaic__tag { background: var(--c-lime); color: var(--c-ink); }
+.phero { background: var(--c-lime); color: var(--c-ink); }
+.phero .c-sub { color: var(--c-ink); }
+.hint { background: var(--c-lime); }
+.mapp__row:hover { background: var(--c-lime); }
+.mapp__row.is-sel { background: var(--c-ink); color: var(--c-lime); }
+.mapp__row.is-sel .c-sub { color: var(--c-lime); }
+.pin:hover { background: var(--c-lime); }
+.pin.is-sel { background: var(--c-ink); color: var(--c-lime); }
+.mapp__loading { background: var(--c-ink); color: var(--c-lime); }
+.range input::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--c-ink) var(--pct), var(--c-surface) var(--pct)); }
+.range input::-webkit-slider-thumb { background: var(--c-ink); }
+.range input::-moz-range-progress { background: var(--c-ink); }
+.range input::-moz-range-thumb { background: var(--c-ink); }
+.range__out { color: var(--c-ink); }
+.topbtn { background: var(--c-lime); color: var(--c-ink); }
+.mmenu__head[aria-expanded='true'] { background: var(--c-ink); color: var(--c-lime); }
+.ctr__btn { color: var(--c-ink); }
+.ctr__btn:hover { background: var(--c-lime); }
+.news__row:hover, .acc__item:hover { background: var(--c-lime); }
+.quick__link:hover { background: var(--c-lime); }
+.hero__ctrl button { background: var(--c-scrim); color: var(--c-textOnColor); }
+a.inline-link { color: var(--c-ink); }
+
+/* 한 화면 배치. 첫 화면에 제목과 핵심이 다 들어오게 여백을 줄였다 */
+.section { padding-block: var(--s-6); }
+.section--tight { padding-block: var(--s-5); }
+.ftr { margin-top: var(--s-6); }
+.hero { height: clamp(20rem, calc(100dvh - var(--hdr-h) - var(--notice-h) - var(--z-quick)), 46rem); }
+.hero__copy { bottom: var(--s-8); }
+.hero__ctrl { bottom: var(--s-4); }
+.quick { margin-top: 0; }
+.quick__list { gap: 2px; background: var(--c-surface); }
+.quick__link { border-radius: 0; box-shadow: none; background: var(--c-page); }
+.subhero { min-height: clamp(11rem, 26dvh, 15rem); }
+.subhero__in { padding-block: var(--s-6); gap: var(--s-3); }
+.ehero { height: clamp(16rem, 44dvh, 24rem); }
+.ehero__in { padding-bottom: var(--s-5); }
+.phero__in { min-height: 8rem; padding-block: var(--s-5); }
+.filterbar { padding-top: var(--s-5); gap: var(--s-4); }
+.ctitle { margin-bottom: var(--s-5); }
+.tiles__title { margin-bottom: var(--s-4); }
+.rsv-head { padding-block: var(--s-4); }
+.band-blue__in { padding-block: var(--s-6); }
+.band-red { padding-block: var(--s-6); }
+.subhero__in .t-display, .ehero__box .t-band { text-wrap: balance; }
+.hdr__top { height: var(--z-topbar); }
+
+/* 지도 화면. 한 화면에 목록과 지도가 다 보인다 */
+.mapp { padding-block: var(--s-4); }
+@media (min-width: 1025px) { .mapp__body { grid-template-columns: 19rem minmax(0, 1fr); } }
+.mapp__side, .mapp__view { height: calc(100dvh - var(--hdr-h) - var(--s-6)); min-height: 28rem; max-height: none; }
+
+@media (min-width: 769px) { .bbar { display: none; } body.has-bar { padding-bottom: 0; } .topbtn { bottom: var(--s-5); } .toast { bottom: var(--s-5); } }
+@media (max-width: 1024px) {
+  .hero { height: clamp(16rem, calc(100dvh - var(--hdr-h) - var(--notice-h) - 9.25rem), 36rem); }
+  .quick__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick__link { height: 4.5rem; }
+  .mapp__side, .mapp__view { height: auto; }
+  .mapp__view { height: clamp(24rem, 60dvh, 40rem); }
+}
+@media (max-width: 768px) {
+  .section { padding-block: var(--s-5); }
+  .hero { height: clamp(14rem, calc(100dvh - var(--hdr-h) - var(--notice-h) - 9.25rem - var(--z-bookingBar)), 32rem); }
+  .quick__list { grid-template-columns: 1fr 1fr; }
+  .quick__link { height: 4rem; min-height: 0; padding: 0 var(--s-3); gap: var(--s-2); }
+  .quick__link > svg:first-child { width: 1.75rem; height: 1.75rem; }
+  .quick__txt .t-caption { display: none; }
+  .quick__txt .t-quick { font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); }
+  .ehero { height: auto; min-height: 15rem; }
+  .ehero__in { padding-top: 6rem; }
+}
+
+.notice__in { min-height: var(--notice-h); }
+
+.cal__cell { min-height: 4rem; padding: var(--s-2) var(--s-3); }
+.cal__dow { padding-block: var(--s-2); }
+.rsv { gap: var(--s-6); }
+@media (max-width: 768px) { .cal__cell { min-height: 3.25rem; } }
+
+.notice a { display: block; min-height: 0; line-height: var(--notice-h); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notice__in { height: var(--notice-h); }

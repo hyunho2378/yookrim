@@ -1,0 +1,306 @@
+{
+  "zones": [
+    {
+      "id": "zone-entrance",
+      "name": "정문 광장",
+      "color": "neutral"
+    },
+    {
+      "id": "zone-rides",
+      "name": "놀이동산 존",
+      "color": "autumn"
+    },
+    {
+      "id": "zone-zoo",
+      "name": "동물원 존",
+      "color": "spring"
+    },
+    {
+      "id": "zone-forest",
+      "name": "소나무 숲 캠프촌",
+      "color": "forest"
+    },
+    {
+      "id": "zone-gungame",
+      "name": "총게임 필드",
+      "color": "summer"
+    }
+  ],
+  "filters": [
+    {
+      "id": "program",
+      "label": "체험 프로그램"
+    },
+    {
+      "id": "ride",
+      "label": "놀이기구"
+    },
+    {
+      "id": "animal",
+      "label": "동물"
+    },
+    {
+      "id": "photo",
+      "label": "포토존"
+    },
+    {
+      "id": "mission",
+      "label": "미션"
+    },
+    {
+      "id": "amenity",
+      "label": "편의시설"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "gate-main",
+      "name": "정문 매표소",
+      "zone": "zone-entrance",
+      "type": [
+        "amenity"
+      ],
+      "desc": "입장권과 통합권 구매, 예약 티켓 확인",
+      "lngLat": [
+        127.720341,
+        37.917399
+      ]
+    },
+    {
+      "id": "gate-side",
+      "name": "숲길 출입구",
+      "zone": "zone-forest",
+      "type": [
+        "amenity"
+      ],
+      "desc": "숲 쪽에서 바로 들어오는 두 번째 출입구. 운영 시간에만 열어요.",
+      "status": "proposal",
+      "lngLat": [
+        127.719692,
+        37.918101
+      ]
+    },
+    {
+      "id": "info",
+      "name": "안내소와 보상 교환소",
+      "zone": "zone-entrance",
+      "type": [
+        "amenity",
+        "mission"
+      ],
+      "desc": "미션 보상 수령과 유모차 대여, 분실물 접수",
+      "lngLat": [
+        127.720205,
+        37.917458
+      ]
+    },
+    {
+      "id": "gungame-base",
+      "name": "총게임 집결지",
+      "zone": "zone-gungame",
+      "type": [
+        "program"
+      ],
+      "programId": "gungame",
+      "desc": "접수와 장비 수령, 안전 교육",
+      "status": "proposal",
+      "lngLat": [
+        127.720809,
+        37.917815
+      ]
+    },
+    {
+      "id": "animal-cafe",
+      "name": "동물 교감 카페",
+      "zone": "zone-zoo",
+      "type": [
+        "program",
+        "animal"
+      ],
+      "programId": "animal-cafe",
+      "desc": "현장 조사로 찾은 빈 공간에 만드는 실내 카페",
+      "status": "proposal",
+      "lngLat": [
+        127.720402,
+        37.918987
+      ]
+    },
+    {
+      "id": "feeding",
+      "name": "먹이 주기 체험장",
+      "zone": "zone-zoo",
+      "type": [
+        "program",
+        "animal"
+      ],
+      "programId": "feeding",
+      "lngLat": [
+        127.719889,
+        37.918815
+      ]
+    },
+    {
+      "id": "zoo",
+      "name": "동물원",
+      "zone": "zone-zoo",
+      "type": [
+        "animal"
+      ],
+      "desc": "호랑이와 곰, 수리부엉이, 원숭이가 살아요.",
+      "lngLat": [
+        127.72016,
+        37.919034
+      ]
+    },
+    {
+      "id": "viking",
+      "name": "바이킹",
+      "zone": "zone-rides",
+      "type": [
+        "ride"
+      ],
+      "lngLat": [
+        127.720915,
+        37.918172
+      ]
+    },
+    {
+      "id": "bumper",
+      "name": "범퍼카",
+      "zone": "zone-rides",
+      "type": [
+        "ride"
+      ],
+      "lngLat": [
+        127.720498,
+        37.91822
+      ]
+    },
+    {
+      "id": "swing",
+      "name": "회전그네",
+      "zone": "zone-rides",
+      "type": [
+        "ride"
+      ],
+      "lngLat": [
+        127.720619,
+        37.918058
+      ]
+    },
+    {
+      "id": "carousel",
+      "name": "회전목마",
+      "zone": "zone-rides",
+      "type": [
+        "ride",
+        "photo"
+      ],
+      "lngLat": [
+        127.720396,
+        37.917925
+      ]
+    },
+    {
+      "id": "train",
+      "name": "기차",
+      "zone": "zone-rides",
+      "type": [
+        "ride"
+      ],
+      "lngLat": [
+        127.720356,
+        37.918506
+      ]
+    },
+    {
+      "id": "camp",
+      "name": "캠프촌",
+      "zone": "zone-forest",
+      "type": [
+        "program"
+      ],
+      "programId": "campground",
+      "lngLat": [
+        127.720432,
+        37.919339
+      ]
+    },
+    {
+      "id": "photo-retro",
+      "name": "레트로 놀이공원 포토존",
+      "zone": "zone-rides",
+      "type": [
+        "photo",
+        "mission"
+      ],
+      "status": "proposal",
+      "lngLat": [
+        127.720085,
+        37.918339
+      ]
+    },
+    {
+      "id": "photo-character",
+      "name": "{캐릭터명} 포토존",
+      "zone": "zone-entrance",
+      "type": [
+        "photo",
+        "mission"
+      ],
+      "status": "proposal",
+      "lngLat": [
+        127.72013,
+        37.917494
+      ]
+    },
+    {
+      "id": "toilet-1",
+      "name": "화장실",
+      "zone": "zone-entrance",
+      "type": [
+        "amenity"
+      ],
+      "lngLat": [
+        127.719813,
+        37.918184
+      ]
+    },
+    {
+      "id": "toilet-2",
+      "name": "화장실",
+      "zone": "zone-zoo",
+      "type": [
+        "amenity"
+      ],
+      "lngLat": [
+        127.720272,
+        37.918725
+      ]
+    },
+    {
+      "id": "nursing",
+      "name": "수유실",
+      "zone": "zone-entrance",
+      "type": [
+        "amenity"
+      ],
+      "lngLat": [
+        127.720024,
+        37.917399
+      ]
+    },
+    {
+      "id": "snack",
+      "name": "매점",
+      "zone": "zone-rides",
+      "type": [
+        "amenity"
+      ],
+      "lngLat": [
+        127.720076,
+        37.917825
+      ]
+    }
+  ]
+}

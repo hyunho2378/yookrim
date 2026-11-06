@@ -1,0 +1,84 @@
+/* elevation.css  면의 높이와 입체감. 그림자 값은 tokens.js 의 shadow 단계만 쓴다.
+   레고랜드 화면은 사진과 카드, 단추가 바탕 위에 떠 있는 느낌이 있다. 그 느낌을 그림자 단계로 만든다.
+   움직임은 transform 과 box-shadow 의 부드러운 전환만 쓰고 크기나 자리는 바꾸지 않는다. */
+
+/* 머리말 띠. 본문 위에 떠 있는 판 */
+.hdr { box-shadow: var(--shadow-header); }
+.hdr__top { box-shadow: var(--shadow-hairline); }
+
+/* 단추 */
+.btn, .hdr__cta { box-shadow: var(--shadow-btn); transition: background-color var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease), transform var(--m-fast) var(--ease); }
+.btn:hover, .hdr__cta:hover { box-shadow: var(--shadow-1); }
+.btn:active, .hdr__cta:active { box-shadow: var(--shadow-0); transform: translateY(1px); }
+.btn--light { box-shadow: var(--shadow-btn); }
+.hero__arrow { box-shadow: var(--shadow-1); }
+.hero__ctrl button { box-shadow: var(--shadow-0); }
+.topbtn { box-shadow: var(--shadow-2); }
+.choice, .sess__btn, .stamp { box-shadow: var(--shadow-0); }
+.choice[aria-pressed='true'], .choice[aria-checked='true'], .choice[aria-selected='true'], .sess__btn[aria-pressed='true'] { box-shadow: var(--shadow-1); }
+.bbar { box-shadow: var(--shadow-bar); }
+
+/* 사진과 카드 */
+.photo--round { box-shadow: var(--shadow-1); }
+.teaser__media .photo { box-shadow: var(--shadow-2); }
+.tiles__item, .pkgs__item, .rlist__item, .promo__item, .prod {
+  transition: transform var(--m-base) var(--ease), box-shadow var(--m-base) var(--ease);
+}
+.promo__item, .prod { background: var(--c-page); border-radius: var(--r); padding: var(--s-4) var(--s-4) var(--s-5); box-shadow: var(--shadow-1); }
+.promo__item .photo--round, .prod .photo--round { box-shadow: var(--shadow-0); }
+.promo__item:hover, .prod:hover { box-shadow: var(--shadow-3); transform: translateY(-4px); }
+.tiles__item:hover .photo--round, .pkgs__item:hover .photo--round, .rlist__item:hover .photo--round { box-shadow: var(--shadow-3); }
+.tiles__item:hover, .pkgs__item:hover, .rlist__item:hover { transform: translateY(-4px); }
+.mosaic__cell { box-shadow: var(--shadow-1); transition: box-shadow var(--m-base) var(--ease), transform var(--m-base) var(--ease); }
+.mosaic__cell:hover { box-shadow: var(--shadow-3); transform: translateY(-3px); }
+
+/* 첫 화면 위로 올라온 흰 바로가기 칸 */
+.quick__link { box-shadow: var(--shadow-2); }
+.quick__link:hover { box-shadow: var(--shadow-3); }
+@media (max-width: 1024px) { .quick__link { box-shadow: var(--shadow-2); } }
+
+/* 사진 위 글자 */
+.hero__copy .t-display, .hero__lead, .subhero__in h1, .subhero__text { text-shadow: var(--shadow-text); }
+.hero__slide .photo[data-loaded]::after { background: var(--g-heroSide); }
+.subhero .photo[data-loaded]::after { background: var(--g-sub); }
+@media (max-width: 768px) { .hero__slide .photo[data-loaded]::after { background: var(--g-heroBottom); } }
+
+/* 사진 위에 놓인 색 상자와 이름표 */
+.ehero__box { box-shadow: var(--shadow-3); }
+.ehero .photo[data-loaded]::after { content: ''; position: absolute; inset: 0; background: var(--g-event); pointer-events: none; }
+.ehero__tag, .mosaic__tag { box-shadow: var(--shadow-0); }
+.mosaic__hover { background: var(--g-hover); }
+
+/* 메뉴 판과 대화 상자, 알림 */
+.mega { box-shadow: var(--shadow-3); }
+.dlg__box { box-shadow: var(--shadow-3); }
+.toast { box-shadow: var(--shadow-2); }
+.mapp__card, .mapp__ctl button { box-shadow: var(--shadow-2); }
+.pin { box-shadow: var(--shadow-1); }
+.mapp__view { box-shadow: var(--shadow-2); }
+
+/* 줄과 칸 */
+.acc__item, .news__row, .myres__item, .ctr, .cal__cell:not(.cal__cell--empty), .mapp__row { box-shadow: var(--shadow-0); }
+.mapp__row.is-sel { box-shadow: var(--shadow-1); }
+.news__row:hover, .acc__item:hover { box-shadow: var(--shadow-1); }
+.kv { box-shadow: var(--shadow-1); }
+.ticket { box-shadow: var(--shadow-2); }
+.rsv-sum { box-shadow: var(--shadow-2); }
+.stepper li { box-shadow: var(--shadow-0); }
+.stepper li.is-on { box-shadow: var(--shadow-1); }
+.cal__head { box-shadow: var(--shadow-1); }
+.band-blue, .band-red { box-shadow: var(--shadow-1); position: relative; z-index: 1; }
+.hint { box-shadow: var(--shadow-0); }
+.input { box-shadow: var(--shadow-inset); }
+
+/* 사진 자리는 높이 느낌만 살짝 */
+.photo__slot { background: var(--g-slot); }
+
+@media (prefers-reduced-motion: reduce) {
+  .promo__item:hover, .prod:hover, .tiles__item:hover, .pkgs__item:hover, .rlist__item:hover, .mosaic__cell:hover { transform: none; }
+}
+@media (hover: none) {
+  .promo__item:hover, .prod:hover, .tiles__item:hover, .pkgs__item:hover, .rlist__item:hover, .mosaic__cell:hover { transform: none; }
+}
+
+.hero__slide .photo[data-loaded]::after, .subhero .photo[data-loaded]::after { content: ''; position: absolute; inset: 0; pointer-events: none; }

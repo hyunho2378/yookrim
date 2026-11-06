@@ -1,0 +1,197 @@
+/* global.css  모든 값은 tokens.js 가 넣은 CSS 변수만 읽는다. 여기서 색과 크기를 새로 정하지 않는다. */
+
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+/* 글꼴이 늦게 와도 줄 폭이 흔들리지 않도록 대체 글꼴 크기를 Pretendard 에 맞춘다 */
+@font-face {
+  font-family: 'Pretendard Fallback';
+  src: local('Apple SD Gothic Neo'), local('Malgun Gothic'), local('Noto Sans KR');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 25%;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  font-size: 16px;
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+@media (min-width: 1921px) { html { font-size: var(--fluid-base); } }
+body {
+  margin: 0;
+  background: var(--c-page);
+  color: var(--c-text);
+  font-family: 'Pretendard Variable', 'Pretendard Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-lh);
+  font-weight: var(--t-body-weight);
+  letter-spacing: var(--t-body-ls);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+/* 카드와 안내 문단처럼 짧은 글은 줄 길이를 맞춰 마지막 줄에 한 어절이 남지 않게 한다 */
+.promo__item p, .rlist__desc, .teaser__text p, .ctitle p, .rsv-sum p, .mapp__head p, .t-label { text-wrap: balance; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, textarea { font: inherit; letter-spacing: inherit; color: inherit; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+:focus { outline: none; }
+:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 3px; border-radius: var(--r); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: var(--s-4); top: calc(-1 * var(--s-10)); z-index: var(--layer-dialog); background: var(--c-text); color: var(--c-textOnColor); padding: var(--s-3) var(--s-4); border-radius: var(--r); }
+.skip:focus { top: var(--s-4); }
+
+/* 글자 역할. 크기와 행간, 굵기, 자간을 한 세트로 건다 */
+.t-display { font-size: var(--t-display-size); line-height: var(--t-display-lh); font-weight: var(--t-display-weight); letter-spacing: var(--t-display-ls); }
+.t-band { font-size: var(--t-bandTitle-size); line-height: var(--t-bandTitle-lh); font-weight: var(--t-bandTitle-weight); letter-spacing: var(--t-bandTitle-ls); }
+.t-card { font-size: var(--t-cardTitle-size); line-height: var(--t-cardTitle-lh); font-weight: var(--t-cardTitle-weight); letter-spacing: var(--t-cardTitle-ls); }
+.t-quick { font-size: var(--t-quick-size); line-height: var(--t-quick-lh); font-weight: var(--t-quick-weight); letter-spacing: var(--t-quick-ls); }
+.t-label { font-size: var(--t-label-size); line-height: var(--t-label-lh); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-ls); }
+.t-menuhead { font-size: var(--t-menuHead-size); line-height: var(--t-menuHead-lh); font-weight: var(--t-menuHead-weight); letter-spacing: var(--t-menuHead-ls); }
+.t-nav { font-size: var(--t-nav-size); line-height: var(--t-nav-lh); font-weight: var(--t-nav-weight); letter-spacing: var(--t-nav-ls); }
+.t-body { font-size: var(--t-body-size); line-height: var(--t-body-lh); font-weight: var(--t-body-weight); letter-spacing: var(--t-body-ls); }
+.t-strong { font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); font-weight: var(--t-bodyStrong-weight); letter-spacing: var(--t-bodyStrong-ls); }
+.t-small { font-size: var(--t-small-size); line-height: var(--t-small-lh); font-weight: var(--t-small-weight); letter-spacing: var(--t-small-ls); }
+.t-caption { font-size: var(--t-caption-size); line-height: var(--t-caption-lh); font-weight: var(--t-caption-weight); letter-spacing: var(--t-caption-ls); }
+@media (max-width: 768px) {
+  .t-display { font-size: var(--t-display-msize); line-height: var(--t-display-lhm); }
+  .t-band { font-size: var(--t-bandTitle-msize); line-height: var(--t-bandTitle-lhm); }
+  .t-card { font-size: var(--t-cardTitle-msize); line-height: var(--t-cardTitle-lhm); }
+  .t-quick { font-size: var(--t-quick-msize); line-height: var(--t-quick-lhm); }
+  .t-label { font-size: var(--t-label-msize); line-height: var(--t-label-lhm); }
+}
+.c-primary { color: var(--c-primary); }
+.c-sub { color: var(--c-textSub); }
+.c-action { color: var(--c-action); }
+
+/* 레이아웃. 헤더와 본문, 푸터가 같은 좌우 여백과 최대 폭을 쓴다 */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--z-container) + 2 * var(--z-sidePad));
+  margin-inline: auto;
+  padding-inline: var(--z-sidePad);
+}
+@media (max-width: 768px) { .wrap { padding-inline: var(--z-sidePadM); max-width: none; } }
+.section { padding-block: var(--s-8); }
+.section--tight { padding-block: var(--s-7); }
+@media (max-width: 768px) { .section { padding-block: var(--s-7); } .section--tight { padding-block: var(--s-6); } }
+.stack-2 > * + * { margin-top: var(--s-2); }
+.stack-3 > * + * { margin-top: var(--s-3); }
+.stack-4 > * + * { margin-top: var(--s-4); }
+.stack-5 > * + * { margin-top: var(--s-5); }
+.stack-6 > * + *, .stack-7 > * + * { margin-top: var(--s-5); }
+main { display: block; min-height: 60vh; }
+body.has-bar { padding-bottom: var(--z-bookingBar); }
+
+/* 버튼. 반경 한 단계, 테두리 없음, 누를 때 크기 대신 색만 바뀐다 */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: var(--z-button); padding: 0 var(--s-5); min-width: var(--z-buttonW);
+  border-radius: var(--r);
+  font-size: var(--t-button-size); line-height: var(--t-button-lh); font-weight: var(--t-button-weight); letter-spacing: var(--t-button-ls);
+  color: var(--c-textOnColor); background: var(--c-action);
+  transition: background-color var(--m-fast) var(--ease), opacity var(--m-fast) var(--ease);
+  text-align: center;
+}
+.btn:hover { background: var(--c-actionPress); }
+.btn--deep { background: var(--c-primaryDeep); }
+.btn--deep:hover { background: var(--c-primaryPress); }
+.btn--primary { background: var(--c-primary); }
+.btn--primary:hover { background: var(--c-primaryDeep); }
+.btn--light { background: var(--c-page); color: var(--c-primary); }
+.btn--light:hover { background: var(--c-bar); color: var(--c-text); }
+.btn--block { width: 100%; min-width: 0; }
+.btn--sm { min-height: var(--z-buttonSm); min-width: 0; font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); font-weight: var(--t-bodyStrong-weight); }
+.btn[disabled], .btn[aria-disabled='true'] { opacity: 0.4; pointer-events: none; }
+@media (max-width: 768px) { .btn { min-width: 0; width: 100%; font-size: var(--t-button-msize); } }
+
+/* 글자 링크 */
+.more { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--c-action); min-height: var(--z-touch); }
+.more:hover { color: var(--c-actionPress); }
+.more svg { transition: transform var(--m-fast) var(--ease); }
+.more:hover svg { transform: translateX(4px); }
+
+/* 사진 자리. 비율을 먼저 잡아 사진이 와도 화면이 밀리지 않는다 */
+.photo { position: relative; overflow: hidden; background: var(--slot, var(--slot-0)); color: var(--c-textOnColor); }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo__slot { position: absolute; inset: auto 0 0 0; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-1); }
+.photo__slot b { font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); font-weight: var(--t-bodyStrong-weight); }
+.photo__slot span { font-size: var(--t-caption-size); line-height: var(--t-caption-lh); letter-spacing: var(--t-caption-ls); opacity: 0.85; }
+.photo--round { border-radius: var(--r); }
+.photo--onbar { color: var(--c-text); }
+
+/* 아이콘 */
+.ico { flex: none; }
+
+/* 입력칸. 테두리 없이 무채색 면으로 칸을 보인다 */
+.field { display: flex; flex-direction: column; gap: var(--s-2); }
+.field label { font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); font-weight: var(--t-bodyStrong-weight); }
+.input {
+  width: 100%; min-height: var(--z-buttonSm); padding: 0 var(--s-4);
+  background: var(--c-surface); border: 0; border-radius: var(--r);
+  font-size: var(--t-body-size); line-height: var(--t-body-lh);
+  transition: background-color var(--m-fast) var(--ease);
+}
+.input:focus-visible { outline-offset: 0; }
+.input--onColor { background: var(--c-page); }
+.field__err { color: var(--c-error); font-size: var(--t-small-size); line-height: var(--t-small-lh); }
+
+/* 고르기 단추. 선택은 색과 체크 아이콘을 함께 바꾼다 */
+.choice {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--z-buttonSm); padding: 0 var(--s-4);
+  border-radius: var(--r); background: var(--c-surface); color: var(--c-text);
+  font-size: var(--t-bodyStrong-size); line-height: var(--t-bodyStrong-lh); font-weight: var(--t-bodyStrong-weight);
+  transition: background-color var(--m-fast) var(--ease), color var(--m-fast) var(--ease);
+}
+.choice:hover { background: var(--c-bar); }
+.choice[aria-pressed='true'], .choice[aria-checked='true'], .choice[aria-selected='true'] { background: var(--c-primary); color: var(--c-textOnColor); }
+.choices { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* 체크 상자 */
+.check { display: flex; align-items: flex-start; gap: var(--s-3); cursor: pointer; min-height: var(--z-touch); padding-block: var(--s-2); }
+.check input { appearance: none; -webkit-appearance: none; margin: 0; width: 1.5rem; height: 1.5rem; flex: none; border-radius: var(--r-sm); background: var(--c-surface); display: grid; place-content: center; cursor: pointer; transition: background-color var(--m-fast) var(--ease); }
+.check__box { position: relative; flex: none; width: 1.5rem; height: 1.5rem; }
+.check__box input { position: absolute; inset: 0; width: 100%; height: 100%; }
+.check__box svg { position: absolute; inset: 0; margin: auto; color: var(--c-textOnColor); opacity: 0; pointer-events: none; transition: opacity var(--m-fast) var(--ease); }
+.check input:checked { background: var(--c-primary); }
+.check input:checked + svg { opacity: 1; }
+
+/* 펼침 목록 */
+.acc { display: flex; flex-direction: column; gap: var(--s-2); }
+.acc__item { background: var(--c-surface); border-radius: var(--r); }
+.acc__head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); padding: var(--s-4) var(--s-5); min-height: var(--z-button); text-align: left; }
+.acc__head svg { transition: transform var(--m-base) var(--ease); }
+.acc__head[aria-expanded='true'] svg { transform: rotate(180deg); }
+.acc__body { padding: 0 var(--s-5) var(--s-5); }
+
+/* 표. 칸 사이 2px 틈으로 줄을 나눈다 */
+.kv { display: grid; grid-template-columns: minmax(7rem, 12rem) 1fr; gap: 2px; border-radius: var(--r); overflow: hidden; }
+.kv dt, .kv dd { padding: var(--s-4) var(--s-5); margin: 0; }
+.kv dt { background: var(--c-primary); color: var(--c-textOnColor); font-weight: var(--t-bodyStrong-weight); }
+.kv dd { background: var(--c-surface); }
+@media (max-width: 520px) { .kv { grid-template-columns: 1fr; gap: 0; } .kv dt:not(:first-of-type) { margin-top: var(--s-2); } }
+
+/* 흐름 */
+.fade-enter { animation: fadeIn var(--m-base) var(--ease) both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+}
+@media (prefers-contrast: more) {
+  :root { --c-textSub: var(--c-hcText); --c-surface: var(--c-hcSurface); }
+}

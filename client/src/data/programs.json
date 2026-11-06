@@ -1,0 +1,231 @@
+{
+  "programs": [
+    {
+      "id": "gungame",
+      "status": "proposal",
+      "name": "숲속 총게임",
+      "category": "체험",
+      "isMain": true,
+      "summary": "놀이공원 곳곳이 게임 맵이 되는 팀 대항 서바이벌이에요",
+      "target": [
+        "청소년",
+        "청년",
+        "단체"
+      ],
+      "modes": [
+        {
+          "id": "laser",
+          "name": "레이저 배틀",
+          "age": "10세 이상",
+          "desc": "적외선 총과 센서 조끼라 아프지 않아 가족과 청소년도 함께 뛰어요",
+          "duration": "40분"
+        },
+        {
+          "id": "paintball",
+          "name": "페인트볼 서바이벌",
+          "age": "만 14세 이상",
+          "desc": "보호복과 마스크를 입고 진짜 페인트탄으로 겨뤄요.",
+          "duration": "50분"
+        },
+        {
+          "id": "night",
+          "name": "야간 미션전",
+          "age": "만 19세 이상",
+          "desc": "금요일과 토요일 밤, 조명이 꺼진 놀이공원에서 깃발을 뺏어요.",
+          "duration": "60분"
+        }
+      ],
+      "zoneIds": [
+        "zone-gungame"
+      ],
+      "steps": [
+        "접수와 안전 교육 10분",
+        "장비 착용",
+        "팀 편성과 미션 카드 수령",
+        "경기",
+        "결과 발표와 기념 촬영"
+      ],
+      "capacity": {
+        "perSession": 20,
+        "min": 6
+      },
+      "sessions": [
+        "11:00",
+        "13:00",
+        "15:00",
+        "17:00"
+      ],
+      "nightSessions": [
+        "19:00",
+        "20:30"
+      ],
+      "price": {
+        "laser": 12000,
+        "paintball": 18000,
+        "night": 22000,
+        "groupDiscount": "20인 이상 10%"
+      },
+      "safety": [
+        "보호 장비 착용 필수",
+        "지정 구역 밖 사격 금지",
+        "동물원 구역 출입 불가",
+        "음주 후 참여 불가",
+        "임신부와 심혈관 질환자 참여 제한"
+      ],
+      "rainPolicy": "비가 오면 레이저 배틀만 실내 구역에서 줄여서 운영해요."
+    },
+    {
+      "id": "zombie-night",
+      "status": "proposal",
+      "name": "한밤의 좀비 숲",
+      "category": "시즌",
+      "season": "summer",
+      "summary": "해가 지면 놀이공원이 좀비 숲으로 바뀌고 공포 단계를 골라 탈출해요",
+      "target": [
+        "청년",
+        "성인"
+      ],
+      "capacity": {
+        "perSession": 30
+      },
+      "sessions": [
+        "19:00",
+        "19:40",
+        "20:20",
+        "21:00"
+      ],
+      "price": {
+        "adult": 15000
+      },
+      "safety": [
+        "만 15세 미만 보호자 동반",
+        "공포 단계 3은 만 19세 이상",
+        "언제든 포기 신호를 보내면 바로 나갈 수 있어요"
+      ]
+    },
+    {
+      "id": "treasure-hunt",
+      "status": "proposal",
+      "name": "숲속 보물찾기",
+      "category": "시즌",
+      "season": "spring",
+      "summary": "지도와 힌트 카드를 들고 공원 곳곳의 보물 상자를 찾는 가족 미션이에요.",
+      "target": [
+        "가족",
+        "어린이"
+      ],
+      "capacity": {
+        "perSession": null,
+        "note": "자유 참여"
+      },
+      "price": {
+        "missionKit": 3000
+      },
+      "linkedMissionSet": "spring-treasure"
+    },
+    {
+      "id": "winter-camp",
+      "status": "proposal",
+      "name": "1일 캠핑 데이",
+      "category": "시즌",
+      "season": "winter",
+      "summary": "소나무 숲 캠프촌에서 하루 캠핑과 야간 체험, 1박 숙박을 즐겨요.",
+      "target": [
+        "청년",
+        "가족"
+      ],
+      "options": [
+        {
+          "id": "day",
+          "name": "당일 캠핑 (13:00-21:00)",
+          "price": 30000,
+          "unit": "사이트(4인)"
+        },
+        {
+          "id": "stay",
+          "name": "1박 숙박",
+          "price": 60000,
+          "unit": "사이트(4인)"
+        }
+      ],
+      "rules": [
+        "숯불 대신 가스버너만 쓸 수 있어요",
+        "밤 10시부터는 조용히 쉬어요"
+      ]
+    },
+    {
+      "id": "animal-cafe",
+      "status": "proposal",
+      "name": "동물 교감 카페",
+      "category": "상시",
+      "summary": "날씨와 상관없이 미어캣과 기니피그를 가까이서 만나는 실내 카페예요",
+      "target": [
+        "가족",
+        "어린이",
+        "청년"
+      ],
+      "animals": [
+        {
+          "name": "미어캣"
+        },
+        {
+          "name": "기니피그"
+        }
+      ],
+      "sessions": [
+        "10:30",
+        "11:30",
+        "13:30",
+        "14:30",
+        "15:30",
+        "16:30"
+      ],
+      "capacity": {
+        "perSession": 12
+      },
+      "price": {
+        "perPerson": 6000,
+        "includes": "음료 1잔"
+      },
+      "welfareRules": [
+        "한 회차는 40분, 정원은 12명이에요",
+        "회차 사이 20분은 동물 휴식 시간이에요",
+        "손을 소독하고 들어가요",
+        "동물을 들어 올리거나 쫓아가지 않아요",
+        "사람 음식은 주지 않아요",
+        "동물 알레르기가 있으면 유리창 관람석에서 봐요"
+      ]
+    },
+    {
+      "id": "feeding",
+      "status": "current",
+      "name": "동물 먹이 주기 체험",
+      "category": "상시",
+      "summary": "매점에서 먹이를 사서 양과 사슴, 염소, 토끼에게 직접 줘요.",
+      "target": [
+        "가족",
+        "어린이"
+      ],
+      "price": {
+        "note": "먹이 별도 구매"
+      }
+    },
+    {
+      "id": "rides",
+      "status": "current",
+      "name": "놀이기구",
+      "category": "상시",
+      "summary": "바이킹과 범퍼카, 회전그네, 회전목마, 기차를 탈 수 있어요.",
+      "price": {
+        "ref": "pricing.json > rides"
+      }
+    },
+    {
+      "id": "campground",
+      "status": "current",
+      "name": "캠프촌",
+      "category": "상시",
+      "summary": "소나무 숲 아래 텐트를 치고 쉬는 곳이며 장비는 직접 가져오고 가스버너만 써요"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "currency": "KRW",
+  "admission": {
+    "status": "current",
+    "individual": {
+      "adult": 7000,
+      "youth": 6000,
+      "child": 5000
+    },
+    "group20plus": {
+      "adult": 6000,
+      "youth": 5000,
+      "child": 4000
+    },
+    "freeUnder": "24개월 미만 무료",
+    "annualPass": {
+      "perPerson": 50000,
+      "family4": 200000
+    },
+    "discountNote": "장애인과 아동, 어르신 할인 적용"
+  },
+  "rides": {
+    "status": "current",
+    "options": [
+      {
+        "id": "ride-1",
+        "name": "1종 이용권",
+        "price": 4500
+      },
+      {
+        "id": "ride-5",
+        "name": "곰돌이표 (5종)",
+        "price": 20000
+      },
+      {
+        "id": "ride-10",
+        "name": "호돌이표 (10종)",
+        "price": 35000
+      }
+    ]
+  },
+  "bundles": {
+    "status": "proposal",
+    "options": [
+      {
+        "id": "bundle-day",
+        "name": "숲속 자유이용권",
+        "includes": [
+          "입장",
+          "놀이기구 5종"
+        ],
+        "price": {
+          "adult": 22000,
+          "youth": 20000,
+          "child": 18000
+        },
+        "badge": "입장과 놀이기구"
+      },
+      {
+        "id": "bundle-play",
+        "name": "플레이 패스",
+        "includes": [
+          "입장",
+          "총게임 1회",
+          "미션 카드"
+        ],
+        "price": {
+          "adult": 25000,
+          "youth": 22000
+        },
+        "badge": "청년 추천"
+      },
+      {
+        "id": "bundle-family",
+        "name": "가족 패스 (4인)",
+        "includes": [
+          "입장 4인",
+          "동물 교감 카페 1회",
+          "보물찾기 미션"
+        ],
+        "price": {
+          "family4": 48000
+        },
+        "badge": "가족 추천"
+      }
+    ]
+  }
+}

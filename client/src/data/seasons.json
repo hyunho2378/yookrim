@@ -1,0 +1,112 @@
+{
+  "seasons": [
+    {
+      "id": "spring",
+      "season": "봄",
+      "title": "숲속 보물찾기",
+      "subtitle": "숲 곳곳에 숨겨 둔 보물 상자를 찾아요.",
+      "period": {
+        "start": "2027-04-01",
+        "end": "2027-05-31"
+      },
+      "time": "운영시간 내 상시",
+      "target": [
+        "가족",
+        "어린이와 청소년"
+      ],
+      "intensity": {
+        "label": "난이도",
+        "levels": [
+          "새싹(5~9세)",
+          "나무(10세 이상)"
+        ]
+      },
+      "programIds": [
+        "treasure-hunt"
+      ],
+      "color": "spring"
+    },
+    {
+      "id": "summer",
+      "season": "여름",
+      "title": "한밤의 육림랜드: 좀비 숲",
+      "subtitle": "불 꺼진 놀이공원에서 끝까지 살아남아요.",
+      "period": {
+        "start": "2027-07-15",
+        "end": "2027-08-31"
+      },
+      "time": "18:30-22:00 (야간)",
+      "target": [
+        "청년",
+        "성인"
+      ],
+      "intensity": {
+        "label": "공포 단계",
+        "levels": [
+          "1단계 산책(공포 약함)",
+          "2단계 탈출",
+          "3단계 생존(공포 강함)"
+        ]
+      },
+      "programIds": [
+        "zombie-night"
+      ],
+      "color": "summer"
+    },
+    {
+      "id": "autumn",
+      "season": "가을",
+      "title": "숲속 총게임 리그",
+      "subtitle": "놀이공원 전체가 게임 맵이 돼요.",
+      "period": {
+        "start": "2026-09-01",
+        "end": "2026-11-30"
+      },
+      "time": "주간 회차와 금, 토 야간전",
+      "target": [
+        "청소년",
+        "청년",
+        "단체"
+      ],
+      "intensity": {
+        "label": "게임 모드",
+        "levels": [
+          "레이저(10세 이상)",
+          "페인트볼(만 14세 이상)"
+        ]
+      },
+      "programIds": [
+        "gungame"
+      ],
+      "color": "autumn",
+      "isMain": true
+    },
+    {
+      "id": "winter",
+      "season": "겨울",
+      "title": "소나무 숲 1일 캠핑 데이",
+      "subtitle": "놀이공원 소나무 숲에서 하룻밤을 보내요.",
+      "period": {
+        "start": "2026-12-15",
+        "end": "2027-02-28"
+      },
+      "time": "1일 캠핑 13:00-21:00 / 숙박 13:00-익일 11:00",
+      "target": [
+        "청년",
+        "가족"
+      ],
+      "intensity": {
+        "label": "참여 방식",
+        "levels": [
+          "당일 캠핑",
+          "야간 체험 포함",
+          "1박 숙박"
+        ]
+      },
+      "programIds": [
+        "winter-camp"
+      ],
+      "color": "winter"
+    }
+  ]
+}
