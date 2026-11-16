@@ -37,16 +37,16 @@ html.lock { overflow: hidden; }
 
 /* 메뉴 판. 메뉴 띠 바로 아래, 본문 오른쪽 끝에 맞춘다 */
 .hdr__megawrap { position: absolute; left: 0; right: 0; top: 100%; display: flex; justify-content: flex-end; pointer-events: none; }
-.mega { pointer-events: auto; display: flex; background: var(--c-primary); color: var(--c-textOnColor); box-shadow: var(--shadow-2); animation: fadeIn var(--m-menu) var(--ease) both; max-width: 100%; border-radius: 0 0 var(--r) var(--r); overflow: hidden; }
-.mega__cols { display: flex; flex-direction: column; width: calc(var(--cols) * 17.5rem); max-width: 52.5rem; }
+.mega { pointer-events: auto; display: flex; width: 70rem; height: 26rem; background: var(--c-primary); color: var(--c-textOnColor); box-shadow: var(--shadow-2); animation: fadeIn var(--m-menu) var(--ease) both; max-width: 100%; border-radius: 0 0 var(--r) var(--r); overflow: hidden; }
+.mega__cols { display: flex; flex-direction: column; width: 52.5rem; }
 .mega__top { display: inline-flex; align-items: center; gap: var(--s-2); padding: var(--s-5) var(--s-6); min-height: var(--z-touch); }
-.mega__groups { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); padding: 0 0 var(--s-6); }
+.mega__groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0 0 var(--s-6); }
 .mega__group { padding: var(--s-4) var(--s-6) 0; }
 .mega__group > a { display: inline-flex; min-height: var(--z-touch); align-items: center; }
 .mega__group ul { margin-top: var(--s-2); display: flex; flex-direction: column; }
 .mega__group li a { display: inline-flex; align-items: center; min-height: 2.5rem; opacity: 0.92; }
 .mega a:hover { text-decoration: underline; text-underline-offset: 4px; opacity: 1; }
-.mega__promo { position: relative; width: 17.5rem; flex: none; min-height: 26rem; display: block; }
+.mega__promo { position: relative; width: 17.5rem; flex: none; display: block; }
 .mega__promo .photo { position: absolute; inset: 0; }
 .mega__cap { position: absolute; left: 0; right: 0; bottom: 0; background: var(--c-action); padding: var(--s-4) var(--s-5); display: flex; flex-direction: column; gap: var(--s-1); }
 .mega__promo:hover { text-decoration: none; }

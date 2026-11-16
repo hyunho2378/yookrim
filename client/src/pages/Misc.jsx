@@ -32,7 +32,7 @@ export function About() {
 export function Characters() {
   return (
     <>
-      <EventHero slot="character-main" tone={3} tag="숲속 친구들" title={`${charName()}와 친구들`} text={withChar(site.character.greeting)} cta="숲속 미션" to="/mission" />
+      <EventHero slot="poster-autumn" tone={3} tag="숲속 친구들" title={`${charName()}와 친구들`} text={withChar(site.character.greeting)} cta="숲속 미션" to="/mission" />
       <section className="wrap section">
         <CenterTitle title="숲속 친구들" text="숲을 지키는 친구들을 소개해요." />
         <ul className="chars">

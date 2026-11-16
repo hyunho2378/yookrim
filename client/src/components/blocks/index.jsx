@@ -65,18 +65,6 @@ export function QuickLinks({ items }) {
 }
 
 // 파란 띠에 핵심 안내 3개
-export function UspBand({ items }) {
-  return (
-    <section className="usp" aria-label="방문 전 안내">
-      <ul className="wrap usp__list">
-        {items.map(({ icon: Icon, text, to }) => (
-          <li key={text}><Link to={to} className="t-strong"><Icon size={32} strokeWidth={1.75} aria-hidden />{text}</Link></li>
-        ))}
-      </ul>
-    </section>
-  )
-}
-
 // 사진 위, 제목, 설명, 맨 아래 남색 단추가 있는 4열
 export function PromoCols({ items }) {
   return (

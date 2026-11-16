@@ -4,19 +4,28 @@
 // 레고랜드 화면에서 쓰던 연한 섹션 바탕, 테두리, 슬라이드 점, 왼쪽 파란 장식 띠는 금지 규칙에 따라 뺐다.
 
 export const color = {
-  // 브랜드. 쨍한 라임과 먹색, 포인트 하나(주황). 레고랜드의 노랑과 파랑을 총게임 분위기로 바꿨다
-  bar: '#C6FF1A',        // 메뉴 띠, 눌린 단추, 강조 면
-  lime: '#C6FF1A',
-  limePress: '#A8E000',
-  ink: '#0E0E10',        // 제목, 단추, 메뉴 판, 푸터
-  ink2: '#1A1A1E',       // 푸터 둘째 줄
-  barDeep: '#0E0E10',    // 맨 위 운영시간 줄
-  action: '#FF4A1C',     // 긴급 공지와 D-day 같은 포인트 면
-  actionText: '#D63A0E', // 흰 바탕 위 포인트 글자(대비 4.5 이상)
-  actionPress: '#D63A0E',
+  // 김성경 님이 정한 색 표(2026. 11. 10.). 자리마다 한 색씩 쓴다
+  matcha: '#9DBF7C',     // 메뉴 띠
+  linden: '#C7DDAA',     // 메뉴에 마우스를 올렸을 때와 눌러 볼 수 있는 면의 바뀐 색
+  kiwi: '#E6F0C3',       // 맨 위 얇은 줄, 알림 신청 영역
+  citron: '#FFF2A6',     // 공지 띠, 첫 화면 총게임 예약 버튼, 진한 초록 위의 메뉴 제목
+  tea: '#A7BC9A',        // 푸터 위쪽 줄
+  leaf: '#567A38',       // 버튼, 섹션 제목
+  leafPress: '#4F6B36',
+  forest: '#4F6B36',     // 푸터 아래쪽, 메뉴 판
+  mustard: '#7A6A10',    // 포인트 글자(남은 날수, 더보기)
+  bar: '#9DBF7C',
+  lime: '#C7DDAA',
+  limePress: '#C7DDAA',
+  ink: '#0E0E10',
+  ink2: '#4F6B36',
+  barDeep: '#E6F0C3',
+  action: '#FFF2A6',
+  actionText: '#7A6A10',
+  actionPress: '#7A6A10',
   primary: '#0E0E10',
   primaryDeep: '#0E0E10',
-  primaryPress: '#2A2A2E',
+  primaryPress: '#4F6B36',
   // 글자
   text: '#0E0E10',
   textSub: '#3A3A40',
@@ -29,7 +38,7 @@ export const color = {
   hcText: '#0E0E10',
   hcSurface: '#E0E0E0',
   scrim: 'rgba(0, 0, 0, 0.55)',
-  error: '#D63A0E'
+  error: '#B3300A'
 }
 
 // 사진 자리 색. 사진이 들어오기 전까지 먹색 한 가지로 채운다
@@ -58,7 +67,7 @@ export const space = { 1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 28, 7: 40, 8: 56, 9: 
 export const size = {
   topbar: 36, nav: 76, navM: 60,
   hero: 640, heroM: 440,
-  quick: 88, usp: 60,
+  quick: 88,
   button: 52, buttonSm: 44, buttonW: 220,
   arrow: 56, touch: 44,
   container: 1200, gutter: 32,
@@ -71,7 +80,7 @@ export const scene = {
   sky: '#BFE9FF', ground: '#6FA86A', grass: '#3FA34D', path: '#F2D492', water: '#31A1E0',
   trunk: '#8B5A2B', pine: '#1F7A3A', pineLight: '#2E9E4A',
   zone: { neutral: '#F2D492', autumn: '#FFCF00', spring: '#7ED957', forest: '#2E9E4A', summer: '#D01012' },
-  red: '#D01012', yellow: '#FFCF00', blue: '#006DB7', green: '#009D2E', white: '#FFFFFF', wall: '#D3D7DC', roof: '#F2F3F5', dark: '#16161A', lime: '#C6FF1A', side: '#D3D7DC'
+  red: '#D01012', yellow: '#FFCF00', blue: '#006DB7', green: '#009D2E', white: '#FFFFFF', wall: '#D3D7DC', roof: '#F2F3F5', dark: '#16161A', lime: '#FFF2A6', side: '#D3D7DC'
 }
 
 // 높이 단계. 면이 떠 있는 정도를 그림자 두 겹(맞닿은 그림자와 퍼지는 그림자)으로 만든다

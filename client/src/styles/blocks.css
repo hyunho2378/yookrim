@@ -37,12 +37,6 @@
 }
 
 /* 파란 안내 띠 */
-.usp { background: var(--c-primary); color: var(--c-textOnColor); margin-top: 0; }
-.usp__list { min-height: var(--z-usp); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); align-items: center; padding-block: var(--s-4); }
-.usp__list a { display: flex; align-items: center; gap: var(--s-3); min-height: var(--z-touch); }
-.usp__list a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.usp__list svg { flex: none; }
-@media (max-width: 1024px) { .usp__list { grid-template-columns: 1fr; gap: 0; padding-block: var(--s-3); } }
 
 /* 4열 대표 즐길거리 */
 .promo__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); padding-block: var(--s-2) var(--s-5); }

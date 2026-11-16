@@ -5,103 +5,149 @@
 @media (max-width: 1180px) { :root { --hdr-h: var(--z-navM); } }
 
 /* 머리말 */
-.hdr__top { background: var(--c-ink); color: var(--c-textOnColor); }
-.hdr__top a:hover, .hdr__hours:hover { color: var(--c-lime); }
-.hdr__bar { background: var(--c-lime); }
-.hdr__item.is-open, .hdr__item:hover { background: var(--c-limePress); }
-.hdr__cta { background: var(--c-ink); color: var(--c-lime); }
+.hdr__top { background: var(--c-leaf); color: var(--c-textOnColor); }
+.hdr__top a:hover, .hdr__hours:hover { color: var(--c-textOnColor); }
+.hdr__bar { background: var(--c-linden); }
+.hdr__item.is-open, .hdr__item:hover { background: var(--c-linden); }
+.hdr__cta { background: var(--c-leaf); color: var(--c-textOnColor); }
 .hdr__cta:hover { background: var(--c-primaryPress); }
 .logo__en { color: var(--c-ink); }
 .hdr__mbtn { color: var(--c-ink); }
 
 /* 메뉴 판 */
-.mega { background: var(--c-ink); color: var(--c-textOnColor); }
-.mega a:hover { color: var(--c-lime); }
-.mega__cap { background: var(--c-lime); color: var(--c-ink); }
-.mega__top .c-action { color: var(--c-lime); }
+.mega { background: var(--c-leaf); color: var(--c-textOnColor); }
+.mega a:hover { color: var(--c-textOnColor); }
+.mega__cap { background: var(--c-linden); color: var(--c-ink); }
+.mega__top .c-action { color: var(--c-textOnColor); }
 
 /* 단추 */
-.btn { background: var(--c-ink); color: var(--c-lime); }
-.btn:hover { background: var(--c-lime); color: var(--c-ink); }
-.btn--deep, .btn--primary { background: var(--c-ink); color: var(--c-lime); }
-.btn--deep:hover, .btn--primary:hover { background: var(--c-lime); color: var(--c-ink); }
+.btn { background: var(--c-leaf); color: var(--c-textOnColor); }
+.btn:hover { background: var(--c-linden); color: var(--c-ink); }
+.btn--deep, .btn--primary { background: var(--c-leaf); color: var(--c-textOnColor); }
+.btn--deep:hover, .btn--primary:hover { background: var(--c-linden); color: var(--c-ink); }
 .btn--light { background: var(--c-page); color: var(--c-ink); }
-.btn--light:hover { background: var(--c-lime); color: var(--c-ink); }
-.hero .btn, .ehero .btn, .bbar .btn, .band-blue .btn { background: var(--c-lime); color: var(--c-ink); }
+.btn--light:hover { background: var(--c-linden); color: var(--c-ink); }
+.hero .btn, .ehero .btn, .bbar .btn, .band-blue .btn { background: var(--c-linden); color: var(--c-ink); }
 .hero .btn:hover, .ehero .btn:hover, .bbar .btn:hover, .band-blue .btn:hover { background: var(--c-page); }
-.bbar { background: var(--c-ink); }
-.hero__arrow { background: var(--c-lime); color: var(--c-ink); }
+.bbar { background: var(--c-leaf); }
+.hero__arrow { background: var(--c-linden); color: var(--c-ink); }
 .hero__arrow:hover { background: var(--c-page); }
 .more { color: var(--c-actionText); }
 .more:hover { color: var(--c-ink); }
 .c-action { color: var(--c-actionText); }
 
 /* 안내 띠 */
-.usp { background: var(--c-ink); }
-.usp__list svg { color: var(--c-lime); }
 .notice { background: var(--c-action); color: var(--c-ink); }
 
 /* 푸터 */
-.ftr__signup { background: var(--c-lime); color: var(--c-ink); }
-.ftr__form .btn { background: var(--c-ink); color: var(--c-lime); }
+.ftr__signup { background: var(--c-linden); color: var(--c-ink); }
+.ftr__form .btn { background: var(--c-leaf); color: var(--c-textOnColor); }
 .ftr__form .btn:hover { background: var(--c-page); color: var(--c-ink); }
 .ftr__err { color: var(--c-ink); }
-.ftr__sky { background: var(--c-ink); color: var(--c-textOnColor); }
-.ftr__sky a:hover, .ftr__nav a:hover { color: var(--c-lime); }
+.ftr__sky { background: var(--c-leaf); color: var(--c-textOnColor); }
+.ftr__sky a:hover, .ftr__nav a:hover { color: var(--c-textOnColor); }
 .ftr__nav { background: var(--c-ink2); }
-.ftr__nav h2 { color: var(--c-lime); }
+.ftr__nav h2 { color: var(--c-textOnColor); }
 .ftr__info { color: var(--c-textSub); }
 
 /* 고르기와 표시 */
-.choice[aria-pressed='true'], .choice[aria-checked='true'], .choice[aria-selected='true'] { background: var(--c-ink); color: var(--c-lime); }
-.choice:hover { background: var(--c-lime); color: var(--c-ink); }
-.sess__btn[aria-pressed='true'] { background: var(--c-ink); color: var(--c-lime); }
-.sess__btn[aria-pressed='true'] .c-action { color: var(--c-lime); }
-.sess__btn:hover { background: var(--c-lime); color: var(--c-ink); }
-.stamp:hover { background: var(--c-lime); color: var(--c-ink); }
-.stamp.is-done, .result__stamp.is-on { background: var(--c-lime); color: var(--c-ink); }
-.stamps__bar span { background: var(--c-ink); }
-.stepper li.is-on { background: var(--c-ink); color: var(--c-lime); }
-.stepper li.is-on .stepper__no { background: var(--c-lime); color: var(--c-ink); }
-.stepper li.is-done .stepper__no { background: var(--c-ink); color: var(--c-lime); }
-.rsv-head { background: var(--c-lime); }
-.rsv-sum { background: var(--c-ink); }
-.rsv-sum .c-action { color: var(--c-lime); }
-.ticket__top { background: var(--c-lime); color: var(--c-ink); }
-.cal__head { background: var(--c-ink); color: var(--c-lime); }
+.choice[aria-pressed='true'], .choice[aria-checked='true'], .choice[aria-selected='true'] { background: var(--c-leaf); color: var(--c-textOnColor); }
+.choice:hover { background: var(--c-linden); color: var(--c-ink); }
+.sess__btn[aria-pressed='true'] { background: var(--c-leaf); color: var(--c-textOnColor); }
+.sess__btn[aria-pressed='true'] .c-action { color: var(--c-textOnColor); }
+.sess__btn:hover { background: var(--c-linden); color: var(--c-ink); }
+.stamp:hover { background: var(--c-linden); color: var(--c-ink); }
+.stamp.is-done, .result__stamp.is-on { background: var(--c-linden); color: var(--c-ink); }
+.stamps__bar span { background: var(--c-leaf); }
+.stepper li.is-on { background: var(--c-leaf); color: var(--c-textOnColor); }
+.stepper li.is-on .stepper__no { background: var(--c-linden); color: var(--c-ink); }
+.stepper li.is-done .stepper__no { background: var(--c-leaf); color: var(--c-textOnColor); }
+.rsv-head { background: var(--c-linden); }
+.rsv-sum { background: var(--c-leaf); }
+.rsv-sum .c-action { color: var(--c-textOnColor); }
+.ticket__top { background: var(--c-linden); color: var(--c-ink); }
+.cal__head { background: var(--c-leaf); color: var(--c-textOnColor); }
 .cal__nav:hover { background: var(--c-primaryPress); }
 .cal__info { color: var(--c-ink); }
-.cal__cell.is-sel, .cal__cell.is-sel .cal__info, .cal__cell.is-sel .cal__date { background: var(--c-ink); color: var(--c-lime); }
-.cal__cell:not(.is-static):not(:disabled):hover { background: var(--c-lime); }
-.rules li::before { background: var(--c-ink); color: var(--c-lime); }
-.kv dt { background: var(--c-ink); color: var(--c-lime); }
-.band-blue { background: var(--c-ink); }
-.band-red { background: var(--c-lime); color: var(--c-ink); }
-.band-red .btn { background: var(--c-ink); color: var(--c-lime); }
-.ehero__box { background: var(--c-ink); }
-.ehero__tag, .mosaic__tag { background: var(--c-lime); color: var(--c-ink); }
-.phero { background: var(--c-lime); color: var(--c-ink); }
+.cal__cell.is-sel, .cal__cell.is-sel .cal__info, .cal__cell.is-sel .cal__date { background: var(--c-leaf); color: var(--c-textOnColor); }
+.cal__cell:not(.is-static):not(:disabled):hover { background: var(--c-linden); }
+.rules li::before { background: var(--c-leaf); color: var(--c-textOnColor); }
+.kv dt { background: var(--c-leaf); color: var(--c-textOnColor); }
+.band-blue { background: var(--c-leaf); }
+.band-red { background: var(--c-linden); color: var(--c-ink); }
+.band-red .btn { background: var(--c-leaf); color: var(--c-textOnColor); }
+.ehero__box { background: var(--c-leaf); }
+.ehero__tag, .mosaic__tag { background: var(--c-linden); color: var(--c-ink); }
+.phero { background: var(--c-linden); color: var(--c-ink); }
 .phero .c-sub { color: var(--c-ink); }
-.hint { background: var(--c-lime); }
-.mapp__row:hover { background: var(--c-lime); }
-.mapp__row.is-sel { background: var(--c-ink); color: var(--c-lime); }
-.mapp__row.is-sel .c-sub { color: var(--c-lime); }
-.pin:hover { background: var(--c-lime); }
-.pin.is-sel { background: var(--c-ink); color: var(--c-lime); }
-.mapp__loading { background: var(--c-ink); color: var(--c-lime); }
+.hint { background: var(--c-linden); }
+.mapp__row:hover { background: var(--c-linden); }
+.mapp__row.is-sel { background: var(--c-leaf); color: var(--c-textOnColor); }
+.mapp__row.is-sel .c-sub { color: var(--c-textOnColor); }
+.pin:hover { background: var(--c-linden); }
+.pin.is-sel { background: var(--c-leaf); color: var(--c-textOnColor); }
+.mapp__loading { background: var(--c-leaf); color: var(--c-textOnColor); }
 .range input::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--c-ink) var(--pct), var(--c-surface) var(--pct)); }
-.range input::-webkit-slider-thumb { background: var(--c-ink); }
-.range input::-moz-range-progress { background: var(--c-ink); }
-.range input::-moz-range-thumb { background: var(--c-ink); }
+.range input::-webkit-slider-thumb { background: var(--c-leaf); }
+.range input::-moz-range-progress { background: var(--c-leaf); }
+.range input::-moz-range-thumb { background: var(--c-leaf); }
 .range__out { color: var(--c-ink); }
-.topbtn { background: var(--c-lime); color: var(--c-ink); }
-.mmenu__head[aria-expanded='true'] { background: var(--c-ink); color: var(--c-lime); }
+.topbtn { background: var(--c-linden); color: var(--c-ink); }
+.mmenu__head[aria-expanded='true'] { background: var(--c-leaf); color: var(--c-textOnColor); }
 .ctr__btn { color: var(--c-ink); }
-.ctr__btn:hover { background: var(--c-lime); }
-.news__row:hover, .acc__item:hover { background: var(--c-lime); }
-.quick__link:hover { background: var(--c-lime); }
+.ctr__btn:hover { background: var(--c-linden); }
+.news__row:hover, .acc__item:hover { background: var(--c-linden); }
+.quick__link:hover { background: var(--c-linden); }
 .hero__ctrl button { background: var(--c-scrim); color: var(--c-textOnColor); }
 a.inline-link { color: var(--c-ink); }
+
+
+/* 색 표 적용. 자리마다 정해진 한 색을 쓴다 */
+.hdr__top { background: var(--c-kiwi); color: var(--c-ink); }
+.hdr__top a:hover, .hdr__hours:hover { color: var(--c-mustard); }
+.hdr__bar { background: var(--c-matcha); }
+.hdr__item.is-open, .hdr__item:hover { background: var(--c-linden); }
+.hdr__cta { background: var(--c-leaf); color: var(--c-textOnColor); }
+.hdr__cta:hover { background: var(--c-forest); }
+.mega { background: var(--c-forest); color: var(--c-textOnColor); }
+.mega a:hover { color: var(--c-citron); }
+.mega__cap { background: var(--c-citron); color: var(--c-ink); }
+.mega__top .c-action { color: var(--c-citron); }
+.mega .t-menuhead { color: var(--c-citron); }
+.notice { background: var(--c-citron); color: var(--c-ink); }
+.hero .btn, .ehero .btn, .bbar .btn, .band-blue .btn { background: var(--c-citron); color: var(--c-ink); }
+.hero .btn:hover, .ehero .btn:hover, .bbar .btn:hover, .band-blue .btn:hover { background: var(--c-page); }
+.hero__arrow { background: var(--c-citron); color: var(--c-ink); }
+.bbar { background: var(--c-forest); }
+.btn:hover, .btn--deep:hover, .btn--primary:hover { background: var(--c-forest); color: var(--c-textOnColor); }
+.btn--light { background: var(--c-page); color: var(--c-leaf); }
+.btn--light:hover { background: var(--c-linden); color: var(--c-ink); }
+.more { color: var(--c-mustard); }
+.more:hover { color: var(--c-leaf); }
+.c-action { color: var(--c-mustard); }
+.t-band, .tiles__title, .ctitle .t-band { color: var(--c-leaf); }
+.ehero__box .t-band, .band-blue .t-band, .band-red .t-band, .phero .t-band, .subhero .t-display { color: inherit; }
+.ftr__signup { background: var(--c-kiwi); color: var(--c-ink); }
+.ftr__form .btn { background: var(--c-leaf); color: var(--c-textOnColor); }
+.ftr__form .btn:hover { background: var(--c-forest); color: var(--c-textOnColor); }
+.ftr__sky { background: var(--c-tea); color: var(--c-ink); }
+.ftr__sky a:hover { color: var(--c-forest); }
+.ftr__nav { background: var(--c-forest); color: var(--c-textOnColor); }
+.ftr__nav h2, .ftr__nav h2 a { color: var(--c-citron); }
+.ftr__nav a:hover { color: var(--c-citron); }
+.ftr__info { background: var(--c-forest); color: var(--c-textOnColor); }
+.cal__head { background: var(--c-leaf); color: var(--c-textOnColor); }
+.rsv-head, .phero, .band-red, .ticket__top, .hint { background: var(--c-linden); color: var(--c-ink); }
+.rsv-sum .c-action, .sess__btn[aria-pressed='true'] .c-action { color: var(--c-citron); }
+.mapp__row.is-sel .c-sub { color: var(--c-textOnColor); }
+.band-blue { background: var(--c-forest); }
+.ehero__box { background: var(--c-forest); }
+.ehero__tag, .mosaic__tag { background: var(--c-citron); color: var(--c-ink); }
+.topbtn { background: var(--c-citron); color: var(--c-ink); }
+.kv dt { background: var(--c-leaf); color: var(--c-textOnColor); }
+.stamp.is-done, .result__stamp.is-on { background: var(--c-linden); color: var(--c-ink); }
+.mapp__loading { background: var(--c-forest); color: var(--c-textOnColor); }
+.quick__link:hover { background: var(--c-linden); }
 
 /* 한 화면 배치. 첫 화면에 제목과 핵심이 다 들어오게 여백을 줄였다 */
 .section { padding-block: var(--s-6); }

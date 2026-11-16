@@ -1,7 +1,7 @@
 // Home.jsx  레고랜드 홈의 블록 순서 그대로: 사진 넘김, 바로가기 4칸, 파란 안내 띠, 4열 대표, 사진 띠 3개,
 // 시즌 타일, 이야기 띠, 통합권 3열, 모자이크. 이용 후기와 SNS 사진 줄은 아직 우리 자료가 없어 넣지 않았다.
 import { Crosshair, CalendarRange, PawPrint, CalendarClock, Ticket, CalendarX, Map, Wallet } from 'lucide-react'
-import { Hero, QuickLinks, UspBand, PromoCols, Teaser, CheckList, TileGrid, PackageCards, Mosaic } from '../components/blocks'
+import { Hero, QuickLinks, PromoCols, Teaser, CheckList, TileGrid, PackageCards, Mosaic } from '../components/blocks'
 import { NoticeBand } from '../components/layout/Layout'
 import { program, seasons, seasonStatus, statusText, periodText, dday, currentSeason, rewardTiers, withChar, charName, pricing, won } from '../lib/data'
 
@@ -29,11 +29,6 @@ export default function Home() {
     { icon: CalendarClock, title: '운영 안내', text: '캘린더와 요금', to: '/guide/calendar' }
   ]
 
-  const usp = [
-    { icon: Ticket, text: '통합권 하나로 입장부터 체험까지', to: '/guide' },
-    { icon: CalendarX, text: '매주 화요일 휴무, 국경일은 정상 운영', to: '/guide/calendar' },
-    { icon: Map, text: '3D 공간 지도에서 시설 위치 확인', to: '/map' }
-  ]
 
   const promos = [
     { slot: 'gungame-zone-overview', title: gun.name, text: gun.summary, cta: '총게임 예약', to: '/reserve?program=gungame' },
@@ -60,7 +55,6 @@ export default function Home() {
       <NoticeBand />
       <Hero slides={slides} />
       <QuickLinks items={quick} />
-      <UspBand items={usp} />
       <PromoCols items={promos} />
 
       <Teaser slot="gungame-obstacles" tone={0} title={`${autumn.title}`} cta="총게임 상세 안내" to="/play/gungame">
