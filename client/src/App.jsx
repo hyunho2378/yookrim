@@ -7,6 +7,7 @@ import { PlayList, Attractions } from './pages/Play'
 import { MissionHub, MissionDetail, Reward } from './pages/Mission'
 import { Fees, OpsCalendar, Directions, Faq } from './pages/Guide'
 import { ReserveLayout, Step1, Step2, Step3, Done } from './pages/Reserve'
+import { Project } from './pages/Project'
 import { About, Characters, News, NewsDetail, My, NotFound } from './pages/Misc'
 import MapPage from './pages/MapPage'
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/about', element: <About /> },
       { path: '/about/characters', element: <Characters /> },
+      { path: '/project', element: <Project /> },
       { path: '/play', element: <PlayList /> },
       { path: '/play/gungame', element: <Gungame /> },
       { path: '/play/cafe', element: <Cafe /> },

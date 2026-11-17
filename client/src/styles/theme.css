@@ -87,7 +87,7 @@
 .pin:hover { background: var(--c-linden); }
 .pin.is-sel { background: var(--c-leaf); color: var(--c-textOnColor); }
 .mapp__loading { background: var(--c-leaf); color: var(--c-textOnColor); }
-.range input::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--c-ink) var(--pct), var(--c-surface) var(--pct)); }
+.range input::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--c-leaf) var(--pct), var(--c-surface) var(--pct)); }
 .range input::-webkit-slider-thumb { background: var(--c-leaf); }
 .range input::-moz-range-progress { background: var(--c-leaf); }
 .range input::-moz-range-thumb { background: var(--c-leaf); }

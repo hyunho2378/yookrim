@@ -14,7 +14,8 @@ const minAge = (p) => {
 }
 const link = (p) => ({ gungame: '/play/gungame', 'animal-cafe': '/play/cafe', 'zombie-night': '/play/season/summer', 'treasure-hunt': '/play/season/spring', 'winter-camp': '/play/season/winter', feeding: '/play/attractions#zoo', rides: '/play/attractions#rides', campground: '/play/attractions#camp' }[p.id] || '/play')
 const slotOf = (p) => ({ gungame: 'gungame-zone-overview', 'animal-cafe': 'cafe-interior', 'zombie-night': 'zombie-night', 'treasure-hunt': 'poster-spring', 'winter-camp': 'camp-winter', feeding: 'site-feeding', rides: 'site-rides', campground: 'site-camp' }[p.id] || 'site-rides')
-const cats = ['전체', '체험', '시즌', '상시']
+const kind = { gungame: '액션', 'zombie-night': '액션', 'treasure-hunt': '어드벤처', 'animal-cafe': '가족', feeding: '가족', rides: '가족', campground: '가족', 'winter-camp': '가족' }
+const cats = ['전체', '액션', '어드벤처', '가족']
 
 export function List({ items }) {
   return (
@@ -38,7 +39,7 @@ export function PlayList() {
   const [age, setAge] = useState(20)
   const [cat, setCat] = useState('전체')
   const items = useMemo(() => programs
-    .filter((p) => (cat === '전체' || p.category === cat))
+    .filter((p) => (cat === '전체' || kind[p.id] === cat))
     .filter((p) => minAge(p) <= age)
     .map((p) => ({
       key: p.id, to: link(p), slot: slotOf(p), title: p.name, text: p.summary,
@@ -49,7 +50,7 @@ export function PlayList() {
     })), [age, cat])
   return (
     <>
-      <SubHero slot="site-rides" title="즐길거리" text="나이를 고르면 함께 즐길 수 있는 프로그램만 보여요." />
+      <SubHero slot="site-rides" title="즐길거리" text="나이와 놀이 유형을 고르면 맞는 프로그램만 보여요." />
       <section className="wrap filterbar">
         <div className="filterbar__row">
           <label htmlFor="age" className="t-strong">나이를 골라 주세요</label>
@@ -60,7 +61,7 @@ export function PlayList() {
             <output htmlFor="age" className="range__out t-strong">{age}세</output>
           </div>
         </div>
-        <div className="choices" role="tablist" aria-label="분류">
+        <div className="choices" role="tablist" aria-label="놀이 유형">
           {cats.map((c) => <button key={c} role="tab" aria-selected={cat === c} className="choice" onClick={() => setCat(c)}>{c}</button>)}
         </div>
       </section>
