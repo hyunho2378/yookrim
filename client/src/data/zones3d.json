@@ -1,0 +1,184 @@
+{
+  "zones": [
+    {
+      "id": "start",
+      "name": "입구 광장",
+      "sub": "정문과 안내소",
+      "x": 23.8,
+      "z": 5,
+      "y": 3.2,
+      "dist": 17,
+      "glb": "start.glb",
+      "geo": "gate-main",
+      "facilities": [
+        "gate-main",
+        "info",
+        "photo-character",
+        "nursing",
+        "toilet-1"
+      ],
+      "desc": "무지개 아치와 풍선이 맞이하는 정문이에요. 매표소와 안내소에서 입장을 시작하고 길을 따라 안쪽으로 들어가요.",
+      "links": [
+        {
+          "label": "오시는 길",
+          "to": "/guide/directions"
+        },
+        {
+          "label": "요금과 통합권",
+          "to": "/guide"
+        }
+      ],
+      "realDist": 95
+    },
+    {
+      "id": "survival",
+      "name": "서바이벌 총게임장",
+      "sub": "총게임 필드",
+      "x": 16.1,
+      "z": -0.4,
+      "y": 3,
+      "dist": 18,
+      "glb": "survival.glb",
+      "geo": "gungame-base",
+      "facilities": [
+        "gungame-base"
+      ],
+      "program": "gungame",
+      "desc": "나무 감시탑과 컨테이너, 콘크리트 벙커 사이에서 팀을 나눠 총게임을 해요.",
+      "links": [
+        {
+          "label": "총게임 안내",
+          "to": "/play/gungame"
+        }
+      ],
+      "realDist": 85
+    },
+    {
+      "id": "cafe",
+      "name": "동물 교감 카페",
+      "sub": "카페와 두 마당",
+      "x": 31.9,
+      "z": -1.8,
+      "y": 2.2,
+      "dist": 27,
+      "glb": "cafe.glb",
+      "geo": "animal-cafe",
+      "facilities": [
+        "animal-cafe",
+        "feeding",
+        "toilet-2"
+      ],
+      "program": "animal-cafe",
+      "desc": "카페 테라스에서 쉬고, 양과 너구리가 사는 두 마당에서 작은 동물을 가까이 만나요.",
+      "links": [
+        {
+          "label": "카페 안내",
+          "to": "/play/cafe"
+        },
+        {
+          "label": "먹이 주기 체험",
+          "to": "/play/attractions#zoo"
+        }
+      ],
+      "realDist": 120
+    },
+    {
+      "id": "bear",
+      "name": "곰 사육장",
+      "sub": "동물원",
+      "x": 23.7,
+      "z": -2.1,
+      "y": 2.8,
+      "dist": 17,
+      "glb": "bear.glb",
+      "geo": "zoo",
+      "facilities": [
+        "zoo"
+      ],
+      "desc": "큰 바위로 둘러싼 사육장 가운데 육각 단상에서 갈색 곰들을 만나요.",
+      "links": [
+        {
+          "label": "동물원 안내",
+          "to": "/play/attractions#zoo"
+        }
+      ],
+      "realDist": 70
+    },
+    {
+      "id": "camping",
+      "name": "캠프촌",
+      "sub": "소나무 숲 캠핑",
+      "x": 17.8,
+      "z": -7.4,
+      "y": 3.8,
+      "dist": 17,
+      "glb": "camping.glb",
+      "geo": "camp",
+      "facilities": [
+        "camp",
+        "gate-side"
+      ],
+      "desc": "텐트와 모닥불, 키 큰 나무가 어우러진 캠핑 공간이에요. 겨울에는 1일 캠핑 데이가 열려요.",
+      "links": [
+        {
+          "label": "캠프촌 안내",
+          "to": "/play/attractions#camp"
+        },
+        {
+          "label": "겨울 캠핑 데이",
+          "to": "/play/season/winter"
+        }
+      ],
+      "realDist": 70
+    },
+    {
+      "id": "spin",
+      "name": "회전그네",
+      "sub": "놀이기구",
+      "x": 29.1,
+      "z": -8.4,
+      "y": 3.8,
+      "dist": 16,
+      "glb": "spin.glb",
+      "geo": "swing",
+      "facilities": [
+        "swing"
+      ],
+      "desc": "가운데 기둥을 따라 의자가 돌아 올라가는 놀이기구예요. 옆 벤치에서 기다려요.",
+      "links": [
+        {
+          "label": "놀이기구 안내",
+          "to": "/play/attractions#rides"
+        }
+      ],
+      "realDist": 70
+    },
+    {
+      "id": "amusepark",
+      "name": "놀이동산",
+      "sub": "대관람차와 놀이기구",
+      "x": 23.9,
+      "z": -7.9,
+      "y": 7.2,
+      "dist": 19,
+      "glb": "amusepark.glb",
+      "geo": "photo-retro",
+      "facilities": [
+        "viking",
+        "bumper",
+        "carousel",
+        "train",
+        "photo-retro",
+        "snack"
+      ],
+      "desc": "대관람차에서 공원 전체를 내려다보고, 바이킹과 범퍼카, 회전목마, 기차로 이어지는 놀이기구 구역이에요.",
+      "links": [
+        {
+          "label": "놀이동산 안내",
+          "to": "/play/attractions#rides"
+        }
+      ],
+      "realDist": 80
+    }
+  ]
+}

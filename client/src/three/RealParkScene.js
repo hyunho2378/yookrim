@@ -10,6 +10,8 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { prepareZone } from './zoneModel'
 import { detectTier, PRESET, FrameMonitor, stepLevel } from './quality'
 import { sunDirection } from './sun'
 import { CENTER, EXTENT, toXZ, fromSat, M_PER_PX } from '../lib/geo'
@@ -23,8 +25,9 @@ const SCAN_URL = BASE + 'models/yookrim.glb'
 const mat = (c, o = {}) => new THREE.MeshLambertMaterial({ color: c, ...o })
 
 export default class RealParkScene {
-  constructor(canvas, { facilities, pinEls, labelsEl, onReady, onMode }) {
+  constructor(canvas, { facilities, pinEls, labelsEl, onReady, onMode, zones }) {
     this.canvas = canvas
+    this.zones = zones || []
     this.facilities = facilities
     this.pinEls = pinEls
     this.labelsEl = labelsEl
@@ -120,13 +123,38 @@ export default class RealParkScene {
     this.buildBuildings(nsdi)
     this.buildRoads(osm)
     this.buildOutline(osm)
-    this.buildStructures()
+    if (!this.zones.length) this.buildStructures()
     this.buildTrees(new Float32Array(treeBuf))
     this.buildPins(osm)
+    if (this.zones.length) await this.addZones()
     this.onMode?.('real')
     this.dirty = true
     this.onReady?.()
     this.tryScan()
+  }
+
+  // 3D팀 구역 모형을 시설의 실제 위치에 올린다. 모형 폭은 30m 로 맞추고, 이름표는 모형 윗면 위로 올린다
+  async addZones() {
+    const loader = new GLTFLoader()
+    loader.setMeshoptDecoder(MeshoptDecoder)
+    await Promise.all(this.zones.filter((z) => z.glb).map(async (z) => {
+      try {
+        const g = await loader.loadAsync(BASE + 'models/zones/' + z.glb)
+        if (this.disposed) return
+        const { group, height } = prepareZone(g.scene, 6.5)
+        const [x, zz] = toXZ(z.lngLat[0], z.lngLat[1])
+        group.position.set(x, this.hAt(x, zz), zz)
+        this.scene.add(group)
+        if (import.meta.env.DEV) (window.__zinfo ||= {})[z.id] = group.userData.info
+        const p = this.pins.get(z.id)
+        if (p) p.set(x, group.position.y + height + 2.5, zz)
+      } catch (e) { console.error(z.glb, e) }
+    }))
+    this.home = { pos: new THREE.Vector3(-40, 215, 238), target: new THREE.Vector3(24, 0, -12) }
+    this.camera.position.copy(this.home.pos)
+    this.controls.target.copy(this.home.target)
+    this.controls.update()
+    this.dirty = true
   }
 
   // 지형 높이(m)와 장면 높이

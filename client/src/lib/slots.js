@@ -45,5 +45,12 @@ export const slots = {
   'mission-6': { file: 'mission-6.jpg', label: '미션 카드 6' },
   'mission-7': { file: 'mission-7.jpg', label: '미션 카드 7' },
   'mission-8': { file: 'mission-8.jpg', label: '미션 카드 8' },
+  'zone-start': { file: 'zones/start.jpg', label: '입구 광장 모형' },
+  'zone-survival': { file: 'zones/survival.jpg', label: '서바이벌 총게임장 모형' },
+  'zone-cafe': { file: 'zones/cafe.jpg', label: '동물 교감 카페 모형' },
+  'zone-bear': { file: 'zones/bear.jpg', label: '곰 사육장 모형' },
+  'zone-camping': { file: 'zones/camping.jpg', label: '캠프촌 모형' },
+  'zone-spin': { file: 'zones/spin.jpg', label: '회전그네 모형' },
+  'zone-amusepark': { file: 'zones/amusepark.jpg', label: '대관람차 모형' },
   'site-history': { file: 'site-photos/history.jpg', label: '옛 놀이공원 분위기' }
 }

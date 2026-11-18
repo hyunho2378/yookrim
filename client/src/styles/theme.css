@@ -207,3 +207,10 @@ a.inline-link { color: var(--c-ink); }
 
 .notice a { display: block; min-height: 0; line-height: var(--notice-h); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .notice__in { height: var(--notice-h); }
+
+/* 좁은 화면에서는 구역 설명 카드를 지도 아래에 둔다 */
+@media (max-width: 768px) {
+  .mapp__view { height: auto; overflow: visible; display: flex; flex-direction: column; gap: var(--s-3); background: none; }
+  .mapp__stage { position: relative; inset: auto; height: clamp(20rem, 52dvh, 28rem); border-radius: var(--r); overflow: hidden; }
+  .mapp__card { position: relative; left: auto; bottom: auto; width: auto; border-radius: var(--r); }
+}

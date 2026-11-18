@@ -57,7 +57,7 @@ export const menus = [
       ] },
       { title: '방문 중 안내', to: '/map', items: [
         { label: '공간 지도', to: '/map' },
-        { label: '편의시설', to: '/map?filter=amenity' }
+        { label: '편의시설', to: '/map?focus=gate-main' }
       ] },
       { title: '고객 지원', to: '/guide/faq', items: [
         { label: '자주 묻는 질문', to: '/guide/faq' },

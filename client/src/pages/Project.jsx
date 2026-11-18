@@ -58,9 +58,9 @@ export function Project() {
         <p>육림랜드의 안내자가 웹사이트와 현장 사인, 미션 카드와 굿즈에서 같은 모습으로 방문객을 맞이해요.</p>
       </Teaser>
       <Teaser id="space" slot="map-aerial" tone={1} flip title="3D 공간" cta="3D 공간 지도" to="/map">
-        <p>실제 위성영상과 지형 위에 시설과 체험 구역을 올려 공간의 쓰임을 한눈에 볼 수 있어요.</p>
+        <p>3D로 만든 육림랜드 모형을 돌리고 확대해 구역을 둘러보고, 실제 위치로 바꾸면 위성영상 위 제자리에 같은 모형이 올라가요.</p>
         <ul className="checks">
-          {[['서바이벌장', '/map?focus=gungame-base'], ['캠핑 공간', '/map?focus=camp'], ['포토존', '/map?focus=photo-retro'], ['정문에서 이어지는 길', '/map?focus=gate-main']].map(([t, to]) => <li key={t}><Link to={to} className="more t-body">{t}</Link></li>)}
+          {[['서바이벌 총게임장', '/map?focus=survival'], ['캠프촌', '/map?focus=camping'], ['동물 교감 카페', '/map?focus=cafe'], ['입구 광장', '/map?focus=start']].map(([t, to]) => <li key={t}><Link to={to} className="more t-body">{t}</Link></li>)}
         </ul>
       </Teaser>
       <section className="wrap section">
