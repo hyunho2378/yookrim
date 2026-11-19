@@ -12,7 +12,7 @@ export default function Leaflet() {
       <section className="lf-hero noprint">
         <div className="wrap lf-hero__in">
           <div className="stack-4">
-            <p className="gd-tag t-strong">포스터 QR</p>
+            <p className="gd-tag t-strong">한 장 안내</p>
             <h1 className="t-display">육림랜드 리플릿</h1>
             <p className="t-label">한 장으로 보는 육림랜드와 가디 대원 미션지를 열어 보세요.</p>
             <div className="lf-hero__btns">

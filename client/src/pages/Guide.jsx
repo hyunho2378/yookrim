@@ -42,7 +42,7 @@ export function Fees() {
         </div>
       </section>
       <section id="bundle" className="wrap section">
-        <CenterTitle title="한 장으로 다 되는 통합권" text="입장권과 놀이기구 이용권을 따로 사던 것을 한 장으로 묶었어요" />
+        <CenterTitle title="한 장으로 다 되는 통합권" text="입장권과 놀이기구 이용권을 한 장으로 묶었어요" />
         <div className="prods">
           {pricing.bundles.options.map((b, i) => (
             <Product key={b.id} slot={b.id} tone={i + 1} title={b.name} items={b.includes}

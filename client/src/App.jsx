@@ -8,7 +8,6 @@ import Leaflet from './pages/Leaflet'
 import Character from './pages/Character'
 import { Fees, OpsCalendar, Directions, Faq } from './pages/Guide'
 import { ReserveLayout, Step1, Step2, Step3, Done } from './pages/Reserve'
-import { Project } from './pages/Project'
 import { About, News, NewsDetail, My, NotFound } from './pages/Misc'
 import MapPage from './pages/MapPage'
 
@@ -19,7 +18,6 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/about', element: <About /> },
       { path: '/about/characters', element: <Character /> },
-      { path: '/project', element: <Project /> },
       { path: '/play', element: <PlayList /> },
       { path: '/play/gungame', element: <Gungame /> },
       { path: '/play/cafe', element: <Cafe /> },

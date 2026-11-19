@@ -34,9 +34,9 @@ export function Gungame() {
   const autumn = season('autumn')
   return (
     <>
-      <EventHero slot="gungame-zone-overview" tag={`가을 시즌 ${periodText(autumn.period)}`} title={p.name} text="바이킹 뒤에 숨고 회전목마를 돌아 깃발을 뺏어요." cta="총게임 예약" to="/reserve?program=gungame" />
+      <EventHero slot="gungame-zone-overview" tag={`가을 시즌 ${periodText(autumn.period)}`} title={p.name} text="감시탑과 벙커 사이를 달려 상대 팀 깃발을 가져와요." cta="총게임 예약" to="/reserve?program=gungame" />
       <section className="wrap section">
-        <CenterTitle title="놀이공원 전체가 게임 맵" text="팀을 나눠 미션 카드를 받고 장애물 사이에서 승부를 가려요" />
+        <CenterTitle title="깃발을 지키는 팀 서바이벌" text="접수하면 팀과 미션 카드를 받아요. 감시탑과 컨테이너, 벙커 사이에서 깃발을 겨뤄요." />
       </section>
       {p.modes.map((m, i) => (
         <Teaser key={m.id} id={`mode-${m.id}`} slot={i === 0 ? 'gungame-obstacles' : i === 1 ? 'gungame-zone-overview' : 'zombie-night'} tone={i} flip={i % 2 === 1} title={m.name} cta={`${m.name} 예약`} to={`/reserve?program=gungame&mode=${m.id}`}>

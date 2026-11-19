@@ -1,4 +1,4 @@
-// MapPage.jsx  공간 지도. 3D팀이 만든 육림랜드 모형을 돌리고 확대해 구역을 둘러본다. 이름표나 목록을 누르면 그 구역으로 카메라가 날아간다.
+// MapPage.jsx  공간 지도. 육림랜드 3D 지도를 돌리고 확대해 구역을 둘러본다. 이름표나 목록을 누르면 그 구역으로 카메라가 날아간다.
 // WebGL 을 못 쓰면 구역 사진 목록으로 보여 준다.
 import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -69,7 +69,7 @@ export default function MapPage() {
           <div className="mapp__stage mapp__stage--land">
           {gl ? (
             <>
-              <canvas ref={canvasRef} className="mapp__canvas" aria-label="육림랜드 3D 모형" />
+              <canvas ref={canvasRef} className="mapp__canvas" aria-label="육림랜드 3D 지도" />
               <div className="mapp__pins" ref={labelsRef}>
                 {zones.map((x) => (
                   <button key={x.id} ref={(el) => { if (el) pinEls.current.set(x.id, el); else pinEls.current.delete(x.id) }}

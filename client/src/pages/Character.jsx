@@ -1,9 +1,7 @@
-// Character.jsx  숲속 친구, 가디. 대표 캐릭터 소개, 캐릭터 설정, 디자인 과정, 가디와 함께하는 육림랜드 순서.
-// 글과 그림은 I-SO 피그마 캐릭터 시트(가디 캐릭터 시트, 캐릭터 소개, 베레모 배지 시안, 세계관)에서 가져왔다.
+// Character.jsx  숲속 친구, 가디. 소개, 설정, 모델이 된 독수리, 모습, 가디를 만나는 곳 순서.
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { Btn, Photo } from '../components/ui'
-import gadi from '../data/gadi.json'
 
 const profile = [
   ['이름', '가디. 지킨다는 뜻의 Guard에서 따왔어요.'],
@@ -25,13 +23,6 @@ const eagle = [
   ['바람 타기', '날갯짓보다 상승기류를 타고 활공해요.'],
   ['겨울 손님', '겨울에 먼 북쪽에서 날아오는 철새이고, 강원도가 대표적인 월동지예요.'],
   ['목도리 깃털', '목둘레의 갈색 깃털이 실제 특징이에요.']
-]
-const keep = [
-  ['베레모', '왼쪽으로 기울여 써요. 스스로 대장이 되겠다고 쓴 모자예요.'],
-  ['로고 배지', '손잡은 두 아이 모양의 육림랜드 로고예요. 아이들이 달아 준 배지이고, 가디 기준 왼쪽 머리에 있어서 오른쪽에서는 보이지 않아요.'],
-  ['목도리 깃털', '실제 독수리의 갈색 목 깃털에서 가져왔어요. 몸통보다 살짝 밝게만 써요.'],
-  ['눈썹', '앞에서는 잔뜩 찌푸리고, 옆에서는 살짝 처져 걱정하는 얼굴이 돼요.'],
-  ['실루엣', '작고 둥글게 그려요. 무서워 보이지 않는 게 가장 중요해요.']
 ]
 
 export default function Character() {
@@ -107,71 +98,38 @@ export default function Character() {
         </div>
       </section>
 
-      <section className="gd-process">
-        <div className="wrap gd-block">
-          <header className="gd-head"><h2 className="t-band">디자인 과정</h2><p className="t-body c-sub">캐릭터 기획부터 최종 디자인까지 다섯 단계로 만들었어요.</p></header>
-
-          <div className="gd-step">
-            <p className="gd-step__no">1</p>
-            <div className="gd-step__body stack-4">
-              <h3 className="t-card">실제 독수리에서 시작해요</h3>
-              <p className="t-body">육림랜드에서 지내는 독수리를 모델로 삼았어요. 실제 독수리의 습성을 가디의 성격과 모습에 담았어요.</p>
-              <ul className="gd-eagle">{eagle.map(([t, d]) => <li key={t}><b className="t-strong">{t}</b><span className="t-small">{d}</span></li>)}</ul>
-            </div>
-            <Photo slot="gadi-eagle" ratio="4 / 5" tone={1} className="gd-step__img" />
+      <section className="wrap section gd-block">
+        <div className="gd-feature">
+          <Photo slot="gadi-eagle" ratio="4 / 5" tone={1} className="gd-feature__img" />
+          <div className="stack-4">
+            <h2 className="t-band c-primary">가디의 모델, 육림랜드 독수리</h2>
+            <p className="t-body">육림랜드에서 지내는 독수리가 가디의 모델이에요. 가디는 이 독수리의 습성을 그대로 닮았어요.</p>
+            <ul className="gd-eagle">{eagle.map(([t, d]) => <li key={t}><b className="t-strong">{t}</b><span className="t-small">{d}</span></li>)}</ul>
           </div>
+        </div>
 
-          <div className="gd-step gd-step--flip">
-            <p className="gd-step__no">2</p>
-            <div className="gd-step__body stack-4">
-              <h3 className="t-card">손그림으로 표정을 잡아요</h3>
-              <p className="t-body">3D로 만들기 전에 손으로 먼저 그렸어요. 색과 표정은 이 그림을 기준으로 맞췄어요.</p>
-              <Photo slot="gadi-process" ratio="3 / 1.1" tone={1} />
-            </div>
-            <Photo slot="gadi-sketch" ratio="4 / 3" tone={1} className="gd-step__img" />
-          </div>
-
-          <div className="gd-step gd-step--wide">
-            <p className="gd-step__no">3</p>
-            <div className="gd-step__body stack-4">
-              <h3 className="t-card">3D 캐릭터 시트로 모든 방향을 정리해요</h3>
-              <p className="t-body">앞과 옆, 뒤에서 본 모습이 같은 캐릭터로 보이도록 여섯 방향을 맞췄어요.</p>
-              <ul className="gd-views">{views.map(([s, l]) => <li key={s}><Photo slot={s} ratio="3 / 4" tone={0} /><span className="t-small">{l}</span></li>)}</ul>
-            </div>
-          </div>
-
-          <div className="gd-step gd-step--wide">
-            <p className="gd-step__no">4</p>
-            <div className="gd-step__body stack-4">
-              <h3 className="t-card">모자에 육림랜드 로고를 달아요</h3>
-              <p className="t-body">육림랜드 로고의 林은 두 아이가 손을 잡은 모양이에요. 아이들을 지키는 수호대장의 모자에 그 아이들이 함께 있게 돼요. 원래 별 배지가 아이들이 달아 준 배지였으니 설정도 그대로 이어져요.</p>
-              <ul className="gd-badges">
-                <li><Photo slot="gadi-badge-old" ratio="4 / 3" tone={2} /><span className="t-small">기존 별과 월계수</span></li>
-                <li><Photo slot="gadi-badge-color" ratio="4 / 3" tone={2} /><span className="t-small">시안 A 로고 컬러</span></li>
-                <li><Photo slot="gadi-badge-gold" ratio="4 / 3" tone={2} /><span className="t-small">시안 B 로고 골드</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="gd-step gd-step--wide">
-            <p className="gd-step__no">5</p>
-            <div className="gd-step__body stack-4">
-              <h3 className="t-card">색과 지켜야 할 모습을 정해요</h3>
-              <ul className="gd-swatch">{gadi.colors.map((c) => <li key={c.name}><span className="gd-swatch__chip" style={{ background: c.hex }} /><span className="t-small">{c.name}</span><span className="t-caption c-sub">{c.hex}</span></li>)}</ul>
-              <dl className="kv kv--tight">{keep.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl>
-            </div>
+        <div className="gd-feature gd-feature--flip">
+          <Photo slot="gadi-badge-color" ratio="4 / 3" tone={2} className="gd-feature__img" />
+          <div className="stack-4">
+            <h2 className="t-band c-primary">모자에 단 육림랜드 배지</h2>
+            <p className="t-body">초록 베레모는 스스로 대장이 되겠다고 쓴 모자예요. 모자에 달린 배지는 아이들이 달아 준 선물이에요.</p>
+            <p className="t-body">육림랜드 로고의 林은 두 아이가 손을 잡은 모양이에요. 그래서 가디는 늘 아이들과 함께 숲을 지키는 셈이에요.</p>
           </div>
         </div>
       </section>
 
       <section className="wrap section gd-block">
-        <header className="gd-head"><h2 className="t-band">가디와 함께하는 육림랜드</h2><p className="t-body c-sub">홈페이지와 포스터, 리플릿, 스탬프 도안에서 같은 모습으로 만나요.</p></header>
-        <div className="gd-use">
-          <Link to="/" className="gd-use__item gd-use__item--web"><Photo slot="gadi-web" ratio="16 / 10" tone={0} /><span className="t-card">홈페이지</span><span className="t-small">첫 화면과 소개에서 인사해요.</span></Link>
-          <div className="gd-use__item gd-use__item--poster"><Photo slot="poster-draft" ratio="16 / 9" tone={1} /><span className="t-card">포스터</span><span className="t-small">서바이벌 리뉴얼 소식을 알려요.</span></div>
-          <Link to="/leaflet" className="gd-use__item gd-use__item--leaf"><Photo slot="leaflet-front" ratio="3 / 4" tone={2} /><span className="t-card">리플릿</span><span className="t-small">앞면은 사계절 체험, 뒷면은 지도예요.</span></Link>
-          <div className="gd-use__item gd-use__item--stamp"><Photo slot="gadi-stamp-color" ratio="1 / 1" tone={3} /><span className="t-card">스탬프 도안</span><span className="t-small">미션지에 찍는 도장이 돼요.</span></div>
-        </div>
+        <header className="gd-head"><h2 className="t-band">가디 둘러보기</h2><p className="t-body c-sub">앞에서도 옆에서도 뒤에서도 동글동글해요.</p></header>
+        <ul className="gd-views">{views.map(([s, l]) => <li key={s}><Photo slot={s} ratio="3 / 4" tone={0} /><span className="t-small">{l}</span></li>)}</ul>
+      </section>
+
+      <section className="wrap section gd-block">
+        <header className="gd-head"><h2 className="t-band">가디를 만나는 곳</h2><p className="t-body c-sub">공원 곳곳에서 가디가 기다려요.</p></header>
+        <ul className="gd-meet">
+          <li><Link to="/map?focus=start" className="gd-meet__item"><Photo slot="zone-start" ratio="4 / 3" tone={0} /><span className="t-card">정문 광장</span><span className="t-body">입구에서 대원들을 맞이해요.</span></Link></li>
+          <li><Link to="/leaflet" className="gd-meet__item"><Photo slot="leaflet-front" ratio="4 / 3" tone={1} /><span className="t-card">리플릿 미션지</span><span className="t-body">미션지에 도장을 모으면 선물을 받아요.</span></Link></li>
+          <li><Link to="/play/gungame" className="gd-meet__item"><Photo slot="gadi-night" ratio="4 / 3" tone={2} /><span className="t-card">총게임 필드</span><span className="t-body">밤에는 교관이 되어 경기를 지휘해요.</span></Link></li>
+        </ul>
       </section>
     </>
   )

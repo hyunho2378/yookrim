@@ -15,7 +15,7 @@ export default function Home() {
 
   const autumn = seasons.find((s) => s.id === 'autumn')
   const slides = [
-    { slot: 'poster-autumn', tone: 0, lead: `가을 시즌 ${periodText(autumn.period)}`, title: '놀이공원 전체가 게임 맵이 돼요.', cta: '총게임 예약', to: '/reserve?program=gungame', alt: '바이킹 앞 장애물 사이로 팀원들이 레이저 총을 들고 달리는 모습' },
+    { slot: 'poster-autumn', tone: 0, lead: `가을 시즌 ${periodText(autumn.period)}`, title: '숲속 총게임 리그가 열렸어요.', cta: '총게임 예약', to: '/reserve?program=gungame', alt: '바이킹 앞 장애물 사이로 팀원들이 레이저 총을 들고 달리는 모습' },
     { slot: 'site-history', tone: 3, lead: '1975년부터 춘천과 함께한 숲', title: '숲을 기르는 놀이공원, 육림', cta: '육림랜드 이야기', to: '/about' },
     { slot: 'cafe-interior', tone: 1, lead: '날씨와 상관없이 열리는 실내 카페', title: '미어캣과 기니피그가 기다려요.', cta: '카페 회차 예약', to: '/reserve?program=animal-cafe', alt: '실내 카페 유리 울타리 안에서 미어캣 두 마리가 서 있는 모습' },
     { slot: 'poster-winter', tone: 0, lead: '12월 15일 오픈 예정', title: '소나무 숲에서 보내는 하룻밤', cta: '오픈 알림 신청', to: '/play/season/winter' }
@@ -31,7 +31,7 @@ export default function Home() {
 
   const promos = [
     { slot: 'gungame-zone-overview', title: gun.name, text: gun.summary, cta: '총게임 예약', to: '/reserve?program=gungame' },
-    { slot: 'poster-autumn', title: '시즌 이벤트', text: `계절마다 공원 전체가 새 무대로 바뀌어요. 지금은 ${now.season} ${now.title}가 열려 있어요.`, cta: '시즌 일정', to: '/play/season' },
+    { slot: 'poster-autumn', title: '시즌 이벤트', text: `계절마다 새로운 프로그램이 열려요. 지금은 ${now.season} ${now.title}가 열려 있어요.`, cta: '시즌 일정', to: '/play/season' },
     { slot: 'cafe-interior', title: cafe.name, text: cafe.summary, cta: '카페 회차 예약', to: '/reserve?program=animal-cafe' },
     { slot: 'leaflet-front', title: '육림랜드 리플릿', text: '포스터의 QR로 열어 보는 한 장 안내와 가디 대원 미션지예요', cta: '리플릿 보기', to: '/leaflet' }
   ]

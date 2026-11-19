@@ -6,7 +6,7 @@ export const menus = [
       { title: '육림랜드 이야기', to: '/about', items: [
         { label: '1975년부터 지금까지', to: '/about#history' },
         { label: '낮과 밤 두 얼굴', to: '/about#daynight' },
-        { label: '되살리기 프로젝트', to: '/project' }
+        { label: '계절마다 새로 열려요', to: '/about#seasons' }
       ] },
       { title: '캐릭터', to: '/about/characters', items: [
         { label: '숲속 친구, 가디', to: '/about/characters' },
