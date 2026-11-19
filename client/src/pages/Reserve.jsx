@@ -4,7 +4,7 @@ import { Link, Outlet, useLocation, useNavigate, useSearchParams, Navigate } fro
 import { Minus, Plus, Ticket, MapPin, CalendarDays, Users, Clock } from 'lucide-react'
 import Calendar from '../components/Calendar'
 import { Btn, CheckBox, useToast } from '../components/ui'
-import { program, season, seasonStatus, isClosedDay, kstDate, ymd, seatsLeft, won, pricing, dotDate, statusText, periodText } from '../lib/data'
+import { program, season, seasonStatus, isClosedDay, kstDate, ymd, won, pricing, dotDate, statusText, periodText } from '../lib/data'
 import { useStore } from '../lib/store'
 
 const Ctx = createContext(null)
@@ -34,8 +34,6 @@ function unitPrice(p, mode) {
   if (p.id === 'winter-camp') return p.options.find((o) => o.id === mode)?.price || p.options[0].price
   return 0
 }
-const capOf = (p) => p?.capacity?.perSession || 8
-
 export function ReserveLayout() {
   const [sp] = useSearchParams()
   const [draft, setDraft] = useState(() => {
@@ -44,7 +42,7 @@ export function ReserveLayout() {
     return {
       program: pid, mode: sp.get('mode') || (pid === 'gungame' ? 'laser' : pid === 'winter-camp' ? 'day' : null),
       date: null, time: null, people: { adult: sp.get('group') ? 20 : 2, youth: 0, child: 0 }, admission: false, agree: false,
-      name: '', phone: '', pay: 'card', _cap: capOf(p)
+      name: '', phone: '', pay: 'card'
     }
   })
   const set = (patch) => setDraft((d) => ({ ...d, ...patch }))
@@ -117,7 +115,6 @@ export function Step1() {
     return { open: true, text: '예약 가능' }
   }
   const times = draft.date ? sessionsOf(p, draft.mode, draft.date) : []
-  const need = draft.people.adult + draft.people.youth + draft.people.child
   const pick = (patch) => set({ ...patch, time: null, ...(patch.program ? { date: null } : {}) })
   return (
     <section className="wrap section rsv">
@@ -130,7 +127,7 @@ export function Step1() {
               const os = o.season ? season(o.season) : null
               const st = os ? seasonStatus(os) : 'live'
               return (
-                <button key={o.id} className="choice" aria-pressed={draft.program === o.id} disabled={st !== 'live'} onClick={() => pick({ program: o.id, mode: o.id === 'gungame' ? 'laser' : o.id === 'winter-camp' ? 'day' : null, _cap: capOf(op) })}>
+                <button key={o.id} className="choice" aria-pressed={draft.program === o.id} disabled={st !== 'live'} onClick={() => pick({ program: o.id, mode: o.id === 'gungame' ? 'laser' : o.id === 'winter-camp' ? 'day' : null })}>
                   {op.name}{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
                 </button>
               )
@@ -156,25 +153,15 @@ export function Step1() {
           {!draft.date && <p className="t-body c-sub">날짜를 고르면 회차가 보여요.</p>}
           {draft.date && !times.length && <p className="t-body c-sub">이 날은 열리는 회차가 없어요.</p>}
           <div className="sess">
-            {times.map((t) => {
-              const left = seatsLeft(draft.date, t, draft._cap)
-              const short = left < need
-              return (
-                <button key={t} className="sess__btn" aria-pressed={draft.time === t} disabled={left === 0} onClick={() => set({ time: t })}>
-                  <span className="t-label">{t}</span>
-                  <span className="t-small">{left === 0 ? '마감' : `남은 자리 ${left}석`}</span>
-                  {short && left > 0 && <span className="t-caption c-action">인원 {need}명보다 적어요</span>}
-                </button>
-              )
-            })}
+            {times.map((t) => (
+              <button key={t} className="sess__btn" aria-pressed={draft.time === t} onClick={() => set({ time: t })}>
+                <span className="t-label">{t}</span>
+              </button>
+            ))}
           </div>
-          {draft.time && seatsLeft(draft.date, draft.time, draft._cap) < need && (() => {
-            const alt = times.find((t) => seatsLeft(draft.date, t, draft._cap) >= need)
-            return <p className="t-body c-action">자리가 모자라요. {alt ? `${alt} 회차는 ${need}명이 함께 들어갈 수 있어요.` : '다른 날짜를 골라 주세요.'}</p>
-          })()}
         </div>
         <div className="rsv__next">
-          <Btn disabled={!draft.date || !draft.time || seatsLeft(draft.date, draft.time, draft._cap) < 1} onClick={() => nav('/reserve/details')}>다음 단계</Btn>
+          <Btn disabled={!draft.date || !draft.time} onClick={() => nav('/reserve/details')}>다음 단계</Btn>
         </div>
       </div>
       <Summary />
@@ -206,10 +193,9 @@ export function Step2() {
   if (!draft.date || !draft.time) return <Navigate to="/reserve" replace />
   const setP = (k, v) => set({ people: { ...draft.people, [k]: v } })
   const ageWarn = p?.id === 'gungame' && ((draft.mode === 'paintball' && draft.people.child > 0) || (draft.mode === 'night' && (draft.people.child + draft.people.youth) > 0))
-  const left = seatsLeft(draft.date, draft.time, draft._cap)
   const nameOk = draft.name.trim().length > 0
   const phoneOk = /^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(draft.phone.trim())
-  const ok = draft.agree && nameOk && phoneOk && total.ppl > 0 && total.ppl <= left && !ageWarn
+  const ok = draft.agree && nameOk && phoneOk && total.ppl > 0 && !ageWarn
   const safety = p?.safety || p?.welfareRules || p?.rules || []
   return (
     <section className="wrap section rsv">
@@ -219,19 +205,8 @@ export function Step2() {
           <Counter label="성인" sub="만 19세 이상" value={draft.people.adult} onChange={(v) => setP('adult', v)} />
           <Counter label="청소년" sub="만 13세부터 18세" value={draft.people.youth} onChange={(v) => setP('youth', v)} />
           <Counter label="어린이" sub="만 12세 이하" value={draft.people.child} onChange={(v) => setP('child', v)} />
-          {total.ppl > left && <p className="t-body c-action">이 회차는 {left}명까지 들어갈 수 있어요.</p>}
           {ageWarn && <p className="t-body c-action">{draft.mode === 'paintball' ? '만 14세 미만은 페인트볼 대신 레이저 배틀을 골라 주세요' : '야간 미션전은 만 19세 이상이라 주간 레이저 배틀을 골라 주세요'}</p>}
           {p?.id === 'gungame' && <p className="t-small c-sub">20명 이상이면 단체 할인 10%가 자동으로 적용돼요.</p>}
-        </div>
-        <div className="stack-3">
-          <h2 className="t-label">입장권</h2>
-          <CheckBox checked={draft.admission} onChange={(v) => set({ admission: v })}>입장권도 함께 살게요. 성인 {won(pricing.admission.individual.adult)}, 청소년 {won(pricing.admission.individual.youth)}, 어린이 {won(pricing.admission.individual.child)}</CheckBox>
-        </div>
-        <div className="stack-3">
-          <h2 className="t-label">안전 수칙</h2>
-          <ul className="rules">{safety.map((r) => <li key={r} className="t-body">{r}</li>)}</ul>
-          <CheckBox checked={draft.agree} onChange={(v) => set({ agree: v })}>안전 수칙을 모두 읽고 지킬게요. (필수)</CheckBox>
-          {tried && !draft.agree && <p className="field__err">안전 수칙에 동의해야 다음 단계로 갈 수 있어요.</p>}
         </div>
         <div className="stack-4">
           <h2 className="t-label">예약자</h2>
@@ -247,6 +222,16 @@ export function Step2() {
               {tried && !phoneOk && <p className="field__err">휴대폰 번호를 다시 확인해 주세요.</p>}
             </div>
           </div>
+        </div>
+        <div className="stack-3">
+          <h2 className="t-label">입장권</h2>
+          <CheckBox checked={draft.admission} onChange={(v) => set({ admission: v })}>입장권도 함께 살게요. 성인 {won(pricing.admission.individual.adult)}, 청소년 {won(pricing.admission.individual.youth)}, 어린이 {won(pricing.admission.individual.child)}</CheckBox>
+        </div>
+        <div className="stack-3">
+          <h2 className="t-label">안전 수칙</h2>
+          <ul className="rules">{safety.map((r) => <li key={r} className="t-body">{r}</li>)}</ul>
+          <CheckBox checked={draft.agree} onChange={(v) => set({ agree: v })}>안전 수칙을 모두 읽고 지킬게요. (필수)</CheckBox>
+          {tried && !draft.agree && <p className="field__err">안전 수칙에 동의해야 다음 단계로 갈 수 있어요.</p>}
         </div>
         <div className="rsv__next">
           <Btn variant="deep" onClick={() => nav('/reserve')}>이전 단계</Btn>

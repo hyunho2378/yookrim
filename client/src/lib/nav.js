@@ -9,8 +9,8 @@ export const menus = [
         { label: '되살리기 프로젝트', to: '/project' }
       ] },
       { title: '캐릭터', to: '/about/characters', items: [
-        { label: '캐릭터와 친구들', to: '/about/characters' },
-        { label: '숲속 미션', to: '/mission' }
+        { label: '숲속 친구, 가디', to: '/about/characters' },
+        { label: '리플릿', to: '/leaflet' }
       ] }
     ],
     promo: { slot: 'map-aerial', label: '육림랜드 전체 조감도', text: '숲속 놀이공원을 3D 지도로 둘러보세요.', to: '/map' }
@@ -37,17 +37,6 @@ export const menus = [
     promo: { slot: 'gungame-zone-overview', label: '숲속 총게임 리그', text: '가을 시즌 11월 30일까지 열려요.', to: '/play/gungame' }
   },
   {
-    id: 'mission', label: '미션', to: '/mission',
-    groups: [
-      { title: '캐릭터 미션', to: '/mission', items: [
-        { label: '미션 안내', to: '/mission' },
-        { label: '미션 카드와 스탬프', to: '/mission#cards' },
-        { label: '보상 받기', to: '/mission/reward' }
-      ] }
-    ],
-    promo: { slot: 'character-main', label: '숲속 미션', text: '스탬프 3개만 모아도 선물을 받아요.', to: '/mission' }
-  },
-  {
     id: 'guide', label: '이용안내', to: '/guide',
     groups: [
       { title: '방문 계획', to: '/guide', items: [
@@ -57,11 +46,12 @@ export const menus = [
       ] },
       { title: '방문 중 안내', to: '/map', items: [
         { label: '공간 지도', to: '/map' },
-        { label: '편의시설', to: '/map?focus=gate-main' }
+        { label: '편의시설', to: '/map?focus=start' },
+        { label: '리플릿', to: '/leaflet' }
       ] },
       { title: '고객 지원', to: '/guide/faq', items: [
         { label: '자주 묻는 질문', to: '/guide/faq' },
-        { label: '내 예약과 미션', to: '/my' }
+        { label: '내 예약', to: '/my' }
       ] }
     ],
     promo: { slot: 'site-entrance', label: '행사 날 오시는 길', text: '춘천마라톤 통제 구간과 우회 경로를 미리 확인하세요.', to: '/guide/directions#control' }

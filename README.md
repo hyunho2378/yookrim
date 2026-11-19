@@ -15,5 +15,6 @@
 
 - 3D팀 모형: `client/public/models/land.glb`(전체 섬, 3.3MB)와 `client/public/models/zones/*.glb`(구역별). 원본 zip은 `3d-source/`(공개 저장소에는 올리지 않음)
 - 줄이기: `npx @gltf-transform/cli optimize 입력.glb 출력.glb --compress meshopt --texture-compress webp --texture-size 1024` (전체 31MB가 3.3MB)
-- 구역 위치와 설명: `client/src/data/zones3d.json`(x, z는 land.glb 좌표, geo는 실제 위치에 쓰는 시설 id)
-- 우리 모형 화면: `src/three/LandScene.js`, 실제 위치 화면: `src/three/RealParkScene.js` + `src/three/zoneModel.js`
+- 구역 위치와 설명: `client/src/data/zones3d.json`(x, z는 land.glb 좌표)
+- 공간 지도 화면: `src/pages/MapPage.jsx` + `src/three/LandScene.js`
+- 가디 캐릭터 이미지와 리플릿: I-SO 4기 피그마의 캐릭터와 팜플렛 구역에서 내려받아 `client/public/images/gadi`, `leaflet-front.jpg`, `leaflet-back.jpg`에 둠

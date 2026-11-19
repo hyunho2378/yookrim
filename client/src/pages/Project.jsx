@@ -11,7 +11,7 @@ const findings = [
 const kinds = [
   { key: 'action', to: '/play/gungame', slot: 'gungame-zone-overview', title: '액션 놀이', text: '총게임과 팀 배틀처럼 몸을 움직이는 활동형 콘텐츠예요.' },
   { key: 'adv', to: '/play/season/spring', slot: 'poster-spring', title: '어드벤처 놀이', text: '보물찾기와 야외 방탈출처럼 탐험하고 추리하는 콘텐츠예요.' },
-  { key: 'create', to: '/mission/reward', slot: 'goods', title: '크리에이티브 놀이', text: '캐릭터 공방과 키링, 배지 만들기처럼 직접 만드는 콘텐츠예요.' },
+  { key: 'create', to: '/leaflet', slot: 'gadi-stamp-color', title: '크리에이티브 놀이', text: '캐릭터 공방과 키링, 배지 만들기처럼 직접 만드는 콘텐츠예요.' },
   { key: 'family', to: '/play/attractions', slot: 'cafe-interior', title: '가족 놀이', text: '놀이기구와 동물 교감처럼 온 가족이 함께하는 콘텐츠예요.' }
 ]
 
@@ -55,7 +55,7 @@ export function Project() {
         </ul>
       </section>
       <Teaser id="character" slot="character-main" tone={3} title="캐릭터" cta="캐릭터 보기" to="/about/characters">
-        <p>육림랜드의 안내자가 웹사이트와 현장 사인, 미션 카드와 굿즈에서 같은 모습으로 방문객을 맞이해요.</p>
+        <p>꼬마 수호대장 가디가 웹사이트와 리플릿, 포스터와 스탬프 도안에서 같은 모습으로 방문객을 맞이해요.</p>
       </Teaser>
       <Teaser id="space" slot="map-aerial" tone={1} flip title="3D 공간" cta="3D 공간 지도" to="/map">
         <p>3D로 만든 육림랜드 모형을 돌리고 확대해 구역을 둘러보고, 실제 위치로 바꾸면 위성영상 위 제자리에 같은 모형이 올라가요.</p>
@@ -69,7 +69,7 @@ export function Project() {
           <dt>체험 선택 폭</dt><dd>활동형 콘텐츠에 탐험과 추리, 창작, 가족형 콘텐츠를 더해 취향과 상황에 따라 고를 수 있어요.</dd>
           <dt>공간 활용</dt><dd>기존 시설과 공간을 새로운 체험과 이어 육림랜드의 활용 범위를 넓혀요.</dd>
           <dt>브랜드 정체성</dt><dd>캐릭터와 통일된 시각 디자인으로 육림랜드만의 이미지와 인지도를 높여요.</dd>
-          <dt>방문 경험</dt><dd>체험 정보와 미션, 공간 지도를 이어 방문 전부터 현장까지 자연스럽게 이용해요.</dd>
+          <dt>방문 경험</dt><dd>체험 정보와 리플릿, 공간 지도를 이어 방문 전부터 현장까지 자연스럽게 이용해요.</dd>
           <dt>지속 가능성</dt><dd>계절 이벤트와 새로운 체험을 더할 수 있는 구조로 오래 이어 가요.</dd>
         </dl>
       </section>

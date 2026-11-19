@@ -14,6 +14,9 @@ export const color = {
   leafPress: '#1556B8',
   forest: '#1556B8',     // 푸터 아래쪽, 메뉴 판
   mustard: '#C2410C',    // 포인트 글자(남은 날수, 더보기)
+  hot: '#E5322D',         // 액션 놀이 카드
+  hotDeep: '#B71F1B',
+  sunDeep: '#FFB400',     // 가족 놀이 카드
   bar: '#42BDF2',
   lime: '#9ADCF8',
   limePress: '#9ADCF8',

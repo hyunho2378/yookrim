@@ -50,6 +50,9 @@ export default function Layout() {
   return (
     <>
       <a href="#main" className="skip">본문 바로가기</a>
+      <svg width="0" height="0" aria-hidden focusable="false" style={{ position: 'absolute' }}>
+        <clipPath id="wave" clipPathUnits="objectBoundingBox"><path d="M0,0.07 Q0.5,-0.05 1,0.07 L1,0.9 C0.82,0.82 0.66,1.01 0.48,0.97 C0.28,0.93 0.12,0.82 0,0.9 Z" /></clipPath>
+      </svg>
       <Header />
       <main id="main">
         <Outlet />

@@ -1,9 +1,9 @@
-// store.jsx  미션 스탬프, 예약, 알림 신청을 이 기기 IndexedDB 에 담는다.
+// store.jsx  예약과 알림 신청을 이 기기 IndexedDB 에 담는다.
 // IndexedDB 를 못 쓰는 브라우저에서는 이 화면을 여는 동안만 기억한다. 어느 쪽이든 화면은 그대로 돈다.
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 const DB = 'yookrim', STORE = 'kv', KEY = 'state'
-const empty = { missions: {}, reservations: [], alerts: {}, persisted: false }
+const empty = { reservations: [], alerts: {}, persisted: false }
 
 function openDb() {
   return new Promise((resolve, reject) => {
@@ -48,8 +48,8 @@ export function StoreProvider({ children }) {
       setState((s) => {
         if (!v) return { ...s, persisted: true }
         const known = new Set(s.reservations.map((r) => r.no))
-        const valid = Object.fromEntries(Object.entries(v.missions || {}).filter(([k]) => /^[1-8]$/.test(k)))
-        return { ...empty, ...v, missions: { ...valid, ...s.missions }, reservations: [...s.reservations, ...(v.reservations || []).filter((r) => !known.has(r.no))], alerts: { ...(v.alerts || {}), ...s.alerts }, persisted: true }
+        const { missions: _old, ...rest } = v
+        return { ...empty, ...rest, reservations: [...s.reservations, ...(v.reservations || []).filter((r) => !known.has(r.no))], alerts: { ...(v.alerts || {}), ...s.alerts }, persisted: true }
       })
     })
       .catch(() => { okRef.current = false })
@@ -65,8 +65,6 @@ export function StoreProvider({ children }) {
   const api = useMemo(() => ({
     ...state,
     ready,
-    stamp: (id) => setState((s) => (s.missions[id] ? s : { ...s, missions: { ...s.missions, [id]: new Date().toISOString() } })),
-    resetMissions: () => setState((s) => ({ ...s, missions: {} })),
     addReservation: (r) => setState((s) => ({ ...s, reservations: [r, ...s.reservations] })),
     cancelReservation: (no) => setState((s) => ({ ...s, reservations: s.reservations.filter((r) => r.no !== no) })),
     toggleAlert: (id) => setState((s) => ({ ...s, alerts: { ...s.alerts, [id]: !s.alerts[id] } }))

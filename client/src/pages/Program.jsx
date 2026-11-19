@@ -89,7 +89,10 @@ export function Cafe() {
       <section className="wrap section">
         <CenterTitle title="작은 동물과 가까이" text={p.summary} />
       </section>
-      <TileGrid title="카페의 동물 친구들" items={p.animals.map((a, i) => ({ slot: i === 0 ? 'cafe-meerkat' : 'cafe-guineapig', title: a.name, meta: '프로필 카드는 카페 벽에서 확인', to: '/mission/4' }))} />
+      <TileGrid title="카페의 동물 친구들" items={p.animals.map((a, i) => ({ slot: i === 0 ? 'cafe-meerkat' : 'cafe-guineapig', title: a.name, meta: '프로필 카드는 카페 벽에서 확인', to: '/map?focus=cafe' }))} />
+      <Teaser slot="cafe-exterior" tone={1} flip title="숲 옆 단층 카페" cta="공간 지도에서 보기" to="/map?focus=cafe">
+        <p>초록 차양과 우드 데크 테라스가 있는 단층 카페예요. 큰 유리창 너머로 실내가 보이고, 파라솔 아래에서 쉬어 갈 수 있어요.</p>
+      </Teaser>
       <Teaser slot="cafe-interior" tone={2} title="동물 친구들과의 약속" cta="카페 회차 예약" to="/reserve?program=animal-cafe">
         <p>회차 사이 20분은 동물이 쉬는 시간이에요</p>
         <CheckList items={p.welfareRules} />
@@ -98,7 +101,6 @@ export function Cafe() {
         <h2 className="t-label tiles__title">이용 정보</h2>
         <dl className="kv">
           <dt>회차</dt><dd>{p.sessions.join(', ')}</dd>
-          <dt>정원</dt><dd>회차당 {p.capacity.perSession}명</dd>
           <dt>요금</dt><dd>1인 {won(p.price.perPerson)}, {p.price.includes} 포함</dd>
           <dt>위치</dt><dd><Link to="/map?focus=animal-cafe" className="inline-link"><MapPin size={20} aria-hidden />동물 교감 카페</Link></dd>
         </dl>
@@ -193,7 +195,7 @@ export function SeasonDetail() {
         </div>
       </section>
       {p && (
-        <Teaser slot={s.id === 'winter' ? 'camp-winter' : s.id === 'summer' ? 'zombie-night' : s.id === 'autumn' ? 'gungame-obstacles' : 'missioncard'} tone={2} title={p.name} cta={p.id === 'gungame' ? '총게임 상세 안내' : undefined} to="/play/gungame">
+        <Teaser slot={s.id === 'winter' ? 'camp-winter' : s.id === 'summer' ? 'zombie-night' : s.id === 'autumn' ? 'gungame-obstacles' : 'leaflet-front'} tone={2} title={p.name} cta={p.id === 'gungame' ? '총게임 상세 안내' : undefined} to="/play/gungame">
           <p>{p.summary}</p>
           {p.safety && <CheckList items={p.safety} />}
           {p.rules && <CheckList items={p.rules} />}

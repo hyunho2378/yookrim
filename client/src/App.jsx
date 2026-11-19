@@ -4,11 +4,12 @@ import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import { Gungame, Cafe, SeasonList, SeasonDetail } from './pages/Program'
 import { PlayList, Attractions } from './pages/Play'
-import { MissionHub, MissionDetail, Reward } from './pages/Mission'
+import Leaflet from './pages/Leaflet'
+import Character from './pages/Character'
 import { Fees, OpsCalendar, Directions, Faq } from './pages/Guide'
 import { ReserveLayout, Step1, Step2, Step3, Done } from './pages/Reserve'
 import { Project } from './pages/Project'
-import { About, Characters, News, NewsDetail, My, NotFound } from './pages/Misc'
+import { About, News, NewsDetail, My, NotFound } from './pages/Misc'
 import MapPage from './pages/MapPage'
 
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/about', element: <About /> },
-      { path: '/about/characters', element: <Characters /> },
+      { path: '/about/characters', element: <Character /> },
       { path: '/project', element: <Project /> },
       { path: '/play', element: <PlayList /> },
       { path: '/play/gungame', element: <Gungame /> },
@@ -25,9 +26,7 @@ const router = createBrowserRouter([
       { path: '/play/season', element: <SeasonList /> },
       { path: '/play/season/:id', element: <SeasonDetail /> },
       { path: '/play/attractions', element: <Attractions /> },
-      { path: '/mission', element: <MissionHub /> },
-      { path: '/mission/reward', element: <Reward /> },
-      { path: '/mission/:id', element: <MissionDetail /> },
+      { path: '/leaflet', element: <Leaflet /> },
       { path: '/map', element: <MapPage /> },
       {
         path: '/reserve', element: <ReserveLayout />,

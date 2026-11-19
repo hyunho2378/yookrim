@@ -3,7 +3,7 @@
 import { Crosshair, CalendarRange, PawPrint, CalendarClock, Ticket, CalendarX, Map, Wallet } from 'lucide-react'
 import { Hero, QuickLinks, PromoCols, Teaser, CheckList, TileGrid, PackageCards, Mosaic } from '../components/blocks'
 import { NoticeBand } from '../components/layout/Layout'
-import { program, seasons, seasonStatus, statusText, periodText, dday, currentSeason, rewardTiers, withChar, charName, pricing, won } from '../lib/data'
+import { program, seasons, seasonStatus, statusText, periodText, dday, currentSeason, withChar, charName, pricing, won } from '../lib/data'
 
 export default function Home() {
   const gun = program('gungame')
@@ -34,7 +34,7 @@ export default function Home() {
     { slot: 'gungame-zone-overview', title: gun.name, text: gun.summary, cta: '총게임 예약', to: '/reserve?program=gungame' },
     { slot: 'poster-autumn', title: '시즌 이벤트', text: `계절마다 공원 전체가 새 무대로 바뀌어요. 지금은 ${now.season} ${now.title}가 열려 있어요.`, cta: '시즌 일정', to: '/play/season' },
     { slot: 'cafe-interior', title: cafe.name, text: cafe.summary, cta: '카페 회차 예약', to: '/reserve?program=animal-cafe' },
-    { slot: 'character-main', title: `${charName()} 미션`, text: '공원 곳곳의 QR을 찾아 스탬프를 모으면 3개부터 선물이 있어요', cta: '미션 시작', to: '/mission' }
+    { slot: 'leaflet-front', title: '육림랜드 리플릿', text: '포스터의 QR로 열어 보는 한 장 안내와 가디 대원 미션지예요', cta: '리플릿 보기', to: '/leaflet' }
   ]
 
   const tiles = ordered.map((s) => {
@@ -69,9 +69,9 @@ export default function Home() {
         <CheckList items={[`하루 ${cafe.sessions.length}회차, ${cafe.sessions[0]}부터 ${cafe.sessions[cafe.sessions.length - 1]}까지`, `1인 ${won(cafe.price.perPerson)}, ${cafe.price.includes} 포함`, '회차 사이 20분은 동물 휴식 시간']} />
       </Teaser>
 
-      <Teaser slot="character-main" tone={3} title={withChar('{캐릭터명}와 함께하는 숲속 미션')} cta="미션 시작" to="/mission">
-        <p>숨은 QR을 찍어 스탬프를 모으면 안내소에서 선물을 받아요</p>
-        <CheckList items={rewardTiers.map((t) => `스탬프 ${t.count}개 ${withChar(t.reward)}`)} />
+      <Teaser slot="character-main" tone={3} title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
+        <p>육림랜드를 지키는 꼬마 수호대장이에요. 숲은 내가 지킬게, 너는 신나게 놀아!</p>
+        <CheckList items={['낮에는 순찰하는 수호대장', '밤에는 총게임을 지휘하는 교관', '리플릿과 포스터, 스탬프 도안에서 만나요']} />
       </Teaser>
 
       <TileGrid title="이번 시즌 축제와 이벤트" items={tiles} more={{ to: '/play/season', label: '시즌 이벤트 전체' }} />

@@ -60,6 +60,18 @@ export default function Header() {
     return () => document.documentElement.classList.remove('lock')
   }, [mobile])
 
+  const left = menus.slice(0, 3)
+  const right = menus.slice(3)
+  const renderItem = (m) => (
+    <li key={m.id} onMouseEnter={() => enter(m.id)}>
+      <div className={`hdr__item ${open === m.id ? 'is-open' : ''}`}>
+        <NavLink to={m.to} className="t-nav hdr__link">{m.label}</NavLink>
+        <button className="hdr__caret" aria-expanded={open === m.id} aria-label={`${m.label} 하위 메뉴`} onClick={() => setOpen(open === m.id ? null : m.id)}>
+          <ChevronDown size={20} aria-hidden />
+        </button>
+      </div>
+    </li>
+  )
   const enter = (id) => { clearTimeout(timer.current); timer.current = setTimeout(() => setOpen(id), 80) }
   const leave = () => { clearTimeout(timer.current); timer.current = setTimeout(() => setOpen(null), 160) }
 
@@ -70,27 +82,22 @@ export default function Header() {
           <Link to="/guide/calendar" className="hdr__hours t-small"><Clock size={20} className="ico" aria-hidden />{today.label}</Link>
           <nav aria-label="바로가기" className="hdr__toplinks">
             {topLinks.map((l) => <Link key={l.to} to={l.to} className="t-small">{l.label}</Link>)}
-            <Link to="/my" className="hdr__icon" aria-label="내 예약과 미션"><User size={20} aria-hidden /></Link>
+            <Link to="/my" className="hdr__icon" aria-label="내 예약"><User size={20} aria-hidden /></Link>
           </nav>
         </div>
       </div>
       <div className="hdr__bar">
         <div className="wrap hdr__barin">
           <Link to="/reserve" className="hdr__mbtn hdr__mbtn--left" aria-label="예약"><Ticket size={24} aria-hidden /><span className="t-caption">예약</span></Link>
+          <nav aria-label="주 메뉴 왼쪽" className="hdr__nav hdr__nav--l">
+            <ul className="hdr__menu">{left.map(renderItem)}</ul>
+          </nav>
           <Logo />
-          <nav aria-label="주 메뉴" className="hdr__nav">
+          <nav aria-label="주 메뉴 오른쪽" className="hdr__nav hdr__nav--r">
             <ul className="hdr__menu">
-              {menus.map((m) => (
-                <li key={m.id} onMouseEnter={() => enter(m.id)}>
-                  <div className={`hdr__item ${open === m.id ? 'is-open' : ''}`}>
-                    <NavLink to={m.to} className="t-nav hdr__link">{m.label}</NavLink>
-                    <button className="hdr__caret" aria-expanded={open === m.id} aria-label={`${m.label} 하위 메뉴`} onClick={() => setOpen(open === m.id ? null : m.id)}>
-                      <ChevronDown size={20} aria-hidden />
-                    </button>
-                  </div>
-                </li>
-              ))}
+              {right.map(renderItem)}
               <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/map" className="t-nav hdr__link hdr__link--solo">공간 지도</NavLink></div></li>
+              <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/leaflet" className="t-nav hdr__link hdr__link--solo">리플릿</NavLink></div></li>
             </ul>
             <Link to="/reserve" className="hdr__cta t-nav">예약</Link>
           </nav>
@@ -125,9 +132,10 @@ export default function Header() {
             </div>
           ))}
           <div className="mmenu__sec"><Link to="/map" className="mmenu__head t-label">공간 지도</Link></div>
+          <div className="mmenu__sec"><Link to="/leaflet" className="mmenu__head t-label">리플릿</Link></div>
           <div className="mmenu__links">
             {topLinks.map((l) => <Link key={l.to} to={l.to} className="t-body">{l.label}</Link>)}
-            <Link to="/my" className="t-body">내 예약과 미션</Link>
+            <Link to="/my" className="t-body">내 예약</Link>
           </div>
         </div>
       </div>

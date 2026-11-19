@@ -8,8 +8,6 @@
       "z": 5,
       "y": 3.2,
       "dist": 17,
-      "glb": "start.glb",
-      "geo": "gate-main",
       "facilities": [
         "gate-main",
         "info",
@@ -27,8 +25,7 @@
           "label": "요금과 통합권",
           "to": "/guide"
         }
-      ],
-      "realDist": 95
+      ]
     },
     {
       "id": "survival",
@@ -38,8 +35,6 @@
       "z": -0.4,
       "y": 3,
       "dist": 18,
-      "glb": "survival.glb",
-      "geo": "gungame-base",
       "facilities": [
         "gungame-base"
       ],
@@ -50,8 +45,7 @@
           "label": "총게임 안내",
           "to": "/play/gungame"
         }
-      ],
-      "realDist": 85
+      ]
     },
     {
       "id": "cafe",
@@ -61,8 +55,6 @@
       "z": -1.8,
       "y": 2.2,
       "dist": 27,
-      "glb": "cafe.glb",
-      "geo": "animal-cafe",
       "facilities": [
         "animal-cafe",
         "feeding",
@@ -79,8 +71,7 @@
           "label": "먹이 주기 체험",
           "to": "/play/attractions#zoo"
         }
-      ],
-      "realDist": 120
+      ]
     },
     {
       "id": "bear",
@@ -90,8 +81,6 @@
       "z": -2.1,
       "y": 2.8,
       "dist": 17,
-      "glb": "bear.glb",
-      "geo": "zoo",
       "facilities": [
         "zoo"
       ],
@@ -101,8 +90,7 @@
           "label": "동물원 안내",
           "to": "/play/attractions#zoo"
         }
-      ],
-      "realDist": 70
+      ]
     },
     {
       "id": "camping",
@@ -112,8 +100,6 @@
       "z": -7.4,
       "y": 3.8,
       "dist": 17,
-      "glb": "camping.glb",
-      "geo": "camp",
       "facilities": [
         "camp",
         "gate-side"
@@ -128,8 +114,7 @@
           "label": "겨울 캠핑 데이",
           "to": "/play/season/winter"
         }
-      ],
-      "realDist": 70
+      ]
     },
     {
       "id": "spin",
@@ -139,8 +124,6 @@
       "z": -8.4,
       "y": 3.8,
       "dist": 16,
-      "glb": "spin.glb",
-      "geo": "swing",
       "facilities": [
         "swing"
       ],
@@ -150,8 +133,7 @@
           "label": "놀이기구 안내",
           "to": "/play/attractions#rides"
         }
-      ],
-      "realDist": 70
+      ]
     },
     {
       "id": "amusepark",
@@ -161,8 +143,6 @@
       "z": -7.9,
       "y": 7.2,
       "dist": 19,
-      "glb": "amusepark.glb",
-      "geo": "photo-retro",
       "facilities": [
         "viking",
         "bumper",
@@ -177,8 +157,7 @@
           "label": "놀이동산 안내",
           "to": "/play/attractions#rides"
         }
-      ],
-      "realDist": 80
+      ]
     }
   ]
 }

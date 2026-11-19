@@ -1,0 +1,46 @@
+/* luna.css  루나파크 어트랙션 화면을 기준으로 한 형식: 가운데 로고와 양쪽 메뉴, 물결 모양 사진 띠, 추천 두 줄, 유형별 4열 카드 */
+
+/* 가운데 로고와 양쪽 메뉴 */
+@media (min-width: 1181px) {
+  .hdr__barin { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s-6); }
+  .hdr__nav--l { justify-self: start; }
+  .hdr__nav--r { justify-self: end; }
+  .hdr__megawrap { justify-content: center; }
+  .logo { align-items: center; text-align: center; }
+}
+
+/* 물결 모양 사진 띠 */
+.subhero, .ehero { clip-path: url(#wave); }
+.subhero { min-height: clamp(14rem, 32dvh, 19rem); }
+.subhero__in { padding-block: var(--s-8); }
+.ehero { height: clamp(18rem, 48dvh, 26rem); }
+.ehero__in { padding-bottom: var(--s-9); }
+@media (max-width: 768px) { .ehero__in { padding-bottom: var(--s-8); } }
+
+/* 추천 두 줄 */
+.lp-feat { display: flex; flex-direction: column; gap: var(--s-9); }
+.lp-feat__row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--s-8); align-items: center; }
+.lp-feat__row.is-flip .lp-feat__img { order: 2; }
+.lp-feat__img { display: block; border-radius: var(--r); box-shadow: var(--shadow-3); overflow: hidden; }
+.lp-feat__tag { color: var(--c-actionText); }
+.lp-feat__txt .t-band { color: var(--c-leaf); text-wrap: balance; }
+@media (max-width: 900px) { .lp-feat__row { grid-template-columns: 1fr; gap: var(--s-5); } .lp-feat__row.is-flip .lp-feat__img { order: 0; } .lp-feat { gap: var(--s-8); } }
+.lp-filter { padding-top: var(--s-2); }
+.lp-groups { display: flex; flex-direction: column; gap: var(--s-9); }
+
+/* 유형별 줄과 4열 카드 */
+.lp-cat__title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4); margin-bottom: var(--s-5); color: var(--c-leaf); }
+.lp-cat__title .t-body { font-weight: 400; }
+.lp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); }
+@media (max-width: 1024px) { .lp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .lp-grid { grid-template-columns: 1fr; } }
+.lc { display: flex; flex-direction: column; height: 100%; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease); background: var(--c-page); }
+.lc:hover { box-shadow: var(--shadow-3); }
+.lc .photo { border-radius: 0; }
+.lc__panel { flex: 1; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-5); min-height: 10rem; color: var(--c-textOnColor); }
+.lc__title { text-wrap: balance; }
+.lc__meta { opacity: 0.92; }
+.lc__more { margin-top: auto; align-self: flex-end; display: inline-flex; align-items: center; gap: var(--s-1); }
+.lc--hot .lc__panel { background: linear-gradient(180deg, var(--c-hot) 0%, var(--c-hotDeep) 100%); }
+.lc--blue .lc__panel { background: linear-gradient(180deg, var(--c-leaf) 0%, var(--c-forest) 100%); }
+.lc--sun .lc__panel { background: linear-gradient(180deg, var(--c-citron) 0%, var(--c-sunDeep) 100%); color: var(--c-ink); }

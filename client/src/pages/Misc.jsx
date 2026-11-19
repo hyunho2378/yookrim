@@ -3,7 +3,7 @@ import { Link, useParams, useSearchParams, Navigate } from 'react-router-dom'
 import { CalendarDays, Ticket, Trash2 } from 'lucide-react'
 import { EventHero, Teaser, CheckList, CenterTitle, PlainHero, TileGrid } from '../components/blocks'
 import { Btn, Photo } from '../components/ui'
-import { site, notices, dotDate, missions, rewardTiers, withChar, charName, won } from '../lib/data'
+import { site, notices, dotDate, won } from '../lib/data'
 import { useStore } from '../lib/store'
 
 export function About() {
@@ -25,59 +25,6 @@ export function About() {
         <p>새로 짓지 않고 있는 공간에 계절마다 새로운 놀이를 얹어요</p>
         <CheckList items={['봄 숲속 보물찾기', '여름 한밤의 좀비 숲', '가을 숲속 총게임 리그', '겨울 소나무 숲 캠핑 데이']} />
       </Teaser>
-    </>
-  )
-}
-
-export function Characters() {
-  const uses = [
-    { key: 'web', to: '/', slot: 'poster-autumn', title: '웹사이트 배너', text: '첫 화면과 계절 포스터에서 방문객에게 먼저 인사해요.', meta: [] },
-    { key: 'card', to: '/mission', slot: 'missioncard', title: '미션 카드', text: '카드마다 미션을 읽어 주고 스탬프를 찍어 줘요.', meta: [] },
-    { key: 'sign', to: '/map', slot: 'site-entrance', title: '현장 안내 사인', text: '정문과 갈림길 표지판에서 가는 길을 알려 줘요.', meta: [] },
-    { key: 'goods', to: '/mission/reward', slot: 'goods', title: '굿즈', text: '스티커와 키링, 배지로 만들어 선물로 받아요.', meta: [] }
-  ]
-  return (
-    <>
-      <EventHero slot="poster-autumn" tone={3} tag="숲속 친구들" title={`${charName()}와 친구들`} text={withChar(site.character.greeting)} cta="숲속 미션" to="/mission" />
-      <section className="wrap section">
-        <CenterTitle title="숲속 친구들" text="숲을 지키는 친구들을 소개해요." />
-        <ul className="chars">
-          {['메인 캐릭터', '친구 1', '친구 2', '친구 3'].map((n, i) => (
-            <li key={n}><Photo slot={i === 0 ? 'character-main' : `friend-${i}`} ratio="1 / 1" tone={i} round /><p className="t-label">{i === 0 ? charName() : n}</p></li>
-          ))}
-        </ul>
-      </section>
-      <Teaser id="setting" slot="character-main" tone={3} title="캐릭터 설정">
-        <dl className="kv">
-          <dt>역할</dt><dd>입구에서 방문객을 맞이하고 미션과 보상을 안내하는 육림랜드의 안내자예요.</dd>
-          <dt>세계관</dt><dd>50년 동안 소나무 숲을 지켜 온 숲속 친구들이 사는 곳이 육림랜드예요.</dd>
-          <dt>함께하는 곳</dt><dd>웹사이트와 현장 사인, 미션 카드와 굿즈에서 같은 모습으로 만나요.</dd>
-        </dl>
-      </Teaser>
-      <section className="wrap section">
-        <CenterTitle title="디자인 과정" text="콘셉트에서 활용 디자인까지 다섯 단계로 만들어요." />
-        <dl className="kv">
-          <dt>1단계</dt><dd>캐릭터 콘셉트를 세워요. 육림랜드의 공간과 방향에서 역할과 성격, 핵심 키워드를 골라요.</dd>
-          <dt>2단계</dt><dd>형태와 디자인 방향을 그려요. 실루엣과 비율, 대표 소품과 의상을 견주어 봐요.</dd>
-          <dt>3단계</dt><dd>기본형과 응용형을 만들어요. 정면과 측면을 정리하고 표정과 동작, 포즈를 더해요.</dd>
-          <dt>4단계</dt><dd>컬러와 그래픽을 정리해요. 메인 컬러와 서브 컬러, 로고, 모자와 소품의 기준을 세워요.</dd>
-          <dt>5단계</dt><dd>활용 디자인을 만들어요. 웹사이트 배너와 미션 카드, 안내 사인, 포스터, 굿즈에 적용해요.</dd>
-        </dl>
-      </section>
-      <section className="wrap section">
-        <CenterTitle title="이런 곳에서 만나요" />
-        <ul className="rlist">
-          {uses.map((it, i) => (
-            <li key={it.key}>
-              <Link to={it.to} className="rlist__item">
-                <Photo slot={it.slot} ratio="4 / 3" tone={i} round />
-                <h3 className="t-card">{it.title}</h3>
-                <p className="t-body rlist__desc">{it.text}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
     </>
   )
 }
@@ -129,10 +76,9 @@ export function NewsDetail() {
 
 export function My() {
   const store = useStore()
-  const n = Object.keys(store.missions).length
   return (
     <>
-      <PlainHero title="내 예약과 미션" text="이 기기에 저장된 예약과 미션 기록이에요." />
+      <PlainHero title="내 예약" text="이 기기에 저장된 예약이에요." />
       <section className="wrap section stack-5">
         <h2 className="t-label">내 예약</h2>
         {!store.reservations.length && <div className="stack-4"><p className="t-body c-sub">아직 예약이 없어요.</p><div><Btn to="/reserve">예약</Btn></div></div>}
@@ -151,11 +97,6 @@ export function My() {
             </li>
           ))}
         </ul>
-      </section>
-      <section className="wrap section stack-4">
-        <h2 className="t-label">내 미션</h2>
-        <p className="t-body">스탬프 {n}/{missions.length}. {rewardTiers.find((t) => t.count > n) ? `다음 선물까지 ${rewardTiers.find((t) => t.count > n).count - n}개 남았어요.` : '모든 선물을 받을 수 있어요.'}</p>
-        <div className="myres__btns"><Btn to="/mission">미션 이어서</Btn><Btn variant="deep" to="/mission/reward">보상 받기</Btn></div>
       </section>
     </>
   )
