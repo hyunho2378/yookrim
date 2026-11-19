@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Check, MapPin, Phone, Car, Bus, TriangleAlert } from 'lucide-react'
 import { SubHero, CenterTitle, Teaser, CheckList, PlainHero } from '../components/blocks'
 import { Accordion, Btn, Photo } from '../components/ui'
-import { NoticeBand } from '../components/layout/Layout'
 import Calendar from '../components/Calendar'
 import { site, pricing, won, faq, kstDate, isClosedDay, notices } from '../lib/data'
 
@@ -29,7 +28,6 @@ export function Fees() {
   const a = pricing.admission
   return (
     <>
-      <NoticeBand />
       <SubHero slot="site-entrance" title="요금과 통합권" text="입장권과 놀이기구 이용권, 한 장으로 다 되는 통합권을 비교해 보세요." />
       <section className="wrap section">
         <CenterTitle title="입장권과 이용권" text={`${a.freeUnder}. ${a.discountNote}.`} />
@@ -80,7 +78,6 @@ export function Directions() {
   const control = notices.find((n) => n.urgent)
   return (
     <>
-      <NoticeBand />
       <SubHero slot="site-entrance" tone={2} title="오시는 길" text={site.address} />
       <section className="wrap section dir">
         <div className="stack-5">

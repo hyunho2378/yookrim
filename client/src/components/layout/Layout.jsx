@@ -4,7 +4,6 @@ import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
 import { ArrowUp } from 'lucide-react'
 import Header from './Header'
 import Footer from './Footer'
-import { notices } from '../../lib/data'
 
 function BookingBar() {
   return (
@@ -28,18 +27,6 @@ function TopButton() {
     <button className={`topbtn ${on ? 'is-on' : ''}`} aria-label="맨 위로" tabIndex={on ? 0 : -1} onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })}>
       <ArrowUp size={24} aria-hidden />
     </button>
-  )
-}
-
-export function NoticeBand() {
-  const n = notices.find((x) => x.urgent)
-  if (!n) return null
-  return (
-    <div className="notice">
-      <div className="wrap notice__in">
-        <Link to={n.link} className="t-strong">공지 {n.title}</Link>
-      </div>
-    </div>
   )
 }
 

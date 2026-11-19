@@ -2,7 +2,6 @@
 // 시즌 타일, 이야기 띠, 통합권 3열, 모자이크. 이용 후기와 SNS 사진 줄은 아직 우리 자료가 없어 넣지 않았다.
 import { Crosshair, CalendarRange, PawPrint, CalendarClock, Ticket, CalendarX, Map, Wallet } from 'lucide-react'
 import { Hero, QuickLinks, PromoCols, Teaser, CheckList, TileGrid, PackageCards, Mosaic } from '../components/blocks'
-import { NoticeBand } from '../components/layout/Layout'
 import { program, seasons, seasonStatus, statusText, periodText, dday, currentSeason, withChar, charName, pricing, won } from '../lib/data'
 
 export default function Home() {
@@ -52,7 +51,6 @@ export default function Home() {
 
   return (
     <>
-      <NoticeBand />
       <Hero slides={slides} />
       <QuickLinks items={quick} />
       <PromoCols items={promos} />

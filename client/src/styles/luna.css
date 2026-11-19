@@ -44,3 +44,28 @@
 .lc--hot .lc__panel { background: linear-gradient(180deg, var(--c-hot) 0%, var(--c-hotDeep) 100%); }
 .lc--blue .lc__panel { background: linear-gradient(180deg, var(--c-leaf) 0%, var(--c-forest) 100%); }
 .lc--sun .lc__panel { background: linear-gradient(180deg, var(--c-citron) 0%, var(--c-sunDeep) 100%); color: var(--c-ink); }
+
+/* 정렬 통일. 모든 블록은 본문 여백 안에서 왼쪽 끝과 오른쪽 끝이 같은 선에 맞는다 */
+.ftr__form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-8); row-gap: var(--s-3); align-items: end; }
+.ftr__form h2 { grid-column: 1; grid-row: 1; align-self: end; }
+.ftr__form > p { grid-column: 1; grid-row: 2; align-self: start; }
+.ftr__form .field { grid-column: 2; grid-row: 1; }
+.ftr__form .btn { grid-column: 2; grid-row: 2; }
+.ftr__form .field, .ftr__form .btn, .ftr__form p { max-width: none; }
+@media (max-width: 768px) {
+  .ftr__form { grid-template-columns: 1fr; }
+  .ftr__form h2, .ftr__form > p, .ftr__form .field, .ftr__form .btn { grid-column: 1; grid-row: auto; }
+}
+.ftr__skyin { justify-content: space-between; }
+.lf-pages, .lf-paper, .timeline, .article { max-width: none; }
+@media (max-width: 768px) { .stepper { width: 100%; } }
+
+/* 제목과 첫 띠 글자도 모두 본문 왼쪽 끝에 맞춘다 */
+.subhero__in { align-items: flex-start; text-align: left; }
+.subhero__text { max-width: none; }
+.phero__in { align-items: flex-start; text-align: left; }
+.ctitle { text-align: left; max-width: none; margin: 0 0 var(--s-7); }
+.gd-head { align-items: flex-start; text-align: left; }
+.gd-head .t-body { max-width: none; text-wrap: pretty; }
+.lf-sheet__btns { justify-content: flex-start; }
+.project__next { max-width: none; margin-inline: 0; text-align: left; }
