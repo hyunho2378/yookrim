@@ -9,6 +9,7 @@ import './styles/elevation.css'
 import './styles/theme.css'
 import './styles/gadi.css'
 import './styles/luna.css'
+import './styles/plan.css'
 import App from './App'
 
 // tokens.js 값을 첫 그림 전에 CSS 변수로 넣는다

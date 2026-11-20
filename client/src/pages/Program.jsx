@@ -6,6 +6,7 @@ import { EventHero, Teaser, CheckList, CenterTitle, TileGrid } from '../componen
 import { Accordion, Btn, useToast } from '../components/ui'
 import { program, season, seasons, seasonStatus, statusText, periodText, dday, won, faq, withChar, priceFrom } from '../lib/data'
 import { useStore } from '../lib/store'
+import { FactSheet, NextActions } from '../components/blocks/plan'
 
 function Steps({ items }) {
   return (
@@ -38,6 +39,7 @@ export function Gungame() {
       <section className="wrap section">
         <CenterTitle title="깃발을 지키는 팀 서바이벌" text="접수하면 팀과 미션 카드를 받아요. 감시탑과 컨테이너, 벙커 사이에서 깃발을 겨뤄요." />
       </section>
+      <FactSheet id="gungame" />
       {p.modes.map((m, i) => (
         <Teaser key={m.id} id={`mode-${m.id}`} slot={i === 0 ? 'gungame-obstacles' : i === 1 ? 'gungame-zone-overview' : 'zombie-night'} tone={i} flip={i % 2 === 1} title={m.name} cta={`${m.name} 예약`} to={`/reserve?program=gungame&mode=${m.id}`}>
           <p>{m.desc}</p>
@@ -48,6 +50,7 @@ export function Gungame() {
           </dl>
         </Teaser>
       ))}
+      <FactSheet id="night-mission" title="야간 미션전 한눈에 보기" />
       <section className="wrap section">
         <h2 className="t-label tiles__title">진행 순서</h2>
         <Steps items={p.steps} />
@@ -77,6 +80,7 @@ export function Gungame() {
         </div>
       </section>
       <Faq cat="총게임" />
+      <NextActions program="gungame" />
     </>
   )
 }
@@ -89,6 +93,7 @@ export function Cafe() {
       <section className="wrap section">
         <CenterTitle title="작은 동물과 가까이" text={p.summary} />
       </section>
+      <FactSheet id="animal-cafe" />
       <TileGrid title="카페의 동물 친구들" items={p.animals.map((a, i) => ({ slot: i === 0 ? 'cafe-meerkat' : 'cafe-guineapig', title: a.name, meta: '프로필 카드는 카페 벽에서 확인', to: '/map?focus=cafe' }))} />
       <Teaser slot="cafe-exterior" tone={1} flip title="숲 옆 단층 카페" cta="공간 지도에서 보기" to="/map?focus=cafe">
         <p>초록 차양과 우드 데크 테라스가 있는 단층 카페예요. 큰 유리창 너머로 실내가 보이고, 파라솔 아래에서 쉬어 갈 수 있어요.</p>
@@ -106,6 +111,7 @@ export function Cafe() {
         </dl>
       </section>
       <Faq cat="동물" />
+      <NextActions program="animal-cafe" />
     </>
   )
 }
@@ -194,6 +200,7 @@ export function SeasonDetail() {
           <SeasonCta s={s} big />
         </div>
       </section>
+      <FactSheet id={{ spring: 'treasure-hunt', summer: 'zombie-night', autumn: 'gungame', winter: 'winter-camp' }[s.id]} />
       {p && (
         <Teaser slot={s.id === 'winter' ? 'camp-winter' : s.id === 'summer' ? 'zombie-night' : s.id === 'autumn' ? 'gungame-obstacles' : 'leaflet-front'} tone={2} title={p.name} cta={p.id === 'gungame' ? '총게임 상세 안내' : undefined} to="/play/gungame">
           <p>{p.summary}</p>
@@ -202,6 +209,7 @@ export function SeasonDetail() {
           {p.options && <dl className="kv">{p.options.map((o) => <Fragment key={o.id}><dt>{o.name}</dt><dd>{o.unit} {won(o.price)}</dd></Fragment>)}</dl>}
         </Teaser>
       )}
+      <NextActions program={p?.id} noBook={st === 'ended'} />
     </>
   )
 }

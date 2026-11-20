@@ -1,0 +1,112 @@
+/* plan.css  최종 통합 기획서 기준 부품: 영상 첫 화면, 카테고리 타일, 콘텐츠 카드, 방문자별 안내, 한눈에 보기, 다음 단계 띠, 방문 전 확인 */
+
+/* 첫 화면 */
+.stage { position: relative; height: clamp(30rem, 82dvh, 46rem); overflow: hidden; background: var(--c-primaryDeep); color: var(--c-textOnColor); }
+.stage .loopv, .stage .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.stage__shade { position: absolute; inset: 0; background: var(--g-heroSide); pointer-events: none; }
+@media (max-width: 768px) { .stage__shade { background: var(--g-heroBottom); } }
+.stage__copy { position: absolute; left: 0; right: 0; bottom: var(--s-9); display: flex; flex-direction: column; gap: var(--s-4); }
+.stage__copy .t-display { max-width: 44rem; text-shadow: var(--shadow-text); text-wrap: balance; }
+.stage__lead { text-shadow: var(--shadow-text); }
+.stage__btns { margin-top: var(--s-3); display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.stage .btn { background: var(--c-citron); color: var(--c-ink); }
+.stage .btn:hover { background: var(--c-page); }
+.stage .btn--light, .nact .btn--light { background: var(--c-page); color: var(--c-leaf); box-shadow: var(--shadow-1); }
+.stage .btn--light:hover, .nact .btn--light:hover { background: var(--c-kiwi); }
+.loopv__ctl { position: absolute; right: var(--s-5); bottom: var(--s-5); z-index: 2; width: var(--z-touch); height: var(--z-touch); display: grid; place-items: center; border-radius: var(--r); background: var(--c-scrim); color: var(--c-textOnColor); box-shadow: var(--shadow-0); }
+@media (max-width: 768px) { .stage { height: clamp(28rem, 78dvh, 38rem); } .stage__copy { bottom: var(--s-8); } }
+
+/* 섹션 머리 */
+.ctiles__head { margin-bottom: var(--s-6); max-width: none; }
+
+/* 카테고리 타일 */
+.ctiles__list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s-4); }
+.ctiles__list li { grid-column: span 2; }
+.ctiles__list li:nth-child(n + 4) { grid-column: span 3; }
+.ctile { position: relative; display: block; height: clamp(14rem, 22vw, 19rem); border-radius: var(--r); overflow: hidden; color: var(--c-textOnColor); box-shadow: var(--shadow-2); transition: box-shadow var(--m-fast) var(--ease); }
+.ctile:hover { box-shadow: var(--shadow-3); }
+.ctile .photo { position: absolute; inset: 0; }
+.ctile__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(10, 28, 60, 0.82) 100%); }
+.ctile__txt { position: absolute; left: var(--s-5); right: var(--s-8); bottom: var(--s-5); display: flex; flex-direction: column; gap: var(--s-1); text-shadow: var(--shadow-text); }
+.ctile__go { position: absolute; right: var(--s-5); bottom: var(--s-5); transition: transform var(--m-fast) var(--ease); }
+.ctile:hover .ctile__go { transform: translateX(4px); }
+@media (max-width: 1024px) { .ctiles__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: auto; } .ctiles__list li:last-child { grid-column: 1 / -1; } .ctile { height: clamp(12rem, 30vw, 17rem); } }
+@media (max-width: 520px) { .ctiles__list { grid-template-columns: 1fr; } .ctile { height: 13rem; } }
+
+/* 콘텐츠 카드 */
+.cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6) var(--s-5); }
+.ccard { display: flex; flex-direction: column; height: 100%; border-radius: var(--r); overflow: hidden; background: var(--c-page); box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease); }
+.ccard:hover { box-shadow: var(--shadow-3); }
+.ccard__media { position: relative; display: block; }
+.ccard__media .photo { border-radius: 0; }
+.ccard__media .loopv { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ccard__body { flex: 1; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-5); }
+.ccard__cat { color: var(--c-actionText); font-weight: 700; }
+.ccard__name { color: var(--c-leaf); text-wrap: balance; }
+.ccard__line { text-wrap: balance; }
+.ccard__for { color: var(--c-textSub); }
+.ccard__for b { color: var(--c-text); margin-right: var(--s-1); }
+.ccard__more { margin-top: auto; padding-top: var(--s-3); display: inline-flex; align-items: center; gap: var(--s-1); color: var(--c-actionText); }
+@media (max-width: 1024px) { .cgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .cgrid { grid-template-columns: 1fr; } }
+
+/* 상태 이름. 사진 왼쪽 위 */
+.stags { position: absolute; left: var(--s-3); top: var(--s-3); display: flex; flex-wrap: wrap; gap: var(--s-1); z-index: 2; }
+.fact .stags { position: static; }
+.stag { padding: var(--s-1) var(--s-3); border-radius: var(--r-sm); font-weight: 700; box-shadow: var(--shadow-1); }
+.stag--live { background: var(--c-leaf); color: var(--c-textOnColor); }
+.stag--season { background: var(--c-citron); color: var(--c-ink); }
+.stag--book { background: var(--c-hot); color: var(--c-textOnColor); }
+.stag--soon { background: var(--c-ink); color: var(--c-textOnColor); }
+.stag--end { background: var(--c-bar); color: var(--c-ink); }
+
+/* 방문자별 안내 */
+.aud__list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-4); }
+.aud__item { display: flex; flex-direction: column; gap: var(--s-3); height: 100%; width: 100%; text-align: left; padding: var(--s-5); border-radius: var(--r); background: var(--c-kiwi); color: var(--c-text); box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease), background-color var(--m-fast) var(--ease); }
+.aud__item:hover { box-shadow: var(--shadow-3); }
+.aud__item.is-on { background: var(--c-leaf); color: var(--c-textOnColor); }
+.aud__name { color: var(--c-leaf); }
+.aud__item.is-on .aud__name { color: var(--c-textOnColor); }
+.aud__check { text-wrap: balance; }
+.aud__picks { margin-top: auto; font-weight: 700; opacity: 0.85; }
+@media (max-width: 1180px) { .aud__list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .aud__list { grid-template-columns: 1fr; } }
+
+/* 한눈에 보기 */
+.fact__box { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: var(--s-7); padding: var(--s-7); border-radius: var(--r); background: var(--c-kiwi); box-shadow: var(--shadow-2); }
+.fact__list { display: flex; flex-direction: column; gap: var(--s-3); }
+.fact__row { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: var(--s-4); padding-bottom: var(--s-3); }
+.fact__row dt { color: var(--c-leaf); }
+.fact__safe { display: flex; flex-direction: column; gap: var(--s-1); }
+@media (max-width: 900px) { .fact__box { grid-template-columns: 1fr; padding: var(--s-5); gap: var(--s-5); } .fact__row { grid-template-columns: 6.5rem minmax(0, 1fr); } }
+
+/* 다음 단계 띠 */
+.nact { background: var(--c-leaf); color: var(--c-textOnColor); box-shadow: var(--shadow-1); margin-top: var(--s-7); }
+.nact__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-6); padding-block: var(--s-7); }
+.nact__btns { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.nact .btn:not(.btn--light) { background: var(--c-citron); color: var(--c-ink); }
+.nact .btn { gap: var(--s-2); }
+@media (max-width: 900px) { .nact__in { flex-direction: column; align-items: flex-start; } }
+.nact--final { margin-top: 0; }
+
+/* 방문 전 확인 */
+.vinfo__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); }
+.vinfo__cell { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-5); border-radius: var(--r); background: var(--c-page); box-shadow: var(--shadow-2); }
+.vinfo__ln { display: block; }
+.vinfo__cell .more { margin-top: auto; }
+@media (max-width: 1024px) { .vinfo__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .vinfo__list { grid-template-columns: 1fr; } }
+
+/* 목록 위 걸러내기 */
+.pfilter { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.pfilter__btn { min-height: var(--z-touch); padding: 0 var(--s-5); border-radius: var(--r-sm); background: var(--c-kiwi); color: var(--c-leaf); font-weight: 700; box-shadow: var(--shadow-0); transition: background-color var(--m-fast) var(--ease); }
+.pfilter__btn:hover { background: var(--c-linden); }
+.pfilter__btn[aria-pressed='true'] { background: var(--c-leaf); color: var(--c-textOnColor); box-shadow: var(--shadow-1); }
+.pfilter__label { display: block; margin-bottom: var(--s-2); }
+.plist__tools { display: flex; flex-direction: column; gap: var(--s-4); margin-bottom: var(--s-6); }
+
+/* 모바일 아래 고정 띠: 길찾기, 전화, 예약하기를 한 줄에 */
+.bbar .bbar__in { gap: var(--s-2); }
+.bbar .bbar__btn { width: auto; min-width: 0; padding-inline: var(--s-3); white-space: nowrap; }
+.bbar .bbar__btn--side { flex: 1 1 0; }
+.bbar .bbar__btn--main { flex: 1.6 1 0; }

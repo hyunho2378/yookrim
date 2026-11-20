@@ -1,16 +1,18 @@
 // Layout.jsx  모든 화면 공통 틀. 페이지를 옮기면 스크롤을 맨 위로 올리고, 뒤로 가기만 이전 위치로 돌린다.
 import { useEffect, useState } from 'react'
 import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
-import { ArrowUp } from 'lucide-react'
+import { ArrowUp, Navigation, Phone } from 'lucide-react'
+import { site } from '../../lib/data'
 import Header from './Header'
 import Footer from './Footer'
 
 function BookingBar() {
   return (
-    <div className="bbar" role="region" aria-label="빠른 예약">
+    <div className="bbar" role="region" aria-label="빠른 연결">
       <div className="wrap bbar__in">
-        <Link to="/reserve?program=gungame" className="btn bbar__btn">숲속 총게임 예약</Link>
-        <Link to="/guide" className="btn bbar__btn bbar__btn--sub">요금과 통합권</Link>
+        <a href={`https://map.naver.com/p/search/${encodeURIComponent(site.address)}`} target="_blank" rel="noreferrer" className="btn bbar__btn bbar__btn--side"><Navigation size={20} aria-hidden />길찾기</a>
+        <a href={`tel:${site.phone}`} className="btn bbar__btn bbar__btn--side"><Phone size={20} aria-hidden />전화</a>
+        <Link to="/reserve" className="btn bbar__btn bbar__btn--main">예약하기</Link>
       </div>
     </div>
   )

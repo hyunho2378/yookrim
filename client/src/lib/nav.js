@@ -16,25 +16,41 @@ export const menus = [
     promo: { slot: 'map-aerial', label: '육림랜드 전체 조감도', text: '숲속 놀이공원을 3D 지도로 둘러보세요.', to: '/map' }
   },
   {
-    id: 'play', label: '즐길거리', to: '/play',
+    id: 'play', label: '어트랙션', to: '/play',
     groups: [
-      { title: '체험 프로그램', to: '/play', items: [
+      { title: '어드벤처', to: '/play?cat=adventure#list', items: [
         { label: '숲속 총게임', to: '/play/gungame' },
-        { label: '동물 교감 카페', to: '/play/cafe' }
+        { label: '숲속 보물찾기', to: '/play/season/spring' }
       ] },
-      { title: '시즌 이벤트', to: '/play/season', items: [
+      { title: '나이트', to: '/play?cat=night#list', items: [
+        { label: '한밤의 좀비 숲', to: '/play/season/summer' },
+        { label: '야간 미션전', to: '/play/gungame#mode-night' }
+      ] },
+      { title: '동물 체험', to: '/play?cat=animal#list', items: [
+        { label: '동물 교감 카페', to: '/play/cafe' },
+        { label: '동물원과 먹이 주기', to: '/play/attractions#zoo' }
+      ] },
+      { title: '캠핑 숙박', to: '/play?cat=stay#list', items: [
+        { label: '1일 캠핑', to: '/play/season/winter' },
+        { label: '캠프촌', to: '/play/attractions#camp' }
+      ] },
+      { title: '놀이동산', to: '/play?cat=park#list', items: [
+        { label: '놀이기구', to: '/play/attractions#rides' }
+      ] }
+    ],
+    promo: { slot: 'gungame-zone-overview', label: '숲속 총게임 리그', text: '가을 시즌 11월 30일까지 열려요.', to: '/play/gungame' }
+  },
+  {
+    id: 'season', label: '이번 시즌', to: '/play/season',
+    groups: [
+      { title: '사계절 프로그램', to: '/play/season', items: [
         { label: '봄 숲속 보물찾기', to: '/play/season/spring' },
         { label: '여름 좀비 숲', to: '/play/season/summer' },
         { label: '가을 총게임 리그', to: '/play/season/autumn' },
         { label: '겨울 캠핑 데이', to: '/play/season/winter' }
-      ] },
-      { title: '놀이동산과 동물원', to: '/play/attractions', items: [
-        { label: '놀이기구', to: '/play/attractions#rides' },
-        { label: '동물원과 먹이 주기', to: '/play/attractions#zoo' },
-        { label: '캠프촌', to: '/play/attractions#camp' }
       ] }
     ],
-    promo: { slot: 'gungame-zone-overview', label: '숲속 총게임 리그', text: '가을 시즌 11월 30일까지 열려요.', to: '/play/gungame' }
+    promo: { slot: 'poster-winter', label: '겨울 1일 캠핑 데이', text: '오픈 알림을 신청하면 가장 먼저 알려 드려요.', to: '/play/season/winter' }
   },
   {
     id: 'guide', label: '이용안내', to: '/guide',
@@ -69,6 +85,7 @@ export const menus = [
 ]
 
 export const topLinks = [
+  { label: '소식', to: '/news' },
   { label: '오시는 길', to: '/guide/directions' },
   { label: '단체 예약', to: '/play/gungame#group' },
   { label: '자주 묻는 질문', to: '/guide/faq' }

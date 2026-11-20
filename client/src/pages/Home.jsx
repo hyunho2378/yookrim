@@ -1,48 +1,28 @@
-// Home.jsx  레고랜드 홈의 블록 순서 그대로: 사진 넘김, 바로가기 4칸, 파란 안내 띠, 4열 대표, 사진 띠 3개,
-// 시즌 타일, 이야기 띠, 통합권 3열, 모자이크. 이용 후기와 SNS 사진 줄은 아직 우리 자료가 없어 넣지 않았다.
-import { Crosshair, CalendarRange, PawPrint, CalendarClock, Ticket, CalendarX, Map, Wallet } from 'lucide-react'
-import { Hero, QuickLinks, PromoCols, Teaser, CheckList, TileGrid, PackageCards, Mosaic } from '../components/blocks'
-import { program, seasons, seasonStatus, statusText, periodText, dday, currentSeason, withChar, charName, pricing, won } from '../lib/data'
+// Home.jsx  홈 화면 순서: 영상 첫 화면, 대표 카테고리, 이번 시즌, 전체 콘텐츠 카드, 방문자별 안내, 통합권, 가디,
+// 방문 전 확인, 방문 전 질문, 길찾기와 전화와 예약. 값은 data 폴더에서 읽는다.
+import { Teaser, CheckList, TileGrid, PackageCards } from '../components/blocks'
+import { StageHero, CategoryTiles, ContentGrid, AudienceGrid, VisitInfo, VisitQA, FinalCta } from '../components/blocks/plan'
+import { Ticket, Wallet } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { seasons, seasonStatus, statusText, periodText, dday, currentSeason, withChar, pricing, won } from '../lib/data'
+import { items } from '../lib/plan'
 
 export default function Home() {
-  const gun = program('gungame')
-  const cafe = program('animal-cafe')
   const now = currentSeason()
+  const st = seasonStatus(now)
   const ordered = [...seasons].sort((a, b) => {
     const rank = (s) => ({ live: 0, soon: 1, ended: 2 }[seasonStatus(s)])
     return rank(a) - rank(b) || a.period.start.localeCompare(b.period.start)
   })
-
-  const autumn = seasons.find((s) => s.id === 'autumn')
-  const slides = [
-    { slot: 'poster-autumn', tone: 0, lead: `가을 시즌 ${periodText(autumn.period)}`, title: '숲속 총게임 리그가 열렸어요.', cta: '총게임 예약', to: '/reserve?program=gungame', alt: '바이킹 앞 장애물 사이로 팀원들이 레이저 총을 들고 달리는 모습' },
-    { slot: 'site-history', tone: 3, lead: '1975년부터 춘천과 함께한 숲', title: '숲을 기르는 놀이공원, 육림', cta: '육림랜드 이야기', to: '/about' },
-    { slot: 'cafe-interior', tone: 1, lead: '날씨와 상관없이 열리는 실내 카페', title: '미어캣과 기니피그가 기다려요.', cta: '카페 회차 예약', to: '/reserve?program=animal-cafe', alt: '실내 카페 유리 울타리 안에서 미어캣 두 마리가 서 있는 모습' },
-    { slot: 'poster-winter', tone: 0, lead: '12월 15일 오픈 예정', title: '소나무 숲에서 보내는 하룻밤', cta: '오픈 알림 신청', to: '/play/season/winter' }
-  ]
-
-  const quick = [
-    { icon: Crosshair, title: '숲속 총게임', text: '팀 대항 서바이벌', to: '/play/gungame' },
-    { icon: CalendarRange, title: '시즌 이벤트', text: '계절마다 새 프로그램', to: '/play/season' },
-    { icon: PawPrint, title: '동물 교감 카페', text: '작은 동물을 만나는 카페', to: '/play/cafe' },
-    { icon: CalendarClock, title: '운영 안내', text: '캘린더와 요금', to: '/guide/calendar' }
-  ]
-
-
-  const promos = [
-    { slot: 'gungame-zone-overview', title: gun.name, text: gun.summary, cta: '총게임 예약', to: '/reserve?program=gungame' },
-    { slot: 'poster-autumn', title: '시즌 이벤트', text: `계절마다 새로운 프로그램이 열려요. 지금은 ${now.season} ${now.title}가 열려 있어요.`, cta: '시즌 일정', to: '/play/season' },
-    { slot: 'cafe-interior', title: cafe.name, text: cafe.summary, cta: '카페 회차 예약', to: '/reserve?program=animal-cafe' },
-    { slot: 'leaflet-front', title: '육림랜드 리플릿', text: '포스터의 QR로 열어 보는 한 장 안내와 가디 대원 미션지예요', cta: '리플릿 보기', to: '/leaflet' }
-  ]
+  const lead = st === 'live' ? `${now.season} 시즌 ${periodText(now.period)}` : `${now.season} 시즌 D-${dday(now.period.start)}`
 
   const tiles = ordered.map((s) => {
-    const st = seasonStatus(s)
-    return { slot: `poster-${s.id}`, title: `${s.season} ${s.title}`, meta: periodText(s.period), to: `/play/season/${s.id}`, status: st === 'soon' ? `${statusText.soon} D-${dday(s.period.start)}` : statusText[st] }
+    const x = seasonStatus(s)
+    return { slot: `poster-${s.id}`, title: `${s.season} ${s.title}`, meta: periodText(s.period), to: `/play/season/${s.id}`, status: x === 'soon' ? `${statusText.soon} D-${dday(s.period.start)}` : statusText[x] }
   })
 
   const bundles = pricing.bundles.options.map((b) => ({
-    slot: { 'bundle-day': 'bundle-day', 'bundle-play': 'bundle-play', 'bundle-family': 'bundle-family' }[b.id], title: b.name, to: '/guide#bundle',
+    slot: b.id, title: b.name, to: '/guide#bundle',
     lines: [
       { icon: Ticket, text: `포함 ${b.includes.join(', ')}` },
       { icon: Wallet, text: b.price.adult ? `성인 ${won(b.price.adult)}` : `4인 ${won(b.price.family4)}` }
@@ -51,44 +31,45 @@ export default function Home() {
 
   return (
     <>
-      <Hero slides={slides} />
-      <QuickLinks items={quick} />
-      <PromoCols items={promos} />
+      <StageHero
+        lead={lead}
+        title={['계절마다 새로운 미션이 시작되는', '춘천의 숲속 체험공간']}
+        primary={{ label: '예약하기', to: '/reserve' }}
+        secondary={{ label: '이번 시즌 보기', to: '/play/season' }}
+      />
 
-      <Teaser slot="gungame-obstacles" tone={0} title={`${autumn.title}`} cta="총게임 상세 안내" to="/play/gungame">
-        <p>낮에는 청소년과 단체 리그, 금요일과 토요일 밤에는 불 꺼진 놀이공원에서 야간 미션전이 열려요</p>
-        <p><b>기간</b> {periodText(autumn.period)}</p>
-        <p><b>대상</b> {autumn.target.join(', ')}</p>
-        <p><b>게임 모드</b> {autumn.intensity.levels.join(', ')}</p>
+      <CategoryTiles title="무엇을 할 수 있는 곳인가요" text="가고 싶은 체험을 먼저 골라 보세요." />
+
+      <Teaser slot={`poster-${now.id}`} tone={0} title={`이번 시즌, ${now.season} ${now.title}`} cta="시즌 상세 안내" to={`/play/season/${now.id}`}>
+        <p>{withChar(now.subtitle)}</p>
+        <p><b>기간</b> {periodText(now.period)}</p>
+        <p><b>대상</b> {now.target.join(', ')}</p>
+        <p><b>{now.intensity.label}</b> {now.intensity.levels.join(', ')}</p>
+        <p><b>시간</b> {now.time}</p>
       </Teaser>
+      <TileGrid title="사계절 일정" items={tiles} more={{ to: '/play/season', label: '시즌 이벤트 전체' }} />
 
-      <Teaser slot="cafe-interior" tone={1} title="날씨와 상관없는 동물 교감 카페" cta="카페 회차 예약" to="/reserve?program=animal-cafe">
-        <p>{cafe.summary}</p>
-        <CheckList items={[`하루 ${cafe.sessions.length}회차, ${cafe.sessions[0]}부터 ${cafe.sessions[cafe.sessions.length - 1]}까지`, `1인 ${won(cafe.price.perPerson)}, ${cafe.price.includes} 포함`, '회차 사이 20분은 동물 휴식 시간']} />
-      </Teaser>
+      <section id="list" className="wrap section">
+        <div className="stack-3 ctiles__head">
+          <h2 className="t-band c-primary">전체 콘텐츠</h2>
+          <p className="t-body c-sub">카드를 누르면 소개와 요금, 예약으로 이어져요.</p>
+        </div>
+        <ContentGrid list={items} />
+        <p className="sec-more"><Link to="/play" className="more t-body">어트랙션 전체 보기</Link></p>
+      </section>
 
-      <Teaser slot="character-main" tone={3} title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
-        <p>육림랜드를 지키는 꼬마 수호대장이에요. 숲은 내가 지킬게, 너는 신나게 놀아!</p>
-        <CheckList items={['낮에는 순찰하는 수호대장', '밤에는 총게임을 지휘하는 교관', '리플릿과 포스터, 스탬프 도안에서 만나요']} />
-      </Teaser>
-
-      <TileGrid title="이번 시즌 축제와 이벤트" items={tiles} more={{ to: '/play/season', label: '시즌 이벤트 전체' }} />
-
-      <Teaser slot="promo-video" tone={2} title="1975년부터, 같은 숲에서" cta="육림랜드 이야기" to="/about">
-        <p>육림(育林)은 숲을 기른다는 뜻이고 1975년 춘천의 첫 놀이공원으로 문을 열었어요</p>
-        
-        <CheckList items={['낮에는 아이들의 보물찾기 숲', '밤에는 어른들의 모험 무대', '계절마다 바뀌는 시즌 프로그램']} />
-      </Teaser>
+      <AudienceGrid title="누구와 오시나요" text="함께 오는 사람에 맞춰 먼저 볼 곳을 골라 드려요." />
 
       <PackageCards title="한 장으로 다 되는 통합권" items={bundles} more={{ to: '/guide', label: '요금 전체 안내' }} />
 
-      <Mosaic title="육림랜드를 더 재미있게" items={[
-        { slot: 'site-feeding', label: '먹이 주기 체험', text: '양과 사슴, 염소, 토끼에게 직접 먹이를 줘요.', to: '/play/attractions#zoo' },
-        { slot: 'site-camp', label: '소나무 숲 캠프촌', text: '숲 그늘 아래 텐트를 치고 쉬어요.', to: '/play/attractions#camp' },
-        { slot: 'site-photozone', label: '레트로 포토존', text: '50년 된 놀이공원 간판 앞에서 한 장 남겨요.', to: '/map?focus=photo-retro' },
-        { slot: 'site-train', label: '기차', text: '공원을 한 바퀴 도는 기차를 타요.', to: '/play/attractions#rides' },
-        { slot: 'site-zoo', label: '동물원', text: '호랑이와 곰, 수리부엉이를 만나요.', to: '/play/attractions#zoo' }
-      ]} />
+      <Teaser slot="character-main" tone={3} title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
+        <p>육림랜드를 지키는 꼬마 수호대장이에요. 숲은 내가 지킬게, 너는 신나게 놀아!</p>
+        <CheckList items={['낮에는 순찰하는 수호대장', '밤에는 총게임을 지휘하는 교관', '리플릿과 포스터에서 만나요']} />
+      </Teaser>
+
+      <VisitInfo />
+      <VisitQA />
+      <FinalCta />
     </>
   )
 }

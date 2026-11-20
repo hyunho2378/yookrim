@@ -103,8 +103,10 @@ html.lock { overflow: hidden; }
 /* 아래 예약 띠 */
 .bbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--layer-bar); background: var(--c-primary); padding-bottom: env(safe-area-inset-bottom); }
 .bbar__in { height: var(--z-bookingBar); display: flex; align-items: center; justify-content: center; gap: var(--s-4); }
-.bbar__btn { min-height: var(--z-buttonSm); min-width: 18rem; }
-@media (max-width: 768px) { .bbar__btn--sub { display: none; } .bbar__btn { width: 100%; min-width: 0; } }
+.bbar__btn { min-height: var(--z-buttonSm); min-width: 12rem; gap: var(--s-2); }
+.bbar__btn--side { min-width: 0; padding-inline: var(--s-5); }
+.bbar__btn--main { flex: 1; }
+@media (max-width: 768px) { .bbar__in { gap: var(--s-2); } .bbar__btn { min-width: 0; padding-inline: var(--s-4); } .bbar__btn--side { flex: 0 0 auto; } }
 
 .topbtn { position: fixed; right: var(--s-5); bottom: calc(var(--z-bookingBar) + var(--s-4)); z-index: var(--layer-sticky); width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: var(--r); background: var(--c-bar); color: var(--c-text); box-shadow: var(--shadow-1); opacity: 0; transform: translateY(0.5rem); pointer-events: none; transition: opacity var(--m-base) var(--ease), transform var(--m-base) var(--ease); }
 .topbtn.is-on { opacity: 1; transform: none; pointer-events: auto; }

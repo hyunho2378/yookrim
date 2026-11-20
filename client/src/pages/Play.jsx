@@ -1,26 +1,12 @@
-// Play.jsx  즐길거리 목록과 놀이동산, 동물원. 레고랜드 라이드 화면 틀: 사진 띠, 키 고르기 막대, 3열 목록.
+// Play.jsx  어트랙션 목록(카테고리, 방문자, 나이로 걸러 보기)과 놀이동산, 동물원, 캠프촌 안내.
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Users, MapPin, ArrowRight, Clock } from 'lucide-react'
 import { SubHero, Teaser, CheckList } from '../components/blocks'
 import { Btn, Photo } from '../components/ui'
+import { ContentGrid, AudienceGrid, FactSheet, NextActions } from '../components/blocks/plan'
+import { categories, items } from '../lib/plan'
 import { programs, facilities, zone, program, won, priceFrom } from '../lib/data'
-
-// 프로그램마다 최소 나이. 연령 문구에서 숫자를 읽는다
-const minAge = (p) => {
-  if (p.modes) return Math.min(...p.modes.map((m) => parseInt(m.age.replace(/\D+/g, ''), 10) || 0))
-  if (p.id === 'zombie-night') return 15
-  return 0
-}
-const link = (p) => ({ gungame: '/play/gungame', 'animal-cafe': '/play/cafe', 'zombie-night': '/play/season/summer', 'treasure-hunt': '/play/season/spring', 'winter-camp': '/play/season/winter', feeding: '/play/attractions#zoo', rides: '/play/attractions#rides', campground: '/play/attractions#camp' }[p.id] || '/play')
-const slotOf = (p) => ({ gungame: 'gungame-zone-overview', 'animal-cafe': 'cafe-interior', 'zombie-night': 'zombie-night', 'treasure-hunt': 'poster-spring', 'winter-camp': 'camp-winter', feeding: 'site-feeding', rides: 'site-rides', campground: 'site-camp' }[p.id] || 'site-rides')
-
-const kind = { gungame: 'action', 'zombie-night': 'action', 'treasure-hunt': 'adventure', 'animal-cafe': 'family', feeding: 'family', rides: 'family', campground: 'family', 'winter-camp': 'family' }
-const groups = [
-  { id: 'action', title: '액션 놀이', text: '몸을 움직이며 팀으로 달려요', tone: 'hot' },
-  { id: 'adventure', title: '어드벤처 놀이', text: '숲을 탐험하고 단서를 찾아요', tone: 'blue' },
-  { id: 'family', title: '가족 놀이', text: '온 가족이 함께 즐겨요', tone: 'sun' }
-]
 
 export function List({ items }) {
   return (
@@ -40,33 +26,35 @@ export function List({ items }) {
   )
 }
 
+// 콘텐츠마다 이용할 수 있는 최소 나이
+const minAge = (it) => {
+  if (it.id === 'night-mission') return 19
+  if (it.id === 'zombie-night') return 15
+  const p = program(it.programId)
+  if (p?.modes) return Math.min(...p.modes.map((m) => parseInt(m.age.replace(/\D+/g, ''), 10) || 0))
+  return 0
+}
+
 export function PlayList() {
+  const [sp, setSp] = useSearchParams()
+  const cat = sp.get('cat') || ''
+  const who = sp.get('for') || ''
   const [age, setAge] = useState(20)
-  const cardOf = (p) => ({
-    key: p.id, to: link(p), slot: slotOf(p), title: p.name,
-    meta: p.modes ? p.modes.map((m) => m.age).join(', ') : (p.target ? p.target.join(', ') : '누구나'),
-    price: priceFrom(p) ? `${won(priceFrom(p))}부터` : '무료'
-  })
-  const shown = programs.filter((p) => minAge(p) <= age)
-  const feat = ['gungame', 'animal-cafe'].map((id) => program(id))
+  const set = (k, v) => { const n = new URLSearchParams(sp); if (v) n.set(k, v); else n.delete(k); setSp(n, { replace: true, preventScrollReset: true }) }
+  const shown = items.filter((it) => (!cat || it.cat === cat) && (!who || it.for.includes(who)) && minAge(it) <= age)
+  const groups = categories.map((c) => ({ ...c, list: shown.filter((it) => it.cat === c.id) })).filter((g) => g.list.length)
   return (
     <>
-      <SubHero slot="site-rides" title="즐길거리" text="놀이 유형별로 골라 보세요." />
-      <section className="wrap section lp-feat">
-        {feat.map((p, i) => (
-          <article key={p.id} className={`lp-feat__row ${i % 2 ? 'is-flip' : ''}`}>
-            <Link to={link(p)} className="lp-feat__img"><Photo slot={slotOf(p)} ratio="4 / 3" tone={i} /></Link>
-            <div className="lp-feat__txt stack-4">
-              <p className="t-strong lp-feat__tag">추천</p>
-              <h2 className="t-band">{p.name}</h2>
-              <p className="t-body">{p.summary}</p>
-              <p className="t-small c-sub">{p.modes ? p.modes.map((m) => m.age).join(', ') : (p.target ? p.target.join(', ') : '누구나')}, {priceFrom(p) ? `${won(priceFrom(p))}부터` : '무료'}</p>
-              <div><Btn to={link(p)}>자세히 보기</Btn></div>
-            </div>
-          </article>
-        ))}
-      </section>
-      <section className="wrap lp-filter">
+      <SubHero slot="site-rides" title="어트랙션" text="어드벤처, 나이트, 동물 체험, 캠핑 숙박, 놀이동산 가운데 골라 보세요." />
+      <AudienceGrid title="누구와 오시나요" text="누르면 그 방문에 맞는 콘텐츠만 보여요." active={who} onPick={(v) => set('for', v)} />
+      <section id="list" className="wrap plist__tools">
+        <div>
+          <span className="t-strong pfilter__label">체험 종류</span>
+          <div className="pfilter" role="group" aria-label="체험 종류">
+            <button className="pfilter__btn" aria-pressed={!cat} onClick={() => set('cat', '')}>전체</button>
+            {categories.map((c) => <button key={c.id} className="pfilter__btn" aria-pressed={cat === c.id} onClick={() => set('cat', cat === c.id ? '' : c.id)}>{c.name}</button>)}
+          </div>
+        </div>
         <div className="filterbar__row">
           <label htmlFor="age" className="t-strong">나이를 골라 주세요</label>
           <div className="range">
@@ -77,30 +65,14 @@ export function PlayList() {
           </div>
         </div>
       </section>
-      <section className="wrap section lp-groups">
-        {groups.map((g) => {
-          const list = shown.filter((p) => kind[p.id] === g.id)
-          if (!list.length) return null
-          return (
-            <div key={g.id} className="lp-cat">
-              <h2 className="lp-cat__title t-card">{g.title}<span className="t-body c-sub">{g.text}</span></h2>
-              <ul className="lp-grid">
-                {list.map((p, i) => { const c = cardOf(p); return (
-                  <li key={c.key}>
-                    <Link to={c.to} className={`lc lc--${g.tone}`}>
-                      <Photo slot={c.slot} ratio="1 / 1" tone={i} />
-                      <span className="lc__panel">
-                        <span className="lc__title t-card">{c.title}</span>
-                        <span className="lc__meta t-small">{c.meta}, {c.price}</span>
-                        <span className="lc__more t-body">자세히 보기<ArrowRight size={20} aria-hidden /></span>
-                      </span>
-                    </Link>
-                  </li>) })}
-              </ul>
-            </div>
-          )
-        })}
-        {!shown.length && <p className="t-label empty">이 나이에 맞는 프로그램이 없어 나이를 바꿔 보면 돼요</p>}
+      <section className="wrap section lp-groups" aria-live="polite">
+        {groups.map((g) => (
+          <div key={g.id} className="lp-cat">
+            <h2 className="lp-cat__title t-card">{g.name}<span className="t-body c-sub">{g.text}</span></h2>
+            <ContentGrid list={g.list} />
+          </div>
+        ))}
+        {!groups.length && <p className="t-label empty">조건에 맞는 콘텐츠가 없어요. 걸러 보기를 바꿔 보세요.</p>}
       </section>
     </>
   )
@@ -117,14 +89,18 @@ export function Attractions() {
         <h2 className="t-label tiles__title">놀이기구</h2>
         <List items={rides.map((r) => ({ key: r.id, to: `/map?focus=${r.id}`, slot: { viking: 'ride-viking', bumper: 'ride-bumper', swing: 'ride-swing', carousel: 'ride-carousel', train: 'site-train' }[r.id] || 'site-rides', title: r.name, text: `${zone(r.zone).name}에 있어요.`, meta: [{ icon: MapPin, text: '지도에서 위치 보기' }] }))} />
       </section>
+      <FactSheet id="rides" title="놀이기구 한눈에 보기" />
       <Teaser id="zoo" slot="site-feeding" tone={2} title="동물원과 먹이 주기 체험" cta="지도에서 위치" to="/map?focus=feeding">
         <p>{feed.summary}</p>
         <p>동물원에는 {facilities.find((f) => f.id === 'zoo').desc}</p>
       </Teaser>
+      <FactSheet id="feeding" title="동물원과 먹이 주기 한눈에 보기" />
       <Teaser id="camp" slot="site-camp" tone={0} flip title="소나무 숲 캠프촌" cta="겨울 캠핑 데이" to="/play/season/winter">
         <p>{camp.summary}</p>
         <CheckList items={['개장 시간 동안 자유 이용', '텐트와 취사 장비 직접 준비', '가스버너만 사용']} />
       </Teaser>
+      <FactSheet id="campground" title="캠프촌 한눈에 보기" />
+      <NextActions />
     </>
   )
 }

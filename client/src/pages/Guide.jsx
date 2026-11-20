@@ -5,6 +5,7 @@ import { Check, MapPin, Phone, Car, Bus, TriangleAlert } from 'lucide-react'
 import { SubHero, CenterTitle, Teaser, CheckList, PlainHero } from '../components/blocks'
 import { Accordion, Btn, Photo } from '../components/ui'
 import Calendar from '../components/Calendar'
+import { VisitQA } from '../components/blocks/plan'
 import { site, pricing, won, faq, kstDate, isClosedDay, notices } from '../lib/data'
 
 function Product({ slot, tone, title, items, price, note, cta, to }) {
@@ -112,6 +113,7 @@ export function Faq() {
   return (
     <>
       <PlainHero title="자주 묻는 질문" text="운영과 요금, 프로그램 질문을 모았어요." />
+      <VisitQA />
       <section className="wrap section">
         <div className="choices faq__tabs" role="tablist" aria-label="질문 분류">
           {faq.categories.map((c) => <button key={c} role="tab" aria-selected={cat === c} className="choice" onClick={() => setCat(c)}>{c}</button>)}
