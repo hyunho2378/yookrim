@@ -51,7 +51,7 @@ export default class LandScene {
     this.bubbles = []
     this.lastTouch = performance.now()
     this.ray = new THREE.Raycaster()
-    if (import.meta.env.DEV) window.__land = this
+    window.__land = this
     this.init()
   }
 
