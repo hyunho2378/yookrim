@@ -9,7 +9,8 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { detectTier, PRESET } from './quality'
 
 const BASE = import.meta.env.BASE_URL
-export const LAND_URL = BASE + 'models/land.glb'
+// 모델을 바꿀 때마다 v 값을 올려 브라우저에 남은 옛 파일을 쓰지 않게 한다
+export const LAND_URL = BASE + 'models/land.glb?v=20261120b'
 
 // 눌렀을 때 말풍선과 움직임
 const REACT = {
