@@ -27,6 +27,7 @@ export default function MapPage() {
   const labelsRef = useRef(null)
   const selRef = useRef(sel)
   selRef.current = sel
+  const chooseRef = useRef(null)
 
   useEffect(() => {
     if (!gl || !canvasRef.current) return
@@ -34,7 +35,7 @@ export default function MapPage() {
     let alive = true
     import('../three/LandScene').then(({ default: Land }) => {
       if (!alive) return
-      scene = new Land(canvasRef.current, { zones, pinEls: pinEls.current, labelsEl: labelsRef.current, onReady: () => setTimeout(() => { if (!alive) return; setReady(true); if (selRef.current) scene?.focus(selRef.current) }, 0) })
+      scene = new Land(canvasRef.current, { zones, pinEls: pinEls.current, labelsEl: labelsRef.current, onPick: (id) => chooseRef.current?.(id), onReady: () => setTimeout(() => { if (!alive) return; setReady(true); if (selRef.current) scene?.focus(selRef.current) }, 0) })
       sceneRef.current = scene
     })
     return () => { alive = false; scene?.dispose(); sceneRef.current = null }
@@ -46,6 +47,7 @@ export default function MapPage() {
     sceneRef.current?.focus(id)
     put('focus', id)
   }
+  chooseRef.current = choose
   const close = () => { setSel(null); put('focus', null); sceneRef.current?.reset() }
   const z = sel ? zones.find((x) => x.id === sel) : null
 
@@ -84,7 +86,7 @@ export default function MapPage() {
                 <button onClick={close} aria-label="처음 시점"><RotateCcw size={24} aria-hidden /></button>
               </div>
               {!ready && <div className="mapp__loading t-strong" role="status">육림랜드를 불러오는 중</div>}
-              <p className="mapp__src t-caption">끌어서 돌리고 굴려서 확대해요</p>
+              <p className="mapp__src t-caption">끌어서 돌리고 굴려서 확대해요. 관람차와 동물, 모닥불, 풍선을 눌러 보세요</p>
             </>
           ) : (
             <ul className="mapp__flat mapp__flatlist">

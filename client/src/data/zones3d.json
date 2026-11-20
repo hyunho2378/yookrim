@@ -25,7 +25,8 @@
           "label": "요금과 통합권",
           "to": "/guide"
         }
-      ]
+      ],
+      "r": 3.6
     },
     {
       "id": "survival",
@@ -45,7 +46,8 @@
           "label": "총게임 안내",
           "to": "/play/gungame"
         }
-      ]
+      ],
+      "r": 3.3
     },
     {
       "id": "cafe",
@@ -71,7 +73,8 @@
           "label": "먹이 주기 체험",
           "to": "/play/attractions#zoo"
         }
-      ]
+      ],
+      "r": 4.6
     },
     {
       "id": "bear",
@@ -90,7 +93,8 @@
           "label": "동물원 안내",
           "to": "/play/attractions#zoo"
         }
-      ]
+      ],
+      "r": 2.5
     },
     {
       "id": "camping",
@@ -114,7 +118,8 @@
           "label": "겨울 캠핑 데이",
           "to": "/play/season/winter"
         }
-      ]
+      ],
+      "r": 2.5
     },
     {
       "id": "spin",
@@ -133,7 +138,8 @@
           "label": "놀이기구 안내",
           "to": "/play/attractions#rides"
         }
-      ]
+      ],
+      "r": 2.5
     },
     {
       "id": "amusepark",
@@ -157,7 +163,8 @@
           "label": "놀이동산 안내",
           "to": "/play/attractions#rides"
         }
-      ]
+      ],
+      "r": 2.5
     }
   ]
 }
