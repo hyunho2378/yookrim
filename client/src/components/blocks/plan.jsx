@@ -258,3 +258,37 @@ export function FinalCta() {
     </section>
   )
 }
+
+// 홈 맨 아래 한 줄 띠. 운영시간과 요금, 주소를 글로만 적고 길찾기와 전화, 예약 단추를 둔다
+export function InfoBand() {
+  const a = pricing.admission
+  return (
+    <section className="nact nact--final ibar" aria-label="방문 안내">
+      <div className="wrap ibar__in">
+        <dl className="ibar__list">
+          <div><dt className="t-small">운영시간</dt><dd className="t-strong">평일 {site.hours.weekday.replace('-', ' - ')}, 주말 {site.hours.weekend.replace('-', ' - ')}, {site.hours.closedDay} 휴무</dd></div>
+          <div><dt className="t-small">입장권</dt><dd className="t-strong">성인 {won(a.individual.adult)}, 청소년 {won(a.individual.youth)}, 어린이 {won(a.individual.child)}</dd></div>
+          <div><dt className="t-small">주소</dt><dd className="t-strong">{site.address}</dd></div>
+        </dl>
+        <div className="nact__btns">
+          <a className="btn" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>
+          <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a>
+          <Btn to="/guide" variant="light">요금 안내</Btn>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// 목록 위 방문자 걸러내기 단추
+export function AudienceChips({ active, onPick }) {
+  return (
+    <div>
+      <span className="t-strong pfilter__label">함께 오는 사람</span>
+      <div className="pfilter" role="group" aria-label="함께 오는 사람">
+        <button className="pfilter__btn" aria-pressed={!active} onClick={() => onPick('')}>전체</button>
+        {audiences.map((a) => <button key={a.id} className="pfilter__btn" aria-pressed={active === a.id} onClick={() => onPick(active === a.id ? '' : a.id)}>{a.name}</button>)}
+      </div>
+    </div>
+  )
+}

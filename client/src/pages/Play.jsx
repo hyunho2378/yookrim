@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Users, MapPin, ArrowRight, Clock } from 'lucide-react'
 import { SubHero, Teaser, CheckList } from '../components/blocks'
 import { Btn, Photo } from '../components/ui'
-import { ContentGrid, AudienceGrid, FactSheet, NextActions } from '../components/blocks/plan'
+import { ContentGrid, AudienceChips, FactSheet, NextActions } from '../components/blocks/plan'
 import { categories, items } from '../lib/plan'
 import { programs, facilities, zone, program, won, priceFrom } from '../lib/data'
 
@@ -46,8 +46,8 @@ export function PlayList() {
   return (
     <>
       <SubHero slot="site-rides" title="어트랙션" text="놀이 종류와 함께 오는 사람에 맞춰 찾아보세요." />
-      <AudienceGrid title="함께 오는 사람" text="누르면 맞는 놀이만 보여요." active={who} onPick={(v) => set('for', v)} />
-      <section id="list" className="wrap plist__tools">
+      <section id="list" className="wrap section plist__tools">
+        <AudienceChips active={who} onPick={(v) => set('for', v)} />
         <div>
           <span className="t-strong pfilter__label">체험 종류</span>
           <div className="pfilter" role="group" aria-label="체험 종류">

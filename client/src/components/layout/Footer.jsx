@@ -39,12 +39,6 @@ export default function Footer() {
           </form>
         </div>
       </div>
-      <div className="ftr__sky">
-        <div className="wrap ftr__skyin">
-          <a href={site.officialSite} className="ftr__ext t-body" target="_blank" rel="noreferrer"><ArrowRight size={20} aria-hidden />육림랜드 공식 사이트</a>
-          <a href={`tel:${site.phone}`} className="ftr__ext t-body"><ArrowRight size={20} aria-hidden />대표 전화 {site.phone}</a>
-        </div>
-      </div>
       <div className="ftr__nav">
         <div className="wrap">
           <nav className="ftr__cols" aria-label="사이트 전체 메뉴">
@@ -61,7 +55,7 @@ export default function Footer() {
       </div>
       <div className="ftr__info">
         <div className="wrap stack-3">
-          <p className="t-small">{site.address} | {site.name}</p>
+          <p className="t-small">{site.address} | {site.name} | <a href={site.officialSite} target="_blank" rel="noreferrer">공식 사이트</a></p>
           <p className="t-small">대표 전화 {site.phone} | 평일 {site.hours.weekday.replace('-', ' - ')} | 주말 {site.hours.weekend.replace('-', ' - ')} | 매주 {site.hours.closedDay} 휴무({site.hours.closedDayNote})</p>
         </div>
       </div>
