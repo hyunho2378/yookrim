@@ -33,14 +33,14 @@ export default function Home() {
     <>
       <StageHero
         lead={lead}
-        title={['계절마다 새로운 미션이 시작되는', '춘천의 숲속 체험공간']}
+        title={['new!! 육림랜드', '50년 숲속 놀이공원에 새 놀이가 생겼어요']}
         primary={{ label: '예약하기', to: '/reserve' }}
         secondary={{ label: '이번 시즌 보기', to: '/play/season' }}
       />
 
-      <CategoryTiles title="무엇을 할 수 있는 곳인가요" text="가고 싶은 체험을 먼저 골라 보세요." />
+      <CategoryTiles title="놀이 종류" text="종류별로 둘러보세요." />
 
-      <Teaser slot={`poster-${now.id}`} tone={0} title={`이번 시즌, ${now.season} ${now.title}`} cta="시즌 상세 안내" to={`/play/season/${now.id}`}>
+      <Teaser slot={`poster-${now.id}`} tone={0} title={`${now.season} ${now.title}`} cta="시즌 상세 안내" to={`/play/season/${now.id}`}>
         <p>{withChar(now.subtitle)}</p>
         <p><b>기간</b> {periodText(now.period)}</p>
         <p><b>대상</b> {now.target.join(', ')}</p>
@@ -51,16 +51,15 @@ export default function Home() {
 
       <section id="list" className="wrap section">
         <div className="stack-3 ctiles__head">
-          <h2 className="t-band c-primary">전체 콘텐츠</h2>
-          <p className="t-body c-sub">카드를 누르면 소개와 요금, 예약으로 이어져요.</p>
+          <h2 className="t-band c-primary">전체 놀이</h2>
         </div>
         <ContentGrid list={items} />
         <p className="sec-more"><Link to="/play" className="more t-body">어트랙션 전체 보기</Link></p>
       </section>
 
-      <AudienceGrid title="누구와 오시나요" text="함께 오는 사람에 맞춰 먼저 볼 곳을 골라 드려요." />
+      <AudienceGrid title="함께 오는 사람별 코스" />
 
-      <PackageCards title="한 장으로 다 되는 통합권" items={bundles} more={{ to: '/guide', label: '요금 전체 안내' }} />
+      <PackageCards title="통합권" items={bundles} more={{ to: '/guide', label: '요금 전체 안내' }} />
 
       <Teaser slot="character-main" tone={3} title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
         <p>육림랜드를 지키는 꼬마 수호대장이에요. 숲은 내가 지킬게, 너는 신나게 놀아!</p>

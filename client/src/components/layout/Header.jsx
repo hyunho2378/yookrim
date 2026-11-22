@@ -1,4 +1,4 @@
-// Header.jsx  레고랜드 헤더 구조: 운영시간 줄(40) 위에 노란 메뉴 띠(100). 메뉴를 열면 파란 판이 펼쳐진다.
+// Header.jsx  헤더 구조: 운영시간 줄(40) 위에 노란 메뉴 띠(100). 메뉴를 열면 파란 판이 펼쳐진다.
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Clock, Menu, Ticket, User, X } from 'lucide-react'

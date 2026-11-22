@@ -1,4 +1,4 @@
-// blocks/index.jsx  레고랜드 홈과 하위 화면의 블록을 그대로 옮긴 부품. 내용은 넘겨받은 값만 그린다.
+// blocks/index.jsx  홈과 하위 화면의 블록 부품. 내용은 넘겨받은 값만 그린다.
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, ChevronRight as Arrow, Pause, Play, Check, CalendarDays, Clock, ArrowRight } from 'lucide-react'
@@ -167,7 +167,7 @@ export function Mosaic({ title, items }) {
   )
 }
 
-// 하위 화면 첫 띠. 사진 위 가운데 큰 제목과 한두 줄 설명(레고랜드 라이드 화면)
+// 하위 화면 첫 띠. 사진 위 가운데 큰 제목과 한두 줄 설명
 export function SubHero({ slot, tone = 0, title, text }) {
   return (
     <section className="subhero">
@@ -180,7 +180,7 @@ export function SubHero({ slot, tone = 0, title, text }) {
   )
 }
 
-// 행사 화면 첫 띠. 큰 사진 위 왼쪽 아래 색 상자에 기간과 제목, 단추(레고랜드 시즌 이벤트 화면)
+// 행사 화면 첫 띠. 큰 사진 위 왼쪽 아래 색 상자에 기간과 제목, 단추
 export function EventHero({ slot, tone = 1, tag, title, text, cta, to, onCta }) {
   // 파란 상자와 사진 자리 색이 겹치지 않게 초록이나 빨강 자리만 쓴다
   const t = [1, 1, 2, 2][tone % 4]
@@ -199,7 +199,7 @@ export function EventHero({ slot, tone = 1, tag, title, text, cta, to, onCta }) 
   )
 }
 
-// 가운데 파란 제목과 짧은 설명(레고랜드 이용권 화면)
+// 가운데 파란 제목과 짧은 설명
 export function CenterTitle({ title, text, as: H = 'h2' }) {
   return (
     <div className="ctitle stack-3">
@@ -209,7 +209,7 @@ export function CenterTitle({ title, text, as: H = 'h2' }) {
   )
 }
 
-// 회색 띠 위 가운데 제목(레고랜드 자주 묻는 질문 화면)
+// 회색 띠 위 가운데 제목
 export function PlainHero({ title, text }) {
   return (
     <section className="phero">

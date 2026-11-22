@@ -159,7 +159,7 @@ export function AudienceGrid({ title, text, active, onPick }) {
 }
 
 // 상세 화면 "한눈에 보기". 자료가 있는 항목만 보인다
-export function FactSheet({ id, title = '한눈에 보기' }) {
+export function FactSheet({ id, title = '이용 정보' }) {
   const it = itemById(id)
   const f = factsOf(id)
   if (!it || !f) return null
@@ -183,7 +183,7 @@ export function FactSheet({ id, title = '한눈에 보기' }) {
 }
 
 // 상세 화면 맨 아래. 메뉴로 돌아가지 않고 바로 다음 행동으로 이어진다
-export function NextActions({ program: pid, noBook, title = '다음 단계' }) {
+export function NextActions({ program: pid, noBook, title = '예약과 문의' }) {
   const book = pid ? `/reserve?program=${pid}` : '/reserve'
   return (
     <section className="nact">
@@ -208,12 +208,12 @@ export function VisitInfo() {
     { icon: Clock, title: '운영시간', lines: [`평일 ${site.hours.weekday.replace('-', ' - ')}`, `주말 ${site.hours.weekend.replace('-', ' - ')}`, `${site.hours.closedDay} 휴무`], to: '/guide/calendar', cta: '운영 캘린더' },
     { icon: Wallet, title: '요금', lines: [`성인 ${won(a.individual.adult)}`, `청소년 ${won(a.individual.youth)}`, `어린이 ${won(a.individual.child)}`], to: '/guide', cta: '요금과 통합권' },
     { icon: MapPin, title: '위치와 주차', lines: [site.address, '주차장 이용 가능'], to: '/guide/directions', cta: '오시는 길' },
-    { icon: Ticket, title: '예약', lines: ['총게임, 동물 교감 카페', '좀비 숲, 1일 캠핑은 예약', '그 밖에는 현장 이용'], to: '/reserve', cta: '예약하기' }
+    { icon: Ticket, title: '예약이 필요한 놀이', lines: ['총게임, 동물 교감 카페', '좀비 숲, 1일 캠핑', '나머지는 현장에서 바로 이용'], to: '/reserve', cta: '예약하기' }
   ]
   return (
     <section className="wrap section vinfo" aria-labelledby="vinfo-h">
       <div className="stack-3 ctiles__head">
-        <h2 id="vinfo-h" className="t-band c-primary">방문 전 확인</h2>
+        <h2 id="vinfo-h" className="t-band c-primary">방문 안내</h2>
         <p className="t-body c-sub">{t.label}</p>
       </div>
       <ul className="vinfo__list">
@@ -230,7 +230,7 @@ export function VisitInfo() {
   )
 }
 
-export function VisitQA({ title = '방문 전에 궁금한 점' }) {
+export function VisitQA({ title = '자주 찾는 안내' }) {
   const qa = visitQA().map((x) => ({ q: x.q, a: <>{x.a} <Link to={x.to} className="inline-link">{x.cta}</Link></> }))
   return (
     <section id="visit-qa" className="wrap section">
@@ -246,8 +246,8 @@ export function FinalCta() {
     <section className="nact nact--final">
       <div className="wrap nact__in">
         <div className="stack-3">
-          <h2 className="t-band">숲으로 오는 길</h2>
-          <p className="t-body">길찾기와 전화 문의, 예약을 여기서 바로 해요.</p>
+          <h2 className="t-band">오시는 길</h2>
+          <p className="t-body">길찾기와 전화, 예약을 바로 할 수 있어요.</p>
         </div>
         <div className="nact__btns">
           <a className="btn" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>

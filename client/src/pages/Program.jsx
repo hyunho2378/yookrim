@@ -1,4 +1,4 @@
-// Program.jsx  총게임, 동물 교감 카페, 시즌 이벤트. 레고랜드 시즌 이벤트 화면 틀(큰 사진 위 색 상자, 사진과 글 띠)을 쓴다.
+// Program.jsx  총게임, 동물 교감 카페, 시즌 이벤트. 시즌 이벤트 화면 틀(큰 사진 위 색 상자, 사진과 글 띠)을 쓴다.
 import { Fragment, useState } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { MapPin } from 'lucide-react'
@@ -50,7 +50,7 @@ export function Gungame() {
           </dl>
         </Teaser>
       ))}
-      <FactSheet id="night-mission" title="야간 미션전 한눈에 보기" />
+      <FactSheet id="night-mission" title="야간 미션전 이용 정보" />
       <section className="wrap section">
         <h2 className="t-label tiles__title">진행 순서</h2>
         <Steps items={p.steps} />

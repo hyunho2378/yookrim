@@ -1,4 +1,4 @@
-/* blocks.css  레고랜드 블록 치수(1440 실측)를 rem 으로 옮겼다 */
+/* blocks.css  블록 치수(1440 기준)를 rem 으로 옮겼다 */
 
 /* 첫 화면 */
 .hero { position: relative; height: var(--z-hero); overflow: hidden; background: var(--c-primaryDeep); color: var(--c-textOnColor); }

@@ -1,4 +1,4 @@
-// Footer.jsx  레고랜드 푸터 구조: 초록 알림 신청 판, 하늘색 줄, 남색 메뉴 줄, 흰 정보 줄.
+// Footer.jsx  푸터 구조: 초록 알림 신청 판, 하늘색 줄, 남색 메뉴 줄, 흰 정보 줄.
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'

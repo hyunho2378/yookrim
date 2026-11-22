@@ -9,7 +9,6 @@
 - 미션 QR은 `/mission/1?code=YOOKRIM-1` 주소를 담는다.
 - 디자인 규칙은 `UI.md`, 색과 간격 값은 `client/src/tokens.js`.
 - 3D 지도 자료는 `node client/scripts/bake-yookrim.mjs`로 받는다(브이월드 위성영상, AWS 지형, OpenStreetMap).
-- `replica/`는 레고랜드 사이트를 읽고 정리한 참고 화면이며 결과물에는 들어가지 않는다.
 
 ## 3D 공간 지도
 
