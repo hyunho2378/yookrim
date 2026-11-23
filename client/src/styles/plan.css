@@ -111,10 +111,27 @@
 .bbar .bbar__btn--side { flex: 1 1 0; }
 .bbar .bbar__btn--main { flex: 1.6 1 0; }
 
-/* 홈 맨 아래 띠 */
-.ibar__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-7); flex-wrap: wrap; }
-.ibar__list { display: flex; flex-direction: column; gap: var(--s-3); flex: 1 1 28rem; }
-.ibar__list dt { opacity: 0.85; }
+/* 홈 맨 아래 방문 안내: 왼쪽 지도, 오른쪽 안내 판 */
+.ibar__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-6); align-items: stretch; }
+.ibar__map { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-2); background: var(--c-page); min-height: 22rem; }
+.ibar__map iframe { display: block; width: 100%; height: 100%; min-height: 22rem; border: 0; }
+.ibar__card { display: flex; flex-direction: column; gap: var(--s-5); padding: var(--s-6); border-radius: var(--r); background: rgba(0, 0, 0, 0.14); box-shadow: var(--shadow-1); }
+.ibar__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--s-6); }
+.ibar__head a, .ibar__head h2, .ibar__head h3 { color: inherit; }
+.ibar__link { display: inline-flex; align-items: center; gap: var(--s-2); text-decoration: underline; text-underline-offset: 3px; }
+.ibar__hours { display: flex; flex-direction: column; gap: var(--s-3); }
+.ibar__hours dl { display: flex; flex-direction: column; gap: var(--s-2); }
+.ibar__hours dl > div { display: flex; align-items: baseline; gap: var(--s-2); }
+.ibar__hours dl > div::after { content: ''; order: 1; flex: 1; border-bottom: 1px dotted currentColor; opacity: 0.5; }
+.ibar__hours dt { order: 0; opacity: 0.85; }
+.ibar__hours dd { order: 2; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ibar__hours .is-off dd { color: var(--c-citron); }
+.ibar__hours p { opacity: 0.85; }
+.ibar__price { opacity: 0.85; margin-top: auto; }
+.ibar__btns { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.ibar .ibar__btns .btn:not(.btn--light) { background: var(--c-citron); color: var(--c-ink); }
+@media (max-width: 1024px) { .ibar__in { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .ibar__head { grid-template-columns: 1fr; } .ibar__card { padding: var(--s-5); } .ibar__btns { grid-template-columns: 1fr; } }
 
 /* 이용 정보는 상자 없이 */
 .fact__box { background: transparent; box-shadow: none; padding: 0; }
