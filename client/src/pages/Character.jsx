@@ -22,7 +22,7 @@ const eagle = [
   ['순한 성격', '독수리는 사냥하지 않고 죽은 동물을 먹는 자연의 청소부예요. 덩치는 커도 까치나 까마귀한테 밀리기도 해요.'],
   ['바람 타기', '날갯짓보다 상승기류를 타고 활공해요.'],
   ['겨울 손님', '겨울에 먼 북쪽에서 날아오는 철새이고, 강원도가 대표적인 월동지예요.'],
-  ['목도리 깃털', '목둘레의 갈색 깃털이 실제 특징이에요.']
+  ['목도리 깃털', '독수리 목둘레의 갈색 깃털을 그대로 가져왔어요.']
 ]
 
 export default function Character() {
@@ -43,14 +43,14 @@ export default function Character() {
       </section>
 
       <section className="wrap section gd-block">
-        <header className="gd-head"><h2 className="t-band">캐릭터 설정</h2><p className="t-body c-sub">역할과 세계관, 성격을 정리했어요.</p></header>
+        <header className="gd-head"><h2 className="t-band">캐릭터 설정</h2><p className="t-body c-sub">가디는 이런 친구예요.</p></header>
         <dl className="kv">{profile.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl>
 
         <div className="gd-world">
           <div className="stack-4">
             <h3 className="t-card c-primary">숲을 기르는 놀이공원</h3>
-            <p className="t-body">육림(育林)은 숲을 기른다는 뜻이에요. 1975년, 춘천에 첫 놀이공원이 문을 열었어요. 소나무 숲에 둘러싸인 그곳의 이름은 육림랜드. 반세기 동안 이 숲에서는 나무만 자란 게 아니에요. 회전목마를 타며 웃던 아이, 바이킹에서 소리 지르던 친구들, 손을 꼭 잡고 걷던 가족이 남기고 간 웃음이 숲 곳곳에 쌓여 함께 자랐어요.</p>
-            <p className="t-body">육림랜드의 숲은 그 웃음, 그러니까 동심을 기르는 숲이에요. 그리고 숲에는 그 동심이 다치지 않도록 지키는 친구들이 살아요. 그 친구들의 대장이 바로 가디예요.</p>
+            <p className="t-body">육림(育林)은 숲을 기른다는 뜻이에요. 1975년, 춘천에 첫 놀이공원이 문을 열었어요. 소나무 숲에 둘러싸인 그곳의 이름은 육림랜드. 50년 동안 회전목마를 타며 웃던 아이, 바이킹에서 소리 지르던 친구들, 손을 꼭 잡고 걷던 가족의 웃음이 숲 곳곳에 쌓였어요.</p>
+            <p className="t-body">그 웃음을 지키는 친구들이 숲에 살고, 그 친구들의 대장이 가디예요.</p>
           </div>
           <div className="stack-4 gd-story">
             <h3 className="t-card c-primary">가디가 육림랜드에 남은 이야기</h3>

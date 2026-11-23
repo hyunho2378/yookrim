@@ -1,4 +1,4 @@
-// Calendar.jsx  레고랜드 운영 캘린더 틀. 큰 칸마다 날짜와 운영시간, 휴무를 쓴다. 운영체제 날짜 선택 창을 쓰지 않는다.
+// Calendar.jsx  운영 캘린더 틀. 큰 칸마다 날짜와 운영시간, 휴무를 쓴다. 운영체제 날짜 선택 창을 쓰지 않는다.
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ymd, kstDate } from '../lib/data'
 

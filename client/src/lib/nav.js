@@ -1,4 +1,4 @@
-// nav.js  메뉴 구조. 레고랜드처럼 메뉴마다 묶음 열과 오른쪽 사진 안내를 둔다.
+// nav.js  메뉴 구조. 메뉴마다 묶음 열과 오른쪽 사진 안내를 둔다.
 export const menus = [
   {
     id: 'about', label: '육림랜드 소개', to: '/about',

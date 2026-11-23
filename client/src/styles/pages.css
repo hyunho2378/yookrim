@@ -19,7 +19,7 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .band-red { background: var(--c-action); color: var(--c-textOnColor); padding-block: var(--s-7); }
 .band-red .checks svg { color: var(--c-textOnColor); }
 
-/* 3열 목록(레고랜드 라이드 목록) */
+/* 3열 목록 */
 .rlist { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-7) var(--s-6); }
 .rlist__item { position: relative; display: flex; flex-direction: column; gap: var(--s-3); height: 100%; padding-bottom: var(--s-7); }
 .rlist__item h3 { margin-top: var(--s-2); }
@@ -74,7 +74,7 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .rewards .photo { margin-bottom: var(--s-2); }
 @media (max-width: 768px) { .rewards { grid-template-columns: 1fr; } }
 
-/* 캘린더(레고랜드 운영 캘린더) */
+/* 캘린더 */
 .cal { display: flex; flex-direction: column; gap: var(--s-4); }
 .cal__head { display: flex; align-items: center; justify-content: space-between; background: var(--c-primary); color: var(--c-textOnColor); border-radius: var(--r); padding: var(--s-2); }
 .cal__nav { width: var(--z-touch); height: var(--z-touch); display: grid; place-items: center; border-radius: var(--r); }

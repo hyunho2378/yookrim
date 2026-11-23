@@ -110,3 +110,18 @@
 .bbar .bbar__btn { width: auto; min-width: 0; padding-inline: var(--s-3); white-space: nowrap; }
 .bbar .bbar__btn--side { flex: 1 1 0; }
 .bbar .bbar__btn--main { flex: 1.6 1 0; }
+
+/* 홈 맨 아래 띠 */
+.ibar__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-7); flex-wrap: wrap; }
+.ibar__list { display: flex; flex-direction: column; gap: var(--s-3); flex: 1 1 28rem; }
+.ibar__list dt { opacity: 0.85; }
+
+/* 이용 정보는 상자 없이 */
+.fact__box { background: transparent; box-shadow: none; padding: 0; }
+.fact__row { border-bottom: 0; }
+.fact { padding-block: var(--s-6); }
+.ibar__in { padding-block: var(--s-7); }
+.ftr { margin-top: 0; }
+.ftr__form { padding-block: var(--s-6); }
+.ftr__nav { padding-block: var(--s-6); }
+.ftr__info a { text-decoration: underline; text-underline-offset: 3px; }

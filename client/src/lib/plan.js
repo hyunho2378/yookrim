@@ -105,13 +105,13 @@ export function visitQA() {
   const gun = program('gungame')
   const open = seasons.filter((s) => seasonStatus(s) !== 'ended')
   return [
-    { q: '육림랜드는 어떤 곳인가요?', a: `1975년 춘천에서 문을 연 숲속 놀이공원이에요. 낮에는 놀이기구와 동물, 밤에는 야간 체험과 캠핑이 열리고 계절마다 새 프로그램이 시작돼요.`, to: '/about', cta: '육림랜드 이야기' },
-    { q: '오늘이나 이번 시즌에는 무엇을 할 수 있나요?', a: `놀이기구와 동물원, 먹이 주기, 동물 교감 카페는 운영일마다 이용해요. 시즌 프로그램은 ${now.season} ${now.title}가 ${statusText[st]} 상태이고 ${periodText(now.period)}에 열려요.`, to: '/play/season', cta: '이번 시즌 보기' },
-    { q: '함께 오는 사람에게 어떤 콘텐츠가 맞나요?', a: '아이와 함께라면 동물 체험과 놀이기구, 친구나 연인과는 총게임과 야간 체험, 단체라면 총게임 단체 예약을 추천해요. 처음이라면 놀이기구와 동물원, 동물 교감 카페부터 둘러보세요.', to: '/play#audience', cta: '방문자별 추천 보기' },
-    { q: '얼마나 걸리고 비용은 얼마인가요?', a: `총게임은 모드에 따라 40분에서 60분이 걸리고 1인 ${won(gun.price.laser)}부터예요. 입장권은 성인 ${won(a.individual.adult)}, 청소년 ${won(a.individual.youth)}, 어린이 ${won(a.individual.child)}이고 ${a.freeUnder}예요.`, to: '/guide', cta: '요금 보기' },
-    { q: '예약이 필요한가요?', a: '숲속 총게임, 동물 교감 카페, 한밤의 좀비 숲, 1일 캠핑은 예약이 필요해요. 입장과 놀이기구, 동물원은 현장에서 바로 이용해요.', to: '/reserve', cta: '예약하기' },
-    { q: '어디에 있고 주차할 수 있나요?', a: `${site.address}에 있어요. 주차장이 있고 가는 길은 대중교통과 자가용으로 나눠 안내해요.`, to: '/guide/directions', cta: '오시는 길 보기' },
-    { q: '안전하게 이용할 수 있나요?', a: '총게임은 경기 전 10분 안전 교육을 하고 보호 장비를 꼭 착용해요. 좀비 숲은 포기 신호를 보내면 언제든 나갈 수 있고, 동물 체험은 손 소독 뒤 입장해요.', to: '/play/gungame#safety', cta: '안전 수칙 보기' },
-    { q: '다음 시즌에도 다시 올 이유가 있나요?', a: `계절마다 프로그램이 바뀌어요. ${open.map((s) => `${s.season} ${s.title}(${shortDate(s.period.start)} 시작)`).join(', ')}이 이어져요.`, to: '/play/season', cta: '사계절 일정 보기' }
+    { q: '육림랜드는 어떤 곳인가요?', a: '1975년 춘천에서 문을 연 숲속 놀이공원이에요. 놀이기구와 동물원이 있고, 계절마다 총게임이나 보물찾기 같은 프로그램이 열려요.', to: '/about', cta: '육림랜드 이야기' },
+    { q: '지금 무엇을 할 수 있나요?', a: `놀이기구와 동물원, 먹이 주기, 동물 교감 카페는 운영일마다 이용해요. 시즌 프로그램은 ${now.season} 시즌 ${now.title}, ${periodText(now.period)}에 열려요.`, to: '/play/season', cta: '이번 시즌 보기' },
+    { q: '누구와 가면 어떤 놀이가 좋나요?', a: '아이와는 동물 체험과 놀이기구, 친구나 연인과는 총게임과 야간 체험, 단체는 총게임 단체 예약이 잘 맞아요.', to: '/play#audience', cta: '함께 오는 사람별 코스' },
+    { q: '비용은 얼마인가요?', a: `입장권은 성인 ${won(a.individual.adult)}, 청소년 ${won(a.individual.youth)}, 어린이 ${won(a.individual.child)}이고 ${a.freeUnder}예요. 총게임은 1인 ${won(gun.price.laser)}부터이고 40분에서 60분 걸려요.`, to: '/guide', cta: '요금 보기' },
+    { q: '예약이 필요한가요?', a: '총게임과 동물 교감 카페, 좀비 숲, 1일 캠핑은 예약해야 해요. 입장과 놀이기구, 동물원은 현장에서 바로 이용해요.', to: '/reserve', cta: '예약하기' },
+    { q: '주차할 수 있나요?', a: `${site.address}에 있고 주차장을 이용할 수 있어요. 대중교통과 자가용 안내는 오시는 길에서 볼 수 있어요.`, to: '/guide/directions', cta: '오시는 길 보기' },
+    { q: '안전한가요?', a: '총게임은 시작 전 10분 안전 교육을 하고 보호 장비를 꼭 착용해요. 좀비 숲은 포기 신호를 보내면 언제든 나갈 수 있고, 동물 체험은 손을 소독하고 들어가요.', to: '/play/gungame#safety', cta: '안전 수칙 보기' },
+    { q: '다음 시즌에는 무엇이 열리나요?', a: `계절마다 프로그램이 바뀌어요. ${open.map((s) => `${s.season} ${s.title}(${shortDate(s.period.start)} 시작)`).join(', ')}이 차례로 열려요.`, to: '/play/season', cta: '사계절 일정 보기' }
   ]
 }

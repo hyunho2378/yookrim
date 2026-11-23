@@ -1,4 +1,4 @@
-// Guide.jsx  이용안내. 요금(레고랜드 이용권 화면 틀), 운영 캘린더, 오시는 길, 자주 묻는 질문.
+// Guide.jsx  이용안내. 요금, 운영 캘린더, 오시는 길, 자주 묻는 질문.
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Check, MapPin, Phone, Car, Bus, TriangleAlert } from 'lucide-react'
@@ -29,7 +29,7 @@ export function Fees() {
   const a = pricing.admission
   return (
     <>
-      <SubHero slot="site-entrance" title="요금과 통합권" text="입장권과 놀이기구 이용권, 한 장으로 다 되는 통합권을 비교해 보세요." />
+      <SubHero slot="site-entrance" title="요금과 통합권" text="입장권과 놀이기구 이용권, 통합권 요금이에요." />
       <section className="wrap section">
         <CenterTitle title="입장권과 이용권" text={`${a.freeUnder}. ${a.discountNote}.`} />
         <div className="prods">
@@ -43,7 +43,7 @@ export function Fees() {
         </div>
       </section>
       <section id="bundle" className="wrap section">
-        <CenterTitle title="한 장으로 다 되는 통합권" text="입장권과 놀이기구 이용권을 한 장으로 묶었어요" />
+        <CenterTitle title="통합권" text="입장과 놀이를 한 장으로 묶었어요" />
         <div className="prods">
           {pricing.bundles.options.map((b, i) => (
             <Product key={b.id} slot={b.id} tone={i + 1} title={b.name} items={b.includes}

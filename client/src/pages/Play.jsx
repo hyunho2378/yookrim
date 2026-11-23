@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Users, MapPin, ArrowRight, Clock } from 'lucide-react'
 import { SubHero, Teaser, CheckList } from '../components/blocks'
 import { Btn, Photo } from '../components/ui'
-import { ContentGrid, AudienceGrid, FactSheet, NextActions } from '../components/blocks/plan'
+import { ContentGrid, AudienceChips, FactSheet, NextActions } from '../components/blocks/plan'
 import { categories, items } from '../lib/plan'
 import { programs, facilities, zone, program, won, priceFrom } from '../lib/data'
 
@@ -45,9 +45,9 @@ export function PlayList() {
   const groups = categories.map((c) => ({ ...c, list: shown.filter((it) => it.cat === c.id) })).filter((g) => g.list.length)
   return (
     <>
-      <SubHero slot="site-rides" title="어트랙션" text="어드벤처, 나이트, 동물 체험, 캠핑 숙박, 놀이동산 가운데 골라 보세요." />
-      <AudienceGrid title="누구와 오시나요" text="누르면 그 방문에 맞는 콘텐츠만 보여요." active={who} onPick={(v) => set('for', v)} />
-      <section id="list" className="wrap plist__tools">
+      <SubHero slot="site-rides" title="어트랙션" text="놀이 종류와 함께 오는 사람에 맞춰 찾아보세요." />
+      <section id="list" className="wrap section plist__tools">
+        <AudienceChips active={who} onPick={(v) => set('for', v)} />
         <div>
           <span className="t-strong pfilter__label">체험 종류</span>
           <div className="pfilter" role="group" aria-label="체험 종류">
@@ -72,7 +72,7 @@ export function PlayList() {
             <ContentGrid list={g.list} />
           </div>
         ))}
-        {!groups.length && <p className="t-label empty">조건에 맞는 콘텐츠가 없어요. 걸러 보기를 바꿔 보세요.</p>}
+        {!groups.length && <p className="t-label empty">맞는 놀이가 없어요. 조건을 바꿔 보세요.</p>}
       </section>
     </>
   )
@@ -89,17 +89,17 @@ export function Attractions() {
         <h2 className="t-label tiles__title">놀이기구</h2>
         <List items={rides.map((r) => ({ key: r.id, to: `/map?focus=${r.id}`, slot: { viking: 'ride-viking', bumper: 'ride-bumper', swing: 'ride-swing', carousel: 'ride-carousel', train: 'site-train' }[r.id] || 'site-rides', title: r.name, text: `${zone(r.zone).name}에 있어요.`, meta: [{ icon: MapPin, text: '지도에서 위치 보기' }] }))} />
       </section>
-      <FactSheet id="rides" title="놀이기구 한눈에 보기" />
+      <FactSheet id="rides" title="놀이기구 이용 정보" />
       <Teaser id="zoo" slot="site-feeding" tone={2} title="동물원과 먹이 주기 체험" cta="지도에서 위치" to="/map?focus=feeding">
         <p>{feed.summary}</p>
         <p>동물원에는 {facilities.find((f) => f.id === 'zoo').desc}</p>
       </Teaser>
-      <FactSheet id="feeding" title="동물원과 먹이 주기 한눈에 보기" />
+      <FactSheet id="feeding" title="동물원과 먹이 주기 이용 정보" />
       <Teaser id="camp" slot="site-camp" tone={0} flip title="소나무 숲 캠프촌" cta="겨울 캠핑 데이" to="/play/season/winter">
         <p>{camp.summary}</p>
         <CheckList items={['개장 시간 동안 자유 이용', '텐트와 취사 장비 직접 준비', '가스버너만 사용']} />
       </Teaser>
-      <FactSheet id="campground" title="캠프촌 한눈에 보기" />
+      <FactSheet id="campground" title="캠프촌 이용 정보" />
       <NextActions />
     </>
   )

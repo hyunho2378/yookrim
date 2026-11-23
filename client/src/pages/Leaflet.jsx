@@ -14,7 +14,7 @@ export default function Leaflet() {
           <div className="stack-4">
             <p className="gd-tag t-strong">한 장 안내</p>
             <h1 className="t-display">육림랜드 리플릿</h1>
-            <p className="t-label">한 장으로 보는 육림랜드와 가디 대원 미션지를 열어 보세요.</p>
+            <p className="t-label">육림랜드를 한 장에 담았어요. 미션지는 인쇄해서 도장을 모아요.</p>
             <div className="lf-hero__btns">
               <Btn onClick={() => go('leaflet')}>리플릿 보기</Btn>
               <Btn variant="deep" onClick={() => go('sheet')}>미션지 보기</Btn>
@@ -25,7 +25,7 @@ export default function Leaflet() {
       </section>
 
       <section id="leaflet" className="wrap section noprint">
-        <header className="gd-head"><h2 className="t-band">리플릿</h2><p className="t-body c-sub">앞면은 사계절 체험, 뒷면은 공원 지도와 이용 안내예요. 그림을 누르면 크게 볼 수 있어요.</p></header>
+        <header className="gd-head"><h2 className="t-band">리플릿</h2><p className="t-body c-sub">앞면은 사계절 체험, 뒷면은 공원 지도와 이용 안내예요.</p></header>
         <div className="lf-pages">
           <figure className="lf-page">
             <a href={`${base}images/leaflet-front.jpg`} target="_blank" rel="noreferrer"><Photo slot="leaflet-front" ratio="991 / 1400" tone={1} /></a>
