@@ -599,8 +599,10 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 640px) { .prods { grid-template-columns: 1fr; } }
 
 /* 오시는 길 */
-.dir { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); align-items: start; }
-@media (max-width: 768px) { .dir { grid-template-columns: 1fr; } }
+.dir { display: grid; grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr); gap: var(--s-7); align-items: stretch; }
+.dir__map { min-height: 24rem; overflow: hidden; border-radius: var(--r); background: var(--c-page); box-shadow: var(--shadow-2); }
+.dir__map iframe { display: block; width: 100%; height: 100%; min-height: 24rem; border: 0; }
+@media (max-width: 768px) { .dir { grid-template-columns: 1fr; } .dir__map, .dir__map iframe { min-height: 20rem; } }
 .band-red .inline-link { color: inherit; }
 
 /* 소개 */
@@ -682,8 +684,8 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .mapp__ctl, .mapp__card, .mapp__loading { z-index: 3; }
 .mapp__src { z-index: 2; }
 
-.bubble { position: absolute; left: 0; top: 0; z-index: 4; padding: var(--s-1) var(--s-3); background: var(--c-citron); color: var(--c-ink); border-radius: var(--r-sm); box-shadow: var(--shadow-2); white-space: nowrap; pointer-events: none; will-change: transform; animation: bubbleIn 1500ms var(--ease) both; }
-@keyframes bubbleIn { 0% { opacity: 0; } 12% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
+.story-video { display: grid; gap: var(--s-5); }
+.story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow-2); background: var(--c-ink); }
 /* elevation.css  면의 높이와 입체감. 그림자 값은 tokens.js 의 shadow 단계만 쓴다.
    화면은 사진과 카드, 단추가 바탕 위에 떠 있는 느낌이 있다. 그 느낌을 그림자 단계로 만든다.
    움직임은 transform 과 box-shadow 의 부드러운 전환만 쓰고 크기나 자리는 바꾸지 않는다. */
@@ -1260,10 +1262,14 @@ a.inline-link { color: var(--c-ink); }
 .bbar .bbar__btn--side { flex: 1 1 0; }
 .bbar .bbar__btn--main { flex: 1.6 1 0; }
 
-/* 홈 맨 아래 띠 */
-.ibar__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-7); flex-wrap: wrap; }
+/* 홈 방문 안내는 운영 정보와 단추만 짧게 둔다 */
+.ibar__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-7); flex-wrap: wrap; padding-block: var(--s-7); }
 .ibar__list { display: flex; flex-direction: column; gap: var(--s-3); flex: 1 1 28rem; }
 .ibar__list dt { opacity: 0.85; }
+.ftr { margin-top: 0; }
+.ftr__form { padding-block: var(--s-6); }
+.ftr__nav { padding-block: var(--s-6); }
+.ftr__info a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* 이용 정보는 상자 없이 */
 .fact__box { background: transparent; box-shadow: none; padding: 0; }
