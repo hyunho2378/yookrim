@@ -1,4 +1,4 @@
-// LandScene.js  3D팀이 만든 육림랜드 모형(public/models/land.glb)을 보여 주는 장면.
+// LandScene.js  육림랜드 공간 지도를 보여 주는 장면.
 // 구역 이름표는 zones 배열의 좌표(x, z)에 놓고, 이름을 누르면 그 구역으로 카메라가 날아간다.
 // 살아 움직이는 것: 대관람차, 회전그네, 곰, 양, 너구리(파일 안 애니메이션), 모닥불, 풍선.
 // 누르면 반응하는 것: 위 물건들과 정문 간판, 감시탑, 폐차, 안내 간판. 눌린 물건은 말풍선을 띄우고 뛰어오르거나 빨라진다.
@@ -10,7 +10,7 @@ import { detectTier, PRESET } from './quality'
 
 const BASE = import.meta.env.BASE_URL
 // 모델을 바꿀 때마다 v 값을 올려 브라우저에 남은 옛 파일을 쓰지 않게 한다
-export const LAND_URL = BASE + 'models/land.glb?v=20261120b'
+export const LAND_URL = BASE + 'models/land.glb?v=20261123c'
 
 // 눌렀을 때 말풍선과 움직임
 const REACT = {

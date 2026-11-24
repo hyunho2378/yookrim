@@ -10,6 +10,12 @@ export function About() {
   return (
     <>
       <EventHero slot="site-history" tone={0} tag={`${site.founded}년 개장`} title="숲을 기르는 놀이공원, 육림" text="육림(育林)은 숲을 기른다는 뜻이에요." />
+      <section className="wrap section story-video">
+        <h2 className="t-band">육림랜드 소개 영상</h2>
+        <video controls playsInline preload="metadata" poster={`${import.meta.env.BASE_URL}images/promo-video.jpg`} aria-label="육림랜드 소개 영상">
+          <source src={`${import.meta.env.BASE_URL}videos/yuklim-final.mp4`} type="video/mp4" />
+        </video>
+      </section>
       <section id="history" className="wrap section">
         <CenterTitle title="1975년부터 지금까지" text="춘천 사람들의 첫 놀이공원이 소나무 숲과 함께 50년 동안 같은 자리를 지켜 왔어요" />
         <ol className="timeline">
