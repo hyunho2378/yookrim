@@ -54,6 +54,7 @@ export default function MapPage() {
   return (
     <section className="wrap section mapp">
       <h1 className="sr-only">공간 지도</h1>
+      <p className="mapp__hint t-small c-sub">구역을 눌러 안내를 보고, 끌어서 지도를 돌려 보세요</p>
       <div className="mapp__body">
         <aside className="mapp__side">
           <ul className="mapp__list">
@@ -86,7 +87,6 @@ export default function MapPage() {
                 <button onClick={close} aria-label="처음 시점"><RotateCcw size={24} aria-hidden /></button>
               </div>
               {!ready && <div className="mapp__loading t-strong" role="status">육림랜드를 불러오는 중</div>}
-              <p className="mapp__src t-caption">구역을 눌러 안내를 보고, 끌어서 지도를 돌려 보세요</p>
             </>
           ) : (
             <ul className="mapp__flat mapp__flatlist">

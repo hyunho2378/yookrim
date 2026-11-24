@@ -221,7 +221,7 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 }
 @media (max-width: 768px) { .mapp__card { left: 0; right: 0; bottom: 0; width: auto; border-radius: var(--r) var(--r) 0 0; } }
 
-.mapp__src { position: absolute; left: var(--s-3); top: var(--s-3); max-width: calc(100% - var(--s-8) - var(--z-touch)); color: var(--c-textOnColor); text-shadow: var(--shadow-text); pointer-events: none; }
+.mapp__hint { margin: 0 0 var(--s-5); }
 .mapp__flat { display: grid; place-items: center; overflow: auto; }
 .flatbox { position: relative; width: max(100%, 56rem); aspect-ratio: 1; }
 .flatbox img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -235,12 +235,10 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .mapp__thumb { width: 4.5rem; height: 3.375rem; flex: none; object-fit: cover; border-radius: var(--r-sm); background: var(--c-surface); }
 .mapp__stage { position: absolute; inset: 0; background: var(--c-primary); }
 .mapp__stage--land { background: linear-gradient(180deg, var(--c-kiwi) 0%, var(--c-linden) 100%); }
-.mapp__stage--land .mapp__src { color: var(--c-ink); text-shadow: none; }
 .mapp__flatlist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); padding: var(--s-4); overflow: auto; align-content: start; }
 
 .mapp__pins { z-index: 1; }
 .mapp__ctl, .mapp__card, .mapp__loading { z-index: 3; }
-.mapp__src { z-index: 2; }
 
 .story-video { display: grid; gap: var(--s-5); }
 .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow-2); background: var(--c-ink); }
