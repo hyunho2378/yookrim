@@ -259,47 +259,22 @@ export function FinalCta() {
   )
 }
 
-// 요일별 운영시간. 월요일부터, 휴무일은 시간 대신 '휴무'
-const DAYS = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
-const weekHours = () => DAYS.map((d, i) => ({
-  day: d,
-  time: d === site.hours.closedDay ? '휴무' : (i >= 5 ? site.hours.weekend : site.hours.weekday).replace('-', ' - ')
-}))
-
-// 홈 맨 아래 방문 안내. 왼쪽 지도, 오른쪽 주소와 요일별 운영시간, 예약과 요금 단추
+// 홈 맨 아래 방문 안내. 운영시간과 요금, 주소를 짧게 보여준다
 export function InfoBand() {
+  const t = todayHours()
   const a = pricing.admission
-  const embed = `https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&hl=ko&z=16&output=embed`
   return (
     <section className="nact nact--final ibar" aria-label="방문 안내">
       <div className="wrap ibar__in">
-        <div className="ibar__map">
-          <iframe title={`${site.name} 위치 지도`} src={embed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-        </div>
-        <div className="ibar__card">
-          <div className="ibar__head">
-            <div className="stack-3">
-              <MapPin size={24} aria-hidden />
-              <h2 className="t-band">춘천 {site.name}</h2>
-              <p className="t-strong">{site.address}</p>
-              <p className="t-strong"><a href={`tel:${site.phone}`}>{site.phone}</a></p>
-              <a className="ibar__link t-small" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={16} aria-hidden />지도 앱에서 길찾기</a>
-            </div>
-            <div className="ibar__hours">
-              <h3 className="t-strong">운영시간</h3>
-              <dl>
-                {weekHours().map((h) => (
-                  <div key={h.day} className={h.time === '휴무' ? 'is-off' : undefined}><dt>{h.day}</dt><dd>{h.time}</dd></div>
-                ))}
-              </dl>
-              <p className="t-small">{site.hours.closedDayNote}. 입장 마감 {site.hours.lastEntry}</p>
-            </div>
-          </div>
-          <p className="t-small ibar__price">입장권 성인 {won(a.individual.adult)}, 청소년 {won(a.individual.youth)}, 어린이 {won(a.individual.child)}</p>
-          <div className="ibar__btns">
-            <Btn to="/reserve">예약하기</Btn>
-            <Btn to="/guide" variant="light">요금 안내</Btn>
-          </div>
+        <dl className="ibar__list">
+          <div><dt className="t-small">운영시간</dt><dd className="t-strong">{t.label}, 주말 {site.hours.weekend.replace('-', ' - ')}, {site.hours.closedDay} 휴무</dd></div>
+          <div><dt className="t-small">입장권</dt><dd className="t-strong">성인 {won(a.individual.adult)}, 청소년 {won(a.individual.youth)}, 어린이 {won(a.individual.child)}</dd></div>
+          <div><dt className="t-small">주소</dt><dd className="t-strong">{site.address}</dd></div>
+        </dl>
+        <div className="nact__btns">
+          <a className="btn" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>
+          <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a>
+          <Btn to="/guide" variant="light">요금 안내</Btn>
         </div>
       </div>
     </section>

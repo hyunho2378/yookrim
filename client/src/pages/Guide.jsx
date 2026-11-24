@@ -7,6 +7,7 @@ import { Accordion, Btn, Photo } from '../components/ui'
 import Calendar from '../components/Calendar'
 import { VisitQA } from '../components/blocks/plan'
 import { site, pricing, won, faq, kstDate, isClosedDay, notices } from '../lib/data'
+const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&hl=ko&z=16&output=embed`
 
 function Product({ slot, tone, title, items, price, note, cta, to }) {
   return (
@@ -87,7 +88,7 @@ export function Directions() {
           <p className="t-body"><a className="inline-link" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a></p>
           <Btn to="/map" variant="deep">공간 지도</Btn>
         </div>
-        <Photo slot="map-aerial" ratio="4 / 3" tone={0} round />
+        <div className="dir__map"><iframe title="육림랜드 위치 지도" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
       </section>
       <Teaser slot="site-entrance" tone={1} title="자가용" >
         <p className="inline-link"><Car size={20} aria-hidden />주차장이 있고 내비게이션에 육림랜드를 넣으면 돼요</p>
