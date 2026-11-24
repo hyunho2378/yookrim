@@ -242,8 +242,5 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .mapp__ctl, .mapp__card, .mapp__loading { z-index: 3; }
 .mapp__src { z-index: 2; }
 
-.bubble { position: absolute; left: 0; top: 0; z-index: 4; padding: var(--s-1) var(--s-3); background: var(--c-citron); color: var(--c-ink); border-radius: var(--r-sm); box-shadow: var(--shadow-2); white-space: nowrap; pointer-events: none; will-change: transform; animation: bubbleIn 1500ms var(--ease) both; }
-@keyframes bubbleIn { 0% { opacity: 0; } 12% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
-
 .story-video { display: grid; gap: var(--s-5); }
 .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow-2); background: var(--c-ink); }
