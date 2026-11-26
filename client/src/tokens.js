@@ -11,7 +11,7 @@ export const color = {
   tea: '#66CBF5',        // 푸터 위쪽 줄
   leaf: '#1B6FE0',       // 버튼, 섹션 제목
   leafPress: '#1556B8',
-  forest: '#1556B8',     // 푸터 아래쪽, 메뉴 판
+  forest: '#2A7B35',     // 푸터 아래쪽, 메뉴 판(포스터의 짙은 초록)
   mustard: '#C2410C',    // 포인트 글자(남은 날수, 더보기)
   hot: '#E5322D',         // 액션 놀이 카드
   hotDeep: '#B71F1B',
@@ -40,7 +40,13 @@ export const color = {
   hcText: '#0E0E10',
   hcSurface: '#E0E0E0',
   scrim: 'rgba(0, 0, 0, 0.55)',
-  error: '#B3300A'
+  error: '#B3300A',
+  // 포스터 세계관 색(2026. 11. 26. 전시 포스터 기준). 하늘, 구름, 풀밭, 로고 주황과 갈색 외곽선
+  sky: '#8ED3F5', skyPale: '#CFEEFB', skyMist: '#E6F7FF', skyDeep: '#2FA3E6', skyEdge: '#1B7DBF',
+  grass: '#6CC24A', grassDeep: '#3E9B3F', forestDark: '#1F5A2A', forestEdge: '#143D1C',
+  logoFill: '#F5A93B', logoShade: '#D9741E', logoLine: '#7A4A1E',
+  sun: '#FFD93D', sunEdge: '#D79A00', sunText: '#4A2B00',
+  strokeBlue: '#17406B', paper: '#FFFFFF', paperEdge: '#B7D7EA'
 }
 
 // 사진 자리 색. 사진이 들어오기 전까지 먹색 한 가지로 채운다
@@ -88,16 +94,16 @@ export const scene = {
 // 높이 단계. 면이 떠 있는 정도를 그림자 두 겹(맞닿은 그림자와 퍼지는 그림자)으로 만든다
 // 0 목록 줄과 입력칸, 1 카드와 사진, 2 떠 있는 판(메뉴 판, 사진 위 상자), 3 손을 올렸을 때 떠오른 카드, btn 누를 수 있는 단추
 export const shadow = {
-  0: '0 1px 2px rgba(17, 17, 17, 0.08), 0 2px 8px rgba(17, 17, 17, 0.06)',
-  1: '0 1px 3px rgba(17, 17, 17, 0.10), 0 8px 24px rgba(17, 17, 17, 0.12)',
-  2: '0 2px 6px rgba(17, 17, 17, 0.12), 0 18px 44px rgba(17, 17, 17, 0.22)',
-  3: '0 4px 10px rgba(17, 17, 17, 0.14), 0 26px 56px rgba(17, 17, 17, 0.26)',
-  btn: '0 2px 4px rgba(17, 17, 17, 0.22), 0 8px 18px rgba(17, 17, 17, 0.16)',
-  header: '0 6px 20px rgba(17, 17, 17, 0.22)',
+  0: '0 2px 0 rgba(27, 125, 191, 0.14), 0 4px 10px rgba(27, 125, 191, 0.12)',
+  1: '0 4px 0 rgba(27, 125, 191, 0.18), 0 10px 22px rgba(27, 125, 191, 0.20)',
+  2: '0 6px 0 rgba(20, 90, 140, 0.22), 0 18px 36px rgba(20, 90, 140, 0.26)',
+  3: '0 8px 0 rgba(20, 90, 140, 0.26), 0 24px 46px rgba(20, 90, 140, 0.30)',
+  btn: '0 5px 0 rgba(20, 90, 140, 0.30), 0 12px 20px rgba(20, 90, 140, 0.22)',
+  header: '0 5px 0 rgba(20, 90, 140, 0.30), 0 12px 24px rgba(20, 90, 140, 0.22)',
   text: '0 2px 14px rgba(0, 0, 0, 0.55)',
-  inset: 'inset 0 1px 3px rgba(17, 17, 17, 0.14)',
+  inset: 'inset 0 2px 4px rgba(20, 90, 140, 0.18)',
   hairline: 'inset 0 -1px 0 rgba(17, 17, 17, 0.10)',
-  bar: '0 -8px 24px rgba(17, 17, 17, 0.22)'
+  bar: '0 -6px 0 rgba(20, 90, 140, 0.25)'
 }
 
 // 사진 위 어둠막. 글자 쪽을 어둡게 하고 반대쪽은 사진이 그대로 보이게 한다
