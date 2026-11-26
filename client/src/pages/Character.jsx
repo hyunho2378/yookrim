@@ -38,7 +38,7 @@ export default function Character() {
           {ways.map((w, i) => (
             <li key={w.title}>
               <Link to={w.to} className="cg-way">
-                {w.img ? <div className="cg-way__img"><img src={`${BASE}images/${w.img}`} alt={w.title} /></div> : <Photo slot={w.slot} ratio="1 / 1" tone={i} alt={w.title} className="cg-way__img" />}
+                {w.img ? <div className="cg-way__img"><img src={`${BASE}images/${w.img}`} alt={w.title} /></div> : <Photo slot={w.slot} ratio="4 / 3" tone={i} alt={w.title} className="cg-way__img" />}
                 <span className="cg-way__txt"><w.icon size={22} aria-hidden /><span className="t-card">{w.title}</span></span>
                 <span className="t-body cg-way__sub">{w.text}</span>
                 <span className="cg-way__go t-strong">바로가기<ArrowRight size={18} aria-hidden /></span>
