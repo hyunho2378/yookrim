@@ -81,6 +81,8 @@ export function StageHero({ title, lead, primary, secondary }) {
         <img key={sl.id} className={`stage__img ${k === i ? 'is-on' : k === prev ? 'is-prev' : ''}`} src={`${import.meta.env.BASE_URL}images/${sl.img}`} alt={k === i ? `${sl.title}. ${sl.text}` : ''} aria-hidden={k !== i} style={{ objectPosition: sl.pos }} width="1920" height="1440" decoding="async" fetchpriority={k === 0 ? 'high' : 'low'} />
       ))}
       <div className="stage__shade" aria-hidden />
+      {/* 임시 장난: 내릴 때 이 줄과 stage__prank 스타일, public/images/prank 를 지운다 */}
+      <img className="stage__prank" src={`${import.meta.env.BASE_URL}images/prank/sk.jpg`} alt="" />
       <div className="wrap stage__copy">
         {lead && <p className="stage__lead t-label">{lead}</p>}
         <h1 className="t-display"><span className="clause">{title[0]}</span> <span className="clause">{title[1]}</span></h1>
