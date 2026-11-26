@@ -10,6 +10,7 @@ import { Fees, OpsCalendar, Directions, Faq } from './pages/Guide'
 import { ReserveLayout, Step1, Step2, Step3, Done } from './pages/Reserve'
 import { About, News, NewsDetail, My, NotFound } from './pages/Misc'
 import Project from './pages/Project'
+import Animals from './pages/Animals'
 import MapPage from './pages/MapPage'
 
 const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: '/play/gungame', element: <Gungame /> },
       { path: '/play/night-mission', element: <NightMission /> },
       { path: '/play/cafe', element: <Cafe /> },
+      { path: '/play/animals', element: <Animals /> },
       { path: '/play/season', element: <SeasonList /> },
       { path: '/play/season/:id', element: <SeasonDetail /> },
       { path: '/play/attractions', element: <Attractions /> },

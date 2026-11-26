@@ -93,6 +93,7 @@ export function Attractions() {
       <Teaser id="zoo" slot="site-feeding" tone={2} title="동물원과 먹이 주기 체험" cta="지도에서 위치" to="/map?focus=feeding">
         <p>{feed.summary}</p>
         <p>동물원에는 {facilities.find((f) => f.id === 'zoo').desc}</p>
+        <p><Link to="/play/animals" className="inline-link">동물 친구들 사진 보기</Link></p>
       </Teaser>
       <FactSheet id="feeding" title="동물원과 먹이 주기 이용 정보" />
       <Teaser id="camp" slot="site-camp" tone={0} flip title="소나무 숲 캠프촌" cta="겨울 캠핑 데이" to="/play/season/winter">

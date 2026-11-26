@@ -28,6 +28,7 @@ export const menus = [
       ] },
       { title: '동물 체험', to: '/play?cat=animal#list', items: [
         { label: '동물 교감 카페', to: '/play/cafe' },
+        { label: '동물 친구들', to: '/play/animals' },
         { label: '동물원과 먹이 주기', to: '/play/attractions#zoo' }
       ] },
       { title: '캠핑 숙박', to: '/play?cat=stay#list', items: [
