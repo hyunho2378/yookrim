@@ -27,7 +27,7 @@ export default function Leaflet() {
               <Btn variant="deep" onClick={() => go('sheet')}>미션지 보기</Btn>
             </div>
           </div>
-          <Photo slot="gadi-main" ratio="1 / 1" tone={0} className="lf-hero__img" />
+          <div className="gd-art gd-art--sm"><img src={`${import.meta.env.BASE_URL}images/gadi/cutout.png`} alt="가디" width="574" height="748" /></div>
         </div>
       </section>
 

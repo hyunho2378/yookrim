@@ -11,6 +11,7 @@ const profile = [
   ['좋아하는 일', '아이들 웃음소리, 높은 곳, 따뜻한 바람, "이상 무!"로 끝나는 하루'],
   ['어려워하는 일', '혼자 우는 아이, 정해진 구역 밖으로 나가는 대원']
 ]
+const scenes = [['spring', '봄', '지도를 들고 보물을 찾는 가디', '/play/season/spring'], ['summer', '여름', '손전등을 들고 좀비 숲을 도는 가디', '/play/season/summer'], ['autumn', '가을', '벙커 뒤에서 깃발을 지키는 가디', '/play/season/autumn'], ['winter', '겨울', '모닥불 앞에서 쉬어 가는 가디', '/play/season/winter']]
 const views = [['gadi-front', '정면'], ['gadi-l34', '왼쪽 3/4'], ['gadi-left', '왼쪽'], ['gadi-back', '뒷면'], ['gadi-right', '오른쪽'], ['gadi-r34', '오른쪽 3/4']]
 const habits = [
   ['"대원, 집합!"', '행사 안내와 집결 장소'],
@@ -38,8 +39,17 @@ export default function Character() {
             <p className="gd-quote t-card">"숲은 내가 지킬게, 너는 신나게 놀아!"</p>
             <div className="gd-hero__btns"><Btn to="/leaflet">리플릿 보기</Btn><Btn variant="deep" to="/play/gungame">총게임 안내</Btn></div>
           </div>
-          <Photo slot="gadi-main" ratio="1 / 1.05" tone={0} className="gd-hero__img" />
+          <div className="gd-art"><img src={`${import.meta.env.BASE_URL}images/gadi/cutout.png`} alt="가디" width="574" height="748" /></div>
         </div>
+      </section>
+
+      <section className="wrap section gd-block gd-seasons">
+        <header className="gd-head"><h2 className="t-band">사계절의 가디</h2><p className="t-body c-sub">계절마다 육림랜드 곳곳에서 가디를 만나요.</p></header>
+        <ul className="gd-scenes">
+          {scenes.map(([id, s, t, to], i) => (
+            <li key={id}><Link to={to} className="gd-scene"><Photo slot={`gadi-scene-${id}`} ratio="16 / 9" tone={i} /><span className="t-small">{s}</span><span className="t-card">{t}</span></Link></li>
+          ))}
+        </ul>
       </section>
 
       <section className="wrap section gd-block">

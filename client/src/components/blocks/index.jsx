@@ -86,15 +86,16 @@ export function PromoCols({ items }) {
 // 왼쪽 사진 594 x 396, 오른쪽 파란 큰 제목과 설명, 빨간 단추
 export function Teaser({ id, slot, tone = 0, title, children, cta, to, flip }) {
   return (
-    <section id={id} className={`wrap section teaser ${flip ? 'teaser--flip' : ''}`}>
-      <div className="teaser__media">
-        <Photo slot={slot} ratio="3 / 2" tone={tone} round>
-          </Photo>
-      </div>
-      <div className="teaser__body stack-4">
-        <h2 className="t-band c-primary">{title}</h2>
-        <div className="teaser__text stack-3 t-body">{children}</div>
-        {cta && <div className="teaser__cta"><Btn to={to}>{cta}</Btn></div>}
+    <section id={id} className="wrap section teaserwrap">
+      <div className={`teaser ${flip ? 'teaser--flip' : ''}`}>
+        <div className="teaser__media">
+          <Photo slot={slot} ratio="3 / 2" tone={tone} round />
+        </div>
+        <div className="teaser__body stack-4">
+          <h2 className="t-band c-primary">{title}</h2>
+          <div className="teaser__text stack-3 t-body">{children}</div>
+          {cta && <div className="teaser__cta"><Btn to={to}>{cta}</Btn></div>}
+        </div>
       </div>
     </section>
   )

@@ -1,0 +1,42 @@
+/* panels.css  섹션마다 흰 면으로 나눠 위아래가 붙어 보이지 않게 한다. 마지막에 불러와 앞선 규칙을 덮는다 */
+.section.teaserwrap { padding-block: var(--s-3); }
+.teaser { background: #fff; border-radius: var(--r); padding: var(--s-5); gap: var(--s-6); align-items: center; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); }
+.teaser__media .photo { box-shadow: none; }
+.teaser__body { padding-block: var(--s-2); }
+.teaser__text p { margin: 0; }
+.teaser__text b { display: inline-block; min-width: 3.5rem; margin-right: var(--s-2); color: var(--c-forestDark); }
+.teaser__cta { padding-top: var(--s-2); }
+@media (max-width: 768px) { .teaser { grid-template-columns: 1fr; padding: var(--s-4); gap: var(--s-4); } }
+
+/* 가디 사계절 */
+.gd-seasons { gap: var(--s-5); }
+.gd-scenes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.gd-scene { display: flex; flex-direction: column; gap: 2px; padding: var(--s-3) var(--s-3) var(--s-4); border-radius: var(--r); background: #fff; box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); }
+.gd-scene .photo { border-radius: var(--r); margin-bottom: var(--s-2); }
+.gd-scene .t-small { color: var(--c-textSub); padding-inline: var(--s-2); }
+.gd-scene .t-card { color: var(--c-forestDark); padding-inline: var(--s-2); font-size: var(--t-quick-size); }
+@media (max-width: 640px) { .gd-scenes { grid-template-columns: 1fr; } }
+
+.ibar__map .kmap__hours { display: none; }
+.ibar__map .kmap__card { padding: var(--s-2) var(--s-3); }
+
+/* 가디 그림 면 */
+.gd-art { display: grid; place-items: end center; aspect-ratio: 1 / 1; padding: var(--s-5) var(--s-5) 0; border-radius: var(--r); background: var(--c-sun); box-shadow: 0 18px 28px rgba(20, 90, 140, 0.22); overflow: hidden; }
+.gd-art img { width: auto; height: 100%; max-width: 100%; object-fit: contain; object-position: bottom; }
+.gd-art--sm { max-width: 22rem; justify-self: end; }
+@media (max-width: 900px) { .gd-art, .gd-art--sm { max-width: 20rem; justify-self: start; } }
+
+/* 놀이 종류 목록: 왼쪽에 종류 이름, 오른쪽에 카드 */
+.lp-groups { display: flex; flex-direction: column; gap: var(--s-4); }
+.lp-cat { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); align-items: start; padding: var(--s-5); border-radius: var(--r); background: rgba(255, 255, 255, 0.7); }
+.lp-cat__title { grid-column: 1; grid-row: 1; flex-direction: column; align-items: flex-start; gap: var(--s-2); margin: 0; }
+.lp-cat > .cgrid { display: contents; }
+.lp-cat .cgrid > li { min-width: 0; height: 100%; }
+@media (max-width: 1024px) { .lp-cat { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lp-cat__title { grid-column: 1 / -1; flex-direction: row; } }
+@media (max-width: 640px) { .lp-cat { grid-template-columns: 1fr; } }
+
+/* 한눈에 보기 */
+.fact__box { background: #fff; padding: var(--s-5); box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); }
+.lf-goodsband { background: transparent; }
+.lp-cat .photo { aspect-ratio: 16 / 10 !important; }
+.lp-cat__title { position: sticky; top: 8rem; }

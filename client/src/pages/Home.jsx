@@ -23,7 +23,7 @@ export default function Home() {
         <p><b>{now.intensity.label}</b> {now.intensity.levels.join(', ')}</p>
         <p><b>시간</b> {now.time}</p>
       </Teaser>
-      <Teaser slot="character-main" tone={3} flip title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
+      <Teaser slot={`gadi-scene-${now.id}`} tone={3} flip title="숲속 친구, 가디" cta="가디 만나기" to="/about/characters">
         <p>육림랜드를 지키는 꼬마 수호대장이에요. 숲은 내가 지킬게, 너는 신나게 놀아!</p>
         <CheckList items={['낮에는 순찰하는 수호대장', '밤에는 총게임을 지휘하는 교관']} />
       </Teaser>

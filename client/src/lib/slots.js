@@ -1,6 +1,10 @@
 // slots.js  사진 자리 목록. public/images/ 에 같은 이름의 파일을 넣으면 그 자리에 바로 들어간다.
 // 파일 이름과 담당은 인계 자료 05_content/image-asset-list.csv 를 따른다.
 export const slots = {
+  'gadi-scene-spring': { file: 'gadi/scene-spring.jpg', label: '봄의 가디' },
+  'gadi-scene-summer': { file: 'gadi/scene-summer.jpg', label: '여름의 가디' },
+  'gadi-scene-autumn': { file: 'gadi/scene-autumn.jpg', label: '가을의 가디' },
+  'gadi-scene-winter': { file: 'gadi/scene-winter.jpg', label: '겨울의 가디' },
   'character-main': { file: 'character-main.jpg', label: '메인 캐릭터' },
   'poster-spring': { file: 'poster-spring.jpg', label: '봄 보물찾기 포스터' },
   'poster-summer': { file: 'poster-summer.jpg', label: '여름 좀비 숲 포스터' },
