@@ -1711,3 +1711,5 @@ body { background-position: center 14rem, 0 0; }
 .lf-goodsband { background: transparent; }
 .lp-cat .photo { aspect-ratio: 16 / 10 !important; }
 .lp-cat__title { position: sticky; top: 8rem; }
+
+.ftr { margin-top: 0; }
