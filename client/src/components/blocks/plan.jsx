@@ -49,13 +49,29 @@ export function LoopVideo({ src, mobile, label, controls = true, className = '' 
   )
 }
 
-// 홈 첫 화면. 영상(없으면 대표 이미지) 위에 핵심 문장과 행동 단추 둘
+// 홈 첫 화면. 사진 네 장이 천천히 바뀌며 기획안의 체험을 차례로 보여 주고, 위에 핵심 문장과 행동 단추 둘이 얹힌다
+const heroSlides = [
+  { id: 'stamp', img: 'hero/stamp.jpg', pos: '50% 60%', title: '미션 스탬프 챌린지', text: '도장 다섯 개를 모으면 굿즈를 받아요', to: '/leaflet#goods' },
+  { id: 'treasure', img: 'hero/treasure.jpg', pos: '50% 62%', title: '숲속 보물찾기', text: '지도와 힌트 카드로 숲 곳곳의 보물을 찾아요', to: '/play/season/spring' },
+  { id: 'camp', img: 'hero/camp.jpg', pos: '50% 55%', title: '1일 캠핑 데이', text: '소나무 숲에서 하룻밤, 모닥불과 야간 체험', to: '/play/season/winter' },
+  { id: 'friends', img: 'hero/friends.jpg', pos: '50% 55%', title: '동물 친구와 포토존', text: '동물 교감 카페와 먹이 주기 체험', to: '/play/cafe' }
+]
 export function StageHero({ title, lead, primary, secondary }) {
-  const v = videos.hero
+  const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [reduce, setReduce] = useState(false)
+  useEffect(() => { setReduce(window.matchMedia('(prefers-reduced-motion: reduce)').matches) }, [])
+  useEffect(() => {
+    if (paused || reduce) return undefined
+    const t = setInterval(() => setI((n) => (n + 1) % heroSlides.length), 6500)
+    return () => clearInterval(t)
+  }, [paused, reduce])
+  const cur = heroSlides[i]
   return (
-    <section className="stage" aria-label="육림랜드 소개">
-      <Photo slot={v.poster} fill tone={1} alt="" />
-      <LoopVideo src={v.src} mobile={v.mobile} label={v.label} />
+    <section className="stage" aria-label="육림랜드 소개" aria-roledescription="carousel">
+      {heroSlides.map((sl, k) => (
+        <img key={sl.id} className={`stage__img ${k === i ? 'is-on' : ''}`} src={`${import.meta.env.BASE_URL}images/${sl.img}`} alt={k === i ? `${sl.title}. ${sl.text}` : ''} aria-hidden={k !== i} style={{ objectPosition: sl.pos }} width="1920" height="1440" decoding="async" fetchpriority={k === 0 ? 'high' : 'low'} />
+      ))}
       <div className="stage__shade" aria-hidden />
       <div className="wrap stage__copy">
         {lead && <p className="stage__lead t-label">{lead}</p>}
@@ -63,6 +79,16 @@ export function StageHero({ title, lead, primary, secondary }) {
         <div className="stage__btns">
           <Btn to={primary.to}>{primary.label}</Btn>
           <Btn to={secondary.to} variant="light">{secondary.label}</Btn>
+        </div>
+      </div>
+      <div className="wrap stage__nav">
+        <Link to={cur.to} className="stage__card">
+          <span className="t-card">{cur.title}</span>
+          <span className="t-small">{cur.text}</span>
+        </Link>
+        <div className="stage__tabs" role="group" aria-label="첫 화면 사진 고르기">
+          {heroSlides.map((sl, k) => <button key={sl.id} className="stage__tab t-small" aria-pressed={k === i} onClick={() => setI(k)}>{k + 1}</button>)}
+          <button className="stage__tab stage__tab--ctl" onClick={() => setPaused(!paused)} aria-label={paused ? '사진 넘김 시작' : '사진 넘김 멈춤'}>{paused ? <Play size={16} aria-hidden /> : <Pause size={16} aria-hidden />}</button>
         </div>
       </div>
     </section>

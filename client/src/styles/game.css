@@ -173,3 +173,6 @@ body { background-position: center 14rem, 0 0; }
 .gd-name { font-family: var(--font-game); font-weight: 400; color: var(--c-forestDark); letter-spacing: 0; line-height: 1.1; }
 .gd-hero__in, .lf-hero__in { padding-block: var(--s-7); }
 .kv a.inline-link { min-height: 0; }
+.stage__shade { background: linear-gradient(90deg, rgba(8, 40, 70, 0.72) 0%, rgba(8, 40, 70, 0.4) 42%, rgba(8, 40, 70, 0.05) 72%, transparent 100%); }
+@media (max-width: 768px) { .stage__shade { background: linear-gradient(0deg, rgba(8, 40, 70, 0.72) 0%, rgba(8, 40, 70, 0.3) 55%, transparent 100%); } }
+@media (max-width: 768px) { .stage__copy { bottom: 5.5rem; } .stage { height: clamp(34rem, 90dvh, 42rem); } }
