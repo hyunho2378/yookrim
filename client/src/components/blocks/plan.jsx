@@ -52,7 +52,7 @@ export function LoopVideo({ src, mobile, label, controls = true, className = '' 
 // 홈 첫 화면. 사진 네 장이 천천히 바뀌며 기획안의 체험을 차례로 보여 주고, 위에 핵심 문장과 행동 단추 둘이 얹힌다
 const heroSlides = [
   { id: 'stamp', img: 'hero/stamp.jpg', pos: '50% 60%', title: '미션 스탬프 챌린지', text: '도장 다섯 개를 모으면 굿즈를 받아요', to: '/leaflet#goods' },
-  { id: 'treasure', img: 'hero/treasure.jpg', pos: '50% 62%', title: '숲속 보물찾기', text: '지도와 힌트 카드로 숲 곳곳의 보물을 찾아요', to: '/play/season/spring' },
+  { id: 'treasure', img: 'hero/treasure.jpg', pos: '50% 75%', title: '숲속 보물찾기', text: '지도와 힌트 카드로 숲 곳곳의 보물을 찾아요', to: '/play/season/spring' },
   { id: 'camp', img: 'hero/camp.jpg', pos: '50% 55%', title: '1일 캠핑 데이', text: '소나무 숲에서 하룻밤, 모닥불과 야간 체험', to: '/play/season/winter' },
   { id: 'friends', img: 'hero/friends.jpg', pos: '50% 55%', title: '동물 친구와 포토존', text: '동물 교감 카페와 먹이 주기 체험', to: '/play/cafe' }
 ]
