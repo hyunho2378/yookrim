@@ -1713,3 +1713,18 @@ body { background-position: center 14rem, 0 0; }
 .lp-cat__title { position: sticky; top: 8rem; }
 
 .ftr { margin-top: 0; }
+
+/* 정보 목록: 표 대신 흰 면 안에 이름과 내용을 나란히 둔다 */
+.kv { display: grid; grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr); gap: var(--s-3) var(--s-5); padding: var(--s-5); background: #fff; border-radius: var(--r); overflow: visible; box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); align-items: baseline; }
+.kv dt, .kv dd { padding: 0; margin: 0; background: transparent; }
+.kv dt { color: var(--c-forestDark); font-weight: 700; }
+.kv dd { color: var(--c-text); }
+@media (max-width: 520px) { .kv { grid-template-columns: 1fr; gap: 2px; } .kv dt:not(:first-of-type) { margin-top: var(--s-3); } }
+
+/* 가디 설정 카드 */
+.gd-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.gd-facts li { display: flex; flex-direction: column; gap: var(--s-1); padding: var(--s-4) var(--s-5); border-radius: var(--r); background: #fff; box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); }
+.gd-facts .t-small { color: var(--c-forestDark); font-weight: 700; }
+@media (max-width: 900px) { .gd-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .gd-facts { grid-template-columns: 1fr; } }
+.teaser .kv, .fact__box .kv { background: transparent; box-shadow: none; padding: 0; }
