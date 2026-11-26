@@ -1,7 +1,7 @@
 // plan.jsx  카테고리 타일, 콘텐츠 카드, 방문자별 안내, 한눈에 보기, 다음 행동 띠, 영상 히어로, 방문 전 질문.
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Clock, MapPin, Navigation, Pause, Phone, Play, Ticket, Wallet } from 'lucide-react'
+import { ArrowRight, CalendarCheck, CalendarDays, Clock, Map as MapIcon, MapPin, Navigation, Pause, Phone, Play, Ticket, Wallet } from 'lucide-react'
 import { Btn, Photo, Accordion } from '../ui'
 import KMap from '../KMap'
 import { site, todayHours, won, pricing, currentSeason } from '../../lib/data'
@@ -289,6 +289,25 @@ export function FinalCta() {
           <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a>
           <Btn to="/reserve" variant="light">예약하기</Btn>
         </div>
+      </div>
+    </section>
+  )
+}
+
+// 첫 화면 바로 아래 오늘 안내. 운영시간과 자주 찾는 다섯 곳을 한 줄에 둔다
+export function TodayBar() {
+  const t = todayHours()
+  const links = [[Wallet, '요금 안내', '/guide'], [CalendarCheck, '예약하기', '/reserve'], [CalendarDays, '운영 캘린더', '/guide/calendar'], [MapIcon, '공간 지도', '/map'], [Navigation, '오시는 길', '/guide/directions']]
+  return (
+    <section className="wrap today" aria-label="오늘 안내">
+      <div className="today__card">
+        <div className="today__time">
+          <p className="t-small">오늘의 운영시간</p>
+          <p className="t-band">{t.open ? t.hours.replace('-', ' ~ ') : '쉬는 날'}</p>
+        </div>
+        <ul className="today__links">
+          {links.map(([Icon, label, to]) => <li key={label}><Link to={to} className="today__link"><Icon size={30} strokeWidth={1.8} aria-hidden /><span className="t-strong">{label}</span></Link></li>)}
+        </ul>
       </div>
     </section>
   )

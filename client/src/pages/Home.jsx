@@ -1,6 +1,6 @@
 // Home.jsx  홈 화면 순서: 영상 첫 화면, 놀이 종류, 이번 시즌, 가디, 방문 안내 띠. 나머지는 각 메뉴 화면에 있다.
 import { Teaser, CheckList } from '../components/blocks'
-import { StageHero, CategoryTiles, InfoBand } from '../components/blocks/plan'
+import { StageHero, TodayBar, CategoryTiles, InfoBand } from '../components/blocks/plan'
 import { seasonStatus, periodText, dday, currentSeason, withChar } from '../lib/data'
 
 export default function Home() {
@@ -15,6 +15,7 @@ export default function Home() {
         primary={{ label: '예약하기', to: '/reserve' }}
         secondary={{ label: '사계절 프로그램 보기', to: '/play/season' }}
       />
+      <TodayBar />
       <CategoryTiles title="놀이 종류" text="종류별로 둘러보세요." />
       <Teaser slot={`poster-${now.id}`} tone={0} title={`${now.season} ${now.title}`} cta="시즌 상세 안내" to={`/play/season/${now.id}`}>
         <p>{withChar(now.subtitle)}</p>
