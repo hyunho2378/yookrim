@@ -42,7 +42,3 @@
 .lp-cat__title { position: sticky; top: 8rem; }
 
 .ftr { margin-top: 0; }
-
-/* 임시 장난 사진 */
-.stage__prank { position: absolute; z-index: 5; right: max(var(--s-6), 8%); top: 50%; transform: translateY(-52%); width: clamp(18rem, 30vw, 28rem); aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% 30%; border-radius: var(--r); box-shadow: 0 24px 40px rgba(0, 20, 50, 0.45); }
-@media (max-width: 768px) { .stage__prank { width: 11rem; right: var(--s-4); top: 5.5rem; transform: none; } }
