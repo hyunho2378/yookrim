@@ -1,0 +1,28 @@
+/* about.css  육림랜드 소개. 숫자 줄, 영상과 이야기, 낮과 밤, 계절 순서로 위에서 아래로 한 번에 읽힌다 */
+.ab { display: flex; flex-direction: column; gap: var(--s-6); padding-block: var(--s-6) var(--s-7); }
+.ab__facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.ab__facts li { display: flex; flex-direction: column; gap: 2px; padding: var(--s-4) var(--s-5); border-radius: var(--r); background: #fff; box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22); }
+.ab__facts .t-band { color: var(--c-forestDark); font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; }
+.ab__facts .t-small { color: var(--c-textSub); }
+.ab__story { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--s-6); align-items: center; }
+.ab__video { border-radius: var(--r); overflow: hidden; background: #000; box-shadow: 0 18px 28px rgba(20, 90, 140, 0.22); }
+.ab__video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ab__text { display: flex; flex-direction: column; gap: var(--s-3); }
+.ab__line { display: flex; flex-direction: column; gap: var(--s-2); }
+.ab__line li { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: var(--s-3); align-items: start; padding: var(--s-3) var(--s-4); border-radius: var(--r); background: #fff; box-shadow: 0 8px 18px rgba(20, 90, 140, 0.18); }
+.ab__line li > span:first-child { color: var(--c-forestDark); }
+.ab__line b, .ab__line i { display: block; font-style: normal; }
+.ab__line i { color: var(--c-textSub); }
+.ab__duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.ab__card { display: flex; flex-direction: column; border-radius: var(--r); overflow: hidden; background: #fff; box-shadow: 0 18px 28px rgba(20, 90, 140, 0.22); }
+.ab__card .photo { border-radius: 0; }
+.ab__body { display: flex; flex-direction: column; gap: 4px; padding: var(--s-4) var(--s-5) var(--s-5); }
+.ab__body .t-card { color: var(--c-forestDark); }
+.ab__body .t-small { color: var(--c-textSub); }
+.ab__seasons { display: flex; flex-direction: column; gap: var(--s-3); }
+.ab__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+.ab__seasons ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.ab__season { display: flex; flex-direction: column; gap: 2px; }
+.ab__season .photo { border-radius: var(--r); box-shadow: 0 12px 22px rgba(20, 90, 140, 0.22); margin-bottom: var(--s-2); }
+.ab__season .t-small { color: var(--c-textSub); }
+@media (max-width: 900px) { .ab__facts, .ab__seasons ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ab__story, .ab__duo { grid-template-columns: 1fr; } }

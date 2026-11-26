@@ -3,11 +3,11 @@ import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Clock, MapPin, Navigation, Pause, Phone, Play, Ticket, Wallet } from 'lucide-react'
 import { Btn, Photo, Accordion } from '../ui'
+import KMap from '../KMap'
 import { site, todayHours, won, pricing, currentSeason } from '../../lib/data'
 import { categories, category, audiences, tagsOf, cardPrice, factsOf, visitQA, itemById, items } from '../../lib/plan'
 import videos from '../../data/videos.json'
 
-const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&hl=ko&z=16&output=embed`
 const MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(site.address)}`
 
 // 영상 한 개. 파일이 없거나 움직임 줄이기, 데이터 절약, 느린 연결이면 그리지 않아 대표 이미지만 남는다
@@ -313,7 +313,7 @@ export function InfoBand() {
             <Btn to="/guide" variant="light">요금 안내</Btn>
           </div>
         </div>
-        <div className="ibar__map"><iframe title="육림랜드 위치 지도" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
+        <div className="ibar__map"><KMap /></div>
       </div>
     </section>
   )

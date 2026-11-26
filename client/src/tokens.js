@@ -120,7 +120,7 @@ export const gradient = {
 export const logo = { ko: 32, koM: 26, en: 12, enM: 10, lh: 1.05, weight: 800, ls: -0.04, enLs: 0.18 }
 
 // 반경 단계. 40px 이상 요소는 base, 그보다 작은 이름표와 번호 칸은 sm. 작은 요소에 base 를 쓰면 알약 모양이 되기 때문이다
-export const radius = { base: 12, sm: 6 }
+export const radius = { base: 16, sm: 8 }
 
 export const motion = {
   fast: 160, base: 240, slide: 800, menu: 200, stamp: 300,

@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
-import { menus } from '../../lib/nav'
 import { site, currentSeason, seasons, seasonStatus } from '../../lib/data'
 import { useStore } from '../../lib/store'
 import { useToast } from '../ui'
@@ -41,15 +40,8 @@ export default function Footer() {
       </div>
       <div className="ftr__nav">
         <div className="wrap">
-          <nav className="ftr__cols" aria-label="사이트 전체 메뉴">
-            {menus.slice(0, 4).map((m) => (
-              <div key={m.id}>
-                <h2 className="t-label"><Link to={m.to}>{m.label}</Link></h2>
-                <ul className="stack-3">
-                  {m.groups.flatMap((g) => g.items).slice(0, 5).map((it) => <li key={it.label}><Link to={it.to} className="t-body">{it.label}</Link></li>)}
-                </ul>
-              </div>
-            ))}
+          <nav className="ftr__links" aria-label="바로가기">
+            {[['운영 캘린더', '/guide/calendar'], ['요금 안내', '/guide'], ['오시는 길', '/guide/directions'], ['공간 지도', '/map'], ['리플릿', '/leaflet'], ['자주 묻는 질문', '/guide/faq'], ['소식', '/news']].map(([l, to]) => <Link key={to} to={to} className="t-body">{l}</Link>)}
           </nav>
         </div>
       </div>

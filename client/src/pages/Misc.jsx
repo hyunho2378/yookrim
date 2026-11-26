@@ -6,31 +6,51 @@ import { Btn, Photo } from '../components/ui'
 import { site, notices, dotDate, won } from '../lib/data'
 import { useStore } from '../lib/store'
 
+const aboutFacts = [['1975', '춘천 영서로에 개장'], ['50년', '같은 자리를 지킨 놀이공원'], ['4계절', '봄부터 겨울까지 프로그램'], ['낮과 밤', '두 가지 체험']]
+const aboutSeasons = [['spring', '봄', '숲속 보물찾기'], ['summer', '여름', '한밤의 좀비 숲'], ['autumn', '가을', '숲속 총게임 리그'], ['winter', '겨울', '소나무 숲 캠핑 데이']]
+
 export function About() {
   return (
     <>
       <EventHero slot="site-history" tone={0} tag={`${site.founded}년 개장`} title="숲을 기르는 놀이공원, 육림" text="육림(育林)은 숲을 기른다는 뜻이에요." />
-      <section className="wrap section story-video">
-        <h2 className="t-band">육림랜드 소개 영상</h2>
-        <video controls playsInline preload="metadata" poster={`${import.meta.env.BASE_URL}images/promo-video.jpg`} aria-label="육림랜드 소개 영상">
-          <source src={`${import.meta.env.BASE_URL}videos/yuklim-final.mp4`} type="video/mp4" />
-        </video>
+      <section className="wrap ab">
+        <ul className="ab__facts">
+          {aboutFacts.map(([n, t]) => <li key={n}><p className="t-band">{n}</p><p className="t-small">{t}</p></li>)}
+        </ul>
+        <div id="history" className="ab__story">
+          <div className="ab__video">
+            <video controls playsInline preload="metadata" poster={`${import.meta.env.BASE_URL}images/promo-video.jpg`} aria-label="육림랜드 소개 영상">
+              <source src={`${import.meta.env.BASE_URL}videos/yuklim-final.mp4`} type="video/mp4" />
+            </video>
+          </div>
+          <div className="ab__text">
+            <h2 className="t-band">1975년부터 지금까지</h2>
+            <p className="t-body">춘천 사람들의 첫 놀이공원이 소나무 숲과 함께 50년 동안 같은 자리를 지켜 왔어요.</p>
+            <ol className="ab__line">
+              <li><span className="t-label">1975</span><span><b className="t-strong">육림랜드 개장</b><i className="t-small">놀이공원과 동물원이 문을 열었어요.</i></span></li>
+              <li><span className="t-label">2026</span><span><b className="t-strong">계절 프로그램 시작</b><i className="t-small">낮에는 보물찾기와 총게임, 밤에는 야간 체험이 이어져요.</i></span></li>
+            </ol>
+          </div>
+        </div>
+        <div id="daynight" className="ab__duo">
+          <article className="ab__card">
+            <Photo slot="site-feeding" ratio="16 / 9" tone={1} />
+            <div className="ab__body"><h2 className="t-card">낮</h2><p className="t-body">아이들과 가족이 보물찾기 숲을 누비는 시간</p><p className="t-small">보물찾기, 먹이 주기, 동물 교감 카페</p></div>
+          </article>
+          <article className="ab__card">
+            <Photo slot="zombie-night" ratio="16 / 9" tone={3} />
+            <div className="ab__body"><h2 className="t-card">밤</h2><p className="t-body">조명이 꺼진 놀이공원에서 떠나는 모험</p><p className="t-small">야간 총게임, 좀비 숲, 캠핑</p></div>
+          </article>
+        </div>
+        <div id="seasons" className="ab__seasons">
+          <div className="ab__head"><h2 className="t-band">계절마다 새로 열려요</h2><Link to="/play/season" className="more t-body">시즌 이벤트 전체 보기</Link></div>
+          <ul>
+            {aboutSeasons.map(([id, s, t], i) => (
+              <li key={id}><Link to={`/play/season/${id}`} className="ab__season"><Photo slot={`poster-${id}`} ratio="3 / 4" tone={i} /><span className="t-small">{s}</span><span className="t-strong">{t}</span></Link></li>
+            ))}
+          </ul>
+        </div>
       </section>
-      <section id="history" className="wrap section">
-        <CenterTitle title="1975년부터 지금까지" text="춘천 사람들의 첫 놀이공원이 소나무 숲과 함께 50년 동안 같은 자리를 지켜 왔어요" />
-        <ol className="timeline">
-          <li><p className="t-band c-primary">1975</p><p className="t-strong">육림랜드 개장</p><p className="t-small c-sub">춘천 영서로에 놀이공원과 동물원이 문을 열었어요.</p></li>
-          <li><p className="t-band c-primary">2026</p><p className="t-strong">계절 프로그램 시작</p><p className="t-small c-sub">낮에는 보물찾기와 총게임, 밤에는 야간 체험이 이어져요.</p></li>
-        </ol>
-      </section>
-      <Teaser id="daynight" slot="zombie-night" tone={3} title="낮과 밤 두 얼굴">
-        <p>낮에는 아이들과 가족이 보물찾기 숲을 누비고, 밤에는 청년과 어른이 조명이 꺼진 놀이공원에서 모험을 떠나요.</p>
-        <CheckList items={['낮 보물찾기와 먹이 주기, 동물 교감 카페', '밤 야간 총게임과 좀비 숲, 캠핑']} />
-      </Teaser>
-      <Teaser id="seasons" slot="map-aerial" tone={1} flip title="계절마다 새로 열려요" cta="시즌 이벤트" to="/play/season">
-        <p>봄에는 보물찾기, 여름에는 좀비 숲, 가을에는 총게임 리그, 겨울에는 캠핑 데이가 열려요.</p>
-        <CheckList items={['봄 숲속 보물찾기', '여름 한밤의 좀비 숲', '가을 숲속 총게임 리그', '겨울 소나무 숲 캠핑 데이']} />
-      </Teaser>
     </>
   )
 }

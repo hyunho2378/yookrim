@@ -96,7 +96,7 @@ export default function Header() {
           <nav aria-label="주 메뉴 오른쪽" className="hdr__nav hdr__nav--r">
             <ul className="hdr__menu">
               {right.map(renderItem)}
-              <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/map" className="t-nav hdr__link hdr__link--solo hdr__link--map">공간 지도</NavLink></div></li>
+              <li onMouseEnter={leave}><div className="hdr__mapwrap"><NavLink to="/map" className="t-nav hdr__link hdr__link--solo hdr__link--map">공간 지도</NavLink></div></li>
             </ul>
             <Link to="/reserve" className="hdr__cta t-nav">예약</Link>
           </nav>
