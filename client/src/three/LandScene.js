@@ -92,7 +92,7 @@ export default class LandScene {
     this.onUp = (e) => {
       const d = this.down; this.down = null
       if (!d) return
-      if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6 && performance.now() - d.t < 600) this.click(e)
+      if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 8 && performance.now() - d.t < 1200) this.click(e)
     }
     this.onMove = (e) => { if (e.buttons) return; this.pm = e; if (!this.pmq) { this.pmq = true; requestAnimationFrame(() => { this.pmq = false; if (!this.disposed && this.pm) this.hoverAt(this.pm) }) } }
     this.onLeave = () => { this.hover = null; this.canvas.style.cursor = ''; this.dirty = true }
@@ -238,15 +238,23 @@ export default class LandScene {
     return hit || null
   }
 
+  // 눌린 자리에서 가장 가까운 구역을 찾는다. 모델에 닿지 않아도 바닥 높이의 평면과 만난 자리로 찾는다
+  pointAt(e) {
+    const h = this.pick(e)
+    if (h) return h.point
+    const p = new THREE.Vector3()
+    return this.ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), -0.5), p) ? p : null
+  }
+
   zoneAt(p) {
     let best = null, bd = 1e9
-    for (const z of this.zones) { const d = Math.hypot(p.x - z.x, p.z - z.z); if (d < (z.r || 3) + 1.2 && d < bd) { best = z; bd = d } }
+    for (const z of this.zones) { const d = Math.hypot(p.x - z.x, p.z - z.z); if (d < (z.r || 3) + 4.5 && d < bd) { best = z; bd = d } }
     return best
   }
 
   hoverAt(e) {
-    const h = this.pick(e)
-    const z = h ? this.zoneAt(h.point) : null
+    const p = this.pointAt(e)
+    const z = p ? this.zoneAt(p) : null
     this.hover = z ? z.id : null
     this.canvas.style.cursor = z ? 'pointer' : ''
     this.dirty = true
@@ -254,9 +262,8 @@ export default class LandScene {
 
   click(e) {
     this.lastTouch = performance.now()
-    const h = this.pick(e)
-    if (!h) return
-    const z = this.zoneAt(h.point)
+    const p = this.pointAt(e)
+    const z = p ? this.zoneAt(p) : null
     if (z) this.onPick?.(z.id)
   }
 

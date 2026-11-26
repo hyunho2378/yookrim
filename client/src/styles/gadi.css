@@ -90,3 +90,25 @@
 .gd-dn__card .t-band, .gd-dn__card .t-small, .gd-dn__card dt, .gd-dn__card dd { color: inherit; }
 .gd-dn__card--night .t-band { color: var(--c-citron); }
 @media (max-width: 900px) { .lf-hero__img { max-width: 15rem; } }
+
+/* 미션 스탬프 챌린지와 굿즈 */
+.lf-goodsband { background: var(--c-surface); }
+.lf-goods { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--s-7); align-items: start; }
+.lf-goods__sheet img { display: block; width: 100%; height: auto; border-radius: var(--r); box-shadow: var(--shadow-3); }
+.lf-goods__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-5); align-items: start; }
+.lf-goods__item { display: flex; flex-direction: column; gap: var(--s-2); }
+.lf-goods__item .t-label { margin-top: var(--s-2); }
+.lf-goods__imgs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; align-items: stretch; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--r); background: var(--bg); box-shadow: var(--shadow-3); }
+.lf-goods__imgs img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lf-goods__item--file .lf-goods__imgs { --bg: #5a4e4f; }
+.lf-goods__item--file .lf-goods__imgs img { object-fit: contain; border-radius: var(--r-sm); }
+.lf-goods__item--tumbler .lf-goods__imgs, .lf-goods__item--stamp .lf-goods__imgs { --bg: #ffffff; }
+.lf-goods__item--tumbler .lf-goods__imgs img, .lf-goods__item--stamp .lf-goods__imgs img { object-fit: contain; }
+.lf-goods__item--mousepad .lf-goods__imgs { --bg: #25194f; }
+.lf-goods__item--usb .lf-goods__imgs { --bg: #232323; }
+@media (max-width: 900px) { .lf-goods { grid-template-columns: 1fr; gap: var(--s-6); } .lf-goods__sheet { max-width: 24rem; margin-inline: auto; } }
+@media (max-width: 520px) { .lf-goods__list { grid-template-columns: 1fr; } }
+#goods .gd-head { margin-bottom: var(--s-6); }
+.lf-goods__item--file .lf-goods__imgs { grid-auto-columns: auto; justify-content: center; gap: var(--s-4); padding: var(--s-6) var(--s-5); }
+.lf-goods__item--file .lf-goods__imgs img { width: auto; height: 100%; }
+.lf-goods__item--usb .lf-goods__imgs img { object-fit: contain; }

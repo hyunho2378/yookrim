@@ -4,6 +4,13 @@ import { Btn, Photo } from '../components/ui'
 import { facility, missions, rewardTiers, withChar, zone } from '../lib/data'
 
 const base = import.meta.env.BASE_URL
+const goods = [
+  { id: 'file', title: 'L자 파일', note: '도장 3개를 모으면 받아요.', files: [['file-front', 631, 893, '앞면'], ['file-back', 989, 1400, '뒷면']] },
+  { id: 'mousepad', title: '마우스패드', note: '도장 4개를 모으면 받아요.', files: [['mousepad', 1600, 1600, '']] },
+  { id: 'tumbler', title: '텀블러', note: '도장 5개를 모으면 받아요.', files: [['tumbler', 1800, 1012, '']] },
+  { id: 'usb', title: '카드형 USB', note: '가디 얼굴이 담긴 카드형 저장장치예요.', files: [['usb-card', 1600, 1016, '']] },
+  { id: 'stamp', title: '가디 스탬프', note: '미션을 끝내면 찍어 주는 도장이에요.', files: [['stamp', 1400, 1400, '']] }
+]
 const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
 
 export default function Leaflet() {
@@ -37,6 +44,26 @@ export default function Leaflet() {
           </figure>
         </div>
       </section>
+
+      <div className="lf-goodsband noprint"><section id="goods" className="wrap section">
+        <header className="gd-head"><h2 className="t-band">미션 스탬프 챌린지와 굿즈</h2><p className="t-body c-sub">미션 다섯 개를 끝내고 도장을 모으면 굿즈를 받아요.</p></header>
+        <div className="lf-goods">
+          <figure className="lf-goods__sheet">
+            <img src={`${base}images/goods/mission-sheet.jpg`} width="1143" height="2400" alt="미션 스탬프 챌린지 안내판. 미션 다섯 개와 도장 칸, 도장 3개는 L자 파일, 4개는 마우스패드, 5개는 텀블러" loading="lazy" decoding="async" />
+          </figure>
+          <ul className="lf-goods__list">
+            {goods.map((g) => (
+              <li key={g.id} className={`lf-goods__item lf-goods__item--${g.id}`}>
+                <div className="lf-goods__imgs">
+                  {g.files.map(([f, w, h, cap]) => <img key={f} src={`${base}images/goods/${f}.jpg`} width={w} height={h} alt={`${g.title} ${cap}`.trim()} loading="lazy" decoding="async" />)}
+                </div>
+                <p className="t-label">{g.title}</p>
+                <p className="t-body c-sub">{g.note}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section></div>
 
       <section id="sheet" className="wrap section lf-sheet">
         <header className="gd-head noprint">
