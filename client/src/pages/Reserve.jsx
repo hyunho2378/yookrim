@@ -1,10 +1,10 @@
 // Reserve.jsx  예약 3단계와 완료 티켓. 단계 사이를 오가도 고른 값이 그대로 남는다.
 import { Fragment, createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate, useSearchParams, Navigate } from 'react-router-dom'
-import { Minus, Plus, Ticket, MapPin, CalendarDays, Users, Clock } from 'lucide-react'
+import { Minus, Plus, MapPin, ChevronLeft, ChevronRight, CalendarDays } from 'lucide-react'
 import Calendar from '../components/Calendar'
-import { Btn, CheckBox, useToast } from '../components/ui'
-import { program, season, seasonStatus, isClosedDay, kstDate, ymd, won, pricing, dotDate, statusText, periodText } from '../lib/data'
+import { Btn, CheckBox, Photo, useToast } from '../components/ui'
+import { program, season, seasonStatus, isClosedDay, kstDate, ymd, won, pricing, dotDate, statusText, periodText, seatsLeft, shortDate } from '../lib/data'
 import { useStore } from '../lib/store'
 
 const Ctx = createContext(null)
@@ -55,7 +55,7 @@ export function ReserveLayout() {
           <h1 className="t-band">예약</h1>
           {step < 4 && (
             <ol className="stepper" aria-label="예약 단계">
-              {['프로그램과 날짜', '인원과 동의', '확인과 결제'].map((t, i) => (
+              {['프로그램 선택', '예약자 정보', '확인과 결제'].map((t, i) => (
                 <li key={t} className={step === i + 1 ? 'is-on' : step > i + 1 ? 'is-done' : ''} aria-current={step === i + 1 ? 'step' : undefined}>
                   <span className="stepper__no t-label">{i + 1}</span><span className="t-strong">{t}</span>
                 </li>
@@ -69,23 +69,28 @@ export function ReserveLayout() {
   )
 }
 
-function Summary() {
+const progName = (p, d) => p?.id === 'gungame' && d.mode === 'night' ? '야간 미션전' : `${p?.name || ''}${p?.modes && d.mode !== 'night' ? ` ${p.modes.find((m) => m.id === d.mode)?.name || ''}` : ''}${p?.options ? ` ${p.options.find((o) => o.id === d.mode)?.name || ''}` : ''}`
+const DOWK = ['일', '월', '화', '수', '목', '금', '토']
+const dateLabel = (k) => { const d = new Date(`${k}T00:00:00`); return `${shortDate(k)}(${DOWK[d.getDay()]})` }
+
+// 아래 고정 줄: 고른 내용과 합계, 다음 단추를 한 줄에 둔다
+function ResBar({ hint, children }) {
   const { draft } = useDraft()
   const p = program(draft.program)
   const total = calcTotal(draft)
-  const ppl = draft.people.adult + draft.people.youth + draft.people.child
+  const bits = [progName(p, draft), draft.date && dateLabel(draft.date), draft.time, p?.id !== 'winter-camp' && `${total.ppl}명`].filter(Boolean)
   return (
-    <aside className="rsv-sum">
-      <h2 className="t-label">예약 요약</h2>
-      <dl className="rsv-sum__list">
-        <div><dt className="t-small"><Ticket size={20} aria-hidden />프로그램</dt><dd className="t-strong">{p?.id === 'gungame' && draft.mode === 'night' ? '야간 미션전' : p?.name}{draft.mode && p?.modes && draft.mode !== 'night' ? ` ${p.modes.find((m) => m.id === draft.mode)?.name}` : ''}{p?.options ? ` ${p.options.find((o) => o.id === draft.mode)?.name || ''}` : ''}</dd></div>
-        <div><dt className="t-small"><CalendarDays size={20} aria-hidden />날짜</dt><dd className="t-strong">{draft.date ? dotDate(draft.date) : '선택 전'}</dd></div>
-        <div><dt className="t-small"><Clock size={20} aria-hidden />회차</dt><dd className="t-strong">{draft.time || '선택 전'}</dd></div>
-        <div><dt className="t-small"><Users size={20} aria-hidden />인원</dt><dd className="t-strong">{ppl}명</dd></div>
-      </dl>
-      <p className="rsv-sum__total"><span className="t-small">합계</span><span className="t-card">{won(total.sum)}</span></p>
-      {total.discount > 0 && <p className="t-small c-action">단체 할인 {won(total.discount)} 적용</p>}
-    </aside>
+    <div className="rbar" role="region" aria-label="예약 요약">
+      <div className="wrap rbar__in">
+        <div className="rbar__txt">
+          <p className="t-strong rbar__sel">{bits.join('  ')}</p>
+          {total.discount > 0 && <p className="t-small">단체 할인 {won(total.discount)} 적용</p>}
+          {hint && <p className="t-small rbar__hint">{hint}</p>}
+        </div>
+        <p className="rbar__sum"><span className="t-small">합계</span><span className="t-card">{won(total.sum)}</span></p>
+        <div className="rbar__btns">{children}</div>
+      </div>
+    </div>
   )
 }
 
@@ -99,81 +104,151 @@ export function calcTotal(d) {
   return { base, adm, discount, sum: base + adm - discount, ppl }
 }
 
+const rows = [
+  { key: 'gungame', id: 'gungame', name: '숲속 총게임', slot: 'zone-survival', meta: '레이저 배틀 10세 이상, 페인트볼 만 14세 이상', price: '1인 12,000원~' },
+  { key: 'night', id: 'gungame', night: true, name: '야간 미션전', slot: 'gungame-zone-overview', meta: '만 19세 이상, 금요일과 토요일 밤', price: '1인 22,000원' },
+  { key: 'animal-cafe', id: 'animal-cafe', name: '동물 교감 카페', slot: 'cafe-interior', meta: '음료 1잔 포함', price: '1인 6,000원' },
+  { key: 'zombie-night', id: 'zombie-night', name: '한밤의 좀비 숲', slot: 'zombie-night', meta: '여름 시즌 야간 체험', price: '1인 15,000원', season: 'summer' },
+  { key: 'winter-camp', id: 'winter-camp', name: '1일 캠핑 데이', slot: 'camp-winter', meta: '사이트 1개 4인 기준', price: '30,000원~', season: 'winter' }
+]
+const isOn = (r, d) => d.program === r.id && (r.id !== 'gungame' || (r.night ? d.mode === 'night' : d.mode !== 'night'))
+
+function DateStrip({ value, onPick, openOf }) {
+  const today = kstDate()
+  const base = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+  const [off, setOff] = useState(0)
+  const [full, setFull] = useState(false)
+  const [month, setMonth] = useState(new Date(base.getFullYear(), base.getMonth(), 1))
+  const days = Array.from({ length: 7 }, (_, i) => new Date(base.getFullYear(), base.getMonth(), base.getDate() + off * 7 + i))
+  return (
+    <div className="rdate">
+      <div className="rdate__row">
+        <button className="rdate__nav" onClick={() => setOff(off - 1)} disabled={off <= 0} aria-label="앞 주"><ChevronLeft size={22} aria-hidden /></button>
+        <div className="rdate__days" role="group" aria-label="방문일">
+          {days.map((d) => {
+            const k = ymd(d); const it = openOf(d)
+            return (
+              <button key={k} className="rdate__day" aria-pressed={value === k} disabled={!it.open} onClick={() => onPick(k)} aria-label={`${d.getMonth() + 1}월 ${d.getDate()}일 ${DOWK[d.getDay()]}요일 ${it.text}`}>
+                <span className="t-small">{DOWK[d.getDay()]}</span>
+                <span className="t-card rdate__n">{d.getDate()}</span>
+                <span className="t-caption">{it.open ? (d.getDate() === 1 || i0(d, days) ? `${d.getMonth() + 1}월` : '') : it.text}</span>
+              </button>
+            )
+          })}
+        </div>
+        <button className="rdate__nav" onClick={() => setOff(off + 1)} disabled={off >= 8} aria-label="뒤 주"><ChevronRight size={22} aria-hidden /></button>
+        <button className="rdate__cal" aria-expanded={full} onClick={() => setFull(!full)}><CalendarDays size={20} aria-hidden />달력</button>
+      </div>
+      {full && <Calendar month={month} onMonth={setMonth} selected={value} onSelect={(k) => { onPick(k); setFull(false) }} info={(d) => openOf(d)} label="예약 날짜" />}
+    </div>
+  )
+}
+const i0 = (d, days) => d === days[0]
+
 export function Step1() {
   const { draft, set } = useDraft()
   const nav = useNavigate()
   const p = program(draft.program)
-  const now = kstDate()
-  const [month, setMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1))
-  const opt = options.find((o) => o.id === draft.program)
-  const s = opt?.season ? season(opt.season) : null
-  const info = (d) => {
+  const dayInfo = (d, r) => {
     const key = ymd(d)
     if (isClosedDay(d)) return { open: false, text: '휴무' }
-    if (s && (key < s.period.start || key > s.period.end)) return { open: false, text: '기간 밖' }
-    if (draft.mode === 'night' && ![5, 6].includes(d.getDay())) return { open: false, text: '주간만' }
-    return { open: true, text: '예약 가능' }
+    const row = r || rows.find((x) => isOn(x, draft))
+    const sn = row?.season ? season(row.season) : null
+    if (sn && (key < sn.period.start || key > sn.period.end)) return { open: false, text: '기간 밖' }
+    if (row?.night && ![5, 6].includes(d.getDay())) return { open: false, text: '금토만' }
+    return { open: true, text: '가능' }
   }
+  // 처음 들어오면 가장 가까운 예약 가능일을 골라 둔다
+  useEffect(() => {
+    if (draft.date) return
+    const t = kstDate()
+    for (let i = 0; i < 60; i++) {
+      const d = new Date(t.getFullYear(), t.getMonth(), t.getDate() + i)
+      if (dayInfo(d).open) { set({ date: ymd(d) }); break }
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const times = draft.date ? sessionsOf(p, draft.mode, draft.date) : []
-  const pick = (patch) => set({ ...patch, time: null, ...(patch.program ? { date: null } : {}) })
+  const cap = p?.capacity?.perSession || 20
+  const ppl = draft.people.adult + draft.people.youth + draft.people.child
+  const setP = (k, v) => set({ people: { ...draft.people, [k]: v }, time: draft.time })
+  const pickRow = (r) => {
+    const mode = r.id === 'gungame' ? (r.night ? 'night' : draft.mode && draft.mode !== 'night' ? draft.mode : 'laser') : r.id === 'winter-camp' ? 'day' : null
+    const nd = { program: r.id, mode, time: null }
+    if (draft.date && !dayInfo(new Date(`${draft.date}T00:00:00`), r).open) nd.date = null
+    set(nd)
+  }
+  const ageWarn = p?.id === 'gungame' && ((draft.mode === 'paintball' && draft.people.child > 0) || (draft.mode === 'night' && draft.people.child + draft.people.youth > 0))
+  const need = !draft.date ? '방문일을 골라 주세요' : !draft.time ? '회차를 골라 주세요' : ageWarn ? (draft.mode === 'paintball' ? '만 14세 미만은 레이저 배틀을 골라 주세요' : '야간 미션전은 만 19세 이상이에요') : ppl < 1 ? '인원을 1명 이상 넣어 주세요' : ''
+  const sn = rows.find((x) => isOn(x, draft))?.season
   return (
-    <section className="wrap section rsv">
-      <div className="rsv__main stack-7">
-        <div className="stack-4">
-          <h2 className="t-label">프로그램</h2>
-          <div className="choices">
-            {options.map((o) => {
-              const op = program(o.id)
-              const os = o.season ? season(o.season) : null
-              const st = os ? seasonStatus(os) : 'live'
-              const night = draft.program === 'gungame' && draft.mode === 'night'
-              return (
-                <Fragment key={o.id}>
-                  <button className="choice" aria-pressed={draft.program === o.id && !(o.id === 'gungame' && night)} disabled={st !== 'live'} onClick={() => pick({ program: o.id, mode: o.id === 'gungame' ? 'laser' : o.id === 'winter-camp' ? 'day' : null })}>
-                    {op.name}{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
-                  </button>
-                  {o.id === 'gungame' && (
-                    <button className="choice" aria-pressed={night} disabled={st !== 'live'} onClick={() => pick({ program: 'gungame', mode: 'night' })}>
-                      야간 미션전{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
-                    </button>
-                  )}
-                </Fragment>
-              )
-            })}
-          </div>
-          {s && <p className="t-small c-sub">{s.season} 시즌 {periodText(s.period)}에만 예약할 수 있어요.</p>}
-        </div>
-        {p?.modes && draft.mode !== 'night' && (
-          <div className="stack-4">
-            <h2 className="t-label">게임 모드</h2>
-            <div className="choices">
-              {p.modes.filter((m) => m.id !== 'night').map((m) => <button key={m.id} className="choice" aria-pressed={draft.mode === m.id} onClick={() => pick({ mode: m.id, date: draft.mode === 'night' || m.id === 'night' ? null : draft.date })}>{m.name} <span className="t-small">{m.age}</span></button>)}
-            </div>
-          </div>
-        )}
-        <div className="stack-4">
-          <h2 className="t-label">날짜</h2>
-          <p className="t-small c-sub">화요일은 쉬는 날이에요.</p>
-          <Calendar month={month} onMonth={setMonth} selected={draft.date} onSelect={(k) => set({ date: k, time: null })} info={info} label="예약 날짜" />
-        </div>
-        <div className="stack-4" id="times">
-          <h2 className="t-label">회차</h2>
-          {!draft.date && <p className="t-body c-sub">날짜를 고르면 회차가 보여요.</p>}
-          {draft.date && !times.length && <p className="t-body c-sub">이 날은 열리는 회차가 없어요.</p>}
-          <div className="sess">
-            {times.map((t) => (
-              <button key={t} className="sess__btn" aria-pressed={draft.time === t} onClick={() => set({ time: t })}>
-                <span className="t-label">{t}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="rsv__next">
-          <Btn disabled={!draft.date || !draft.time} onClick={() => nav('/reserve/details')}>다음 단계</Btn>
-        </div>
-      </div>
-      <Summary />
-    </section>
+    <>
+      <section className="wrap rv">
+        <DateStrip value={draft.date} onPick={(k) => set({ date: k, time: null })} openOf={(d) => dayInfo(d)} />
+        <ul className="rlist2">
+          {rows.map((r) => {
+            const op = program(r.id)
+            const os = r.season ? season(r.season) : null
+            const st = os ? seasonStatus(os) : 'live'
+            const on = isOn(r, draft)
+            const dOk = draft.date ? dayInfo(new Date(`${draft.date}T00:00:00`), r) : { open: true }
+            const blocked = st !== 'live' || !dOk.open
+            const why = st !== 'live' ? statusText[st] : !dOk.open ? (r.night ? '금토만' : dOk.text) : ''
+            return (
+              <li key={r.key} className={`rrow ${on ? 'is-on' : ''} ${blocked ? 'is-off' : ''}`}>
+                <button className="rrow__head" aria-expanded={on} disabled={blocked} onClick={() => pickRow(r)}>
+                  <Photo slot={r.slot} className="rrow__img" ratio="1 / 1" tone={rows.indexOf(r)} />
+                  <span className="rrow__txt">
+                    <span className="t-card">{r.name}</span>
+                    <span className="t-small">{r.meta}</span>
+                  </span>
+                  <span className="rrow__price"><span className="t-strong">{r.price}</span><span className={`rrow__go ${on ? 'is-on' : ''}`}>{why || (on ? '선택됨' : '선택')}</span></span>
+                </button>
+                {on && (
+                  <div className="rrow__body">
+                    {op?.modes && !r.night && (
+                      <div className="rrow__line"><span className="t-strong rrow__lab">게임 모드</span>
+                        <div className="chips">{op.modes.filter((m) => m.id !== 'night').map((m) => <button key={m.id} className="chip" aria-pressed={draft.mode === m.id} onClick={() => set({ mode: m.id, time: null })}>{m.name}<span className="t-caption">{m.age}</span></button>)}</div>
+                      </div>
+                    )}
+                    {op?.options && (
+                      <div className="rrow__line"><span className="t-strong rrow__lab">이용 방식</span>
+                        <div className="chips">{op.options.map((o) => <button key={o.id} className="chip" aria-pressed={draft.mode === o.id} onClick={() => set({ mode: o.id })}>{o.name}<span className="t-caption">{won(o.price)}</span></button>)}</div>
+                      </div>
+                    )}
+                    <div className="rrow__line"><span className="t-strong rrow__lab">회차</span>
+                      {!draft.date ? <span className="t-small">방문일을 먼저 골라 주세요</span> : !times.length ? <span className="t-small">이 날은 열리는 회차가 없어요</span> : (
+                        <div className="chips">{times.map((t) => { const left = seatsLeft(draft.date, t, cap); const full = left < Math.max(1, op?.id === 'winter-camp' ? 1 : ppl); return (
+                          <button key={t} className="chip chip--time" aria-pressed={draft.time === t} disabled={full} onClick={() => set({ time: t })}>{t}<span className="t-caption">{left === 0 ? '마감' : full ? '자리 부족' : `${left}자리 남음`}</span></button>) })}</div>
+                      )}
+                    </div>
+                    {op?.id !== 'winter-camp' && (
+                      <div className="rrow__line"><span className="t-strong rrow__lab">인원</span>
+                        <div className="ppl">
+                          {[['adult', '성인', '19세 이상'], ['youth', '청소년', '13세부터 18세'], ['child', '어린이', '12세 이하']].map(([k, l, sub]) => (
+                            <div key={k} className="ppl__cell">
+                              <span className="ppl__lab"><span className="t-strong">{l}</span><span className="t-caption">{sub}</span></span>
+                              <span className="ppl__ctl">
+                                <button className="ctr__btn" onClick={() => setP(k, Math.max(0, draft.people[k] - 1))} disabled={draft.people[k] <= 0} aria-label={`${l} 빼기`}><Minus size={18} aria-hidden /></button>
+                                <output className="t-label" aria-live="polite">{draft.people[k]}</output>
+                                <button className="ctr__btn" onClick={() => setP(k, Math.min(40, draft.people[k] + 1))} disabled={draft.people[k] >= 40} aria-label={`${l} 더하기`}><Plus size={18} aria-hidden /></button>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {op?.id === 'gungame' && <p className="t-small rrow__note">20명 이상이면 단체 할인 10%가 자동으로 적용돼요.</p>}
+                  </div>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+      <ResBar hint={need}>
+        <Btn disabled={!!need} onClick={() => nav('/reserve/details')}>다음 단계</Btn>
+      </ResBar>
+    </>
   )
 }
 
@@ -199,23 +274,13 @@ export function Step2() {
   const total = calcTotal(draft)
   useEffect(() => { if (total.discount > 0) say(`단체 할인 적용 ${won(total.discount)}`) }, [total.discount > 0]) // eslint-disable-line react-hooks/exhaustive-deps
   if (!draft.date || !draft.time) return <Navigate to="/reserve" replace />
-  const setP = (k, v) => set({ people: { ...draft.people, [k]: v } })
-  const ageWarn = p?.id === 'gungame' && ((draft.mode === 'paintball' && draft.people.child > 0) || (draft.mode === 'night' && (draft.people.child + draft.people.youth) > 0))
   const nameOk = draft.name.trim().length > 0
   const phoneOk = /^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(draft.phone.trim())
-  const ok = draft.agree && nameOk && phoneOk && total.ppl > 0 && !ageWarn
+  const ok = draft.agree && nameOk && phoneOk
   const safety = p?.safety || p?.welfareRules || p?.rules || []
   return (
     <section className="wrap section rsv">
       <div className="rsv__main stack-7">
-        <div className="stack-4">
-          <h2 className="t-label">인원</h2>
-          <Counter label="성인" sub="만 19세 이상" value={draft.people.adult} onChange={(v) => setP('adult', v)} />
-          <Counter label="청소년" sub="만 13세부터 18세" value={draft.people.youth} onChange={(v) => setP('youth', v)} />
-          <Counter label="어린이" sub="만 12세 이하" value={draft.people.child} onChange={(v) => setP('child', v)} />
-          {ageWarn && <p className="t-body c-action">{draft.mode === 'paintball' ? '만 14세 미만은 페인트볼 대신 레이저 배틀을 골라 주세요' : '야간 미션전은 만 19세 이상이라 주간 레이저 배틀을 골라 주세요'}</p>}
-          {p?.id === 'gungame' && <p className="t-small c-sub">20명 이상이면 단체 할인 10%가 자동으로 적용돼요.</p>}
-        </div>
         <div className="stack-4">
           <h2 className="t-label">예약자</h2>
           <div className="rsv__fields">
@@ -235,18 +300,17 @@ export function Step2() {
           <h2 className="t-label">입장권</h2>
           <CheckBox checked={draft.admission} onChange={(v) => set({ admission: v })}>입장권도 함께 살게요. 성인 {won(pricing.admission.individual.adult)}, 청소년 {won(pricing.admission.individual.youth)}, 어린이 {won(pricing.admission.individual.child)}</CheckBox>
         </div>
-        <div className="stack-3">
+        <div className="stack-3 rsv__wide">
           <h2 className="t-label">안전 수칙</h2>
           <ul className="rules">{safety.map((r) => <li key={r} className="t-body">{r}</li>)}</ul>
           <CheckBox checked={draft.agree} onChange={(v) => set({ agree: v })}>안전 수칙을 모두 읽고 지킬게요. (필수)</CheckBox>
           {tried && !draft.agree && <p className="field__err">안전 수칙에 동의해야 다음 단계로 갈 수 있어요.</p>}
         </div>
-        <div className="rsv__next">
-          <Btn variant="deep" onClick={() => nav('/reserve')}>이전 단계</Btn>
-          <Btn onClick={() => { setTried(true); if (ok) nav("/reserve/confirm") }}>다음 단계</Btn>
-        </div>
       </div>
-      <Summary />
+      <ResBar>
+        <Btn variant="deep" onClick={() => nav('/reserve')}>이전</Btn>
+        <Btn onClick={() => { setTried(true); if (ok) nav('/reserve/confirm') }}>다음 단계</Btn>
+      </ResBar>
       {toast}
     </section>
   )
@@ -295,7 +359,6 @@ export function Step3() {
           <Btn onClick={pay} disabled={busy}>{busy ? '결제 중' : `${won(t.sum)} 결제`}</Btn>
         </div>
       </div>
-      <Summary />
     </section>
   )
 }

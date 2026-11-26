@@ -69,7 +69,7 @@ export const type = {
 }
 
 // 간격 px. 8 배수와 4
-export const space = { 1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 28, 7: 40, 8: 56, 9: 80, 10: 96 }
+export const space = { 1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 24, 7: 32, 8: 40, 9: 56, 10: 72 }
 
 // 크기 px
 export const size = {

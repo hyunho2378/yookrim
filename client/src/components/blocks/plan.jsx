@@ -1,5 +1,5 @@
 // plan.jsx  카테고리 타일, 콘텐츠 카드, 방문자별 안내, 한눈에 보기, 다음 행동 띠, 영상 히어로, 방문 전 질문.
-import { useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Clock, MapPin, Navigation, Pause, Phone, Play, Ticket, Wallet } from 'lucide-react'
 import { Btn, Photo, Accordion } from '../ui'
@@ -66,11 +66,19 @@ export function StageHero({ title, lead, primary, secondary }) {
     const t = setInterval(() => setI((n) => (n + 1) % heroSlides.length), 6500)
     return () => clearInterval(t)
   }, [paused, reduce])
+  const [prev, setPrev] = useState(null)
+  const last = useRef(0)
+  useEffect(() => {
+    if (last.current === i) return undefined
+    setPrev(last.current); last.current = i
+    const t = setTimeout(() => setPrev(null), 2000)
+    return () => clearTimeout(t)
+  }, [i])
   const cur = heroSlides[i]
   return (
     <section className="stage" aria-label="육림랜드 소개" aria-roledescription="carousel">
       {heroSlides.map((sl, k) => (
-        <img key={sl.id} className={`stage__img ${k === i ? 'is-on' : ''}`} src={`${import.meta.env.BASE_URL}images/${sl.img}`} alt={k === i ? `${sl.title}. ${sl.text}` : ''} aria-hidden={k !== i} style={{ objectPosition: sl.pos }} width="1920" height="1440" decoding="async" fetchpriority={k === 0 ? 'high' : 'low'} />
+        <img key={sl.id} className={`stage__img ${k === i ? 'is-on' : k === prev ? 'is-prev' : ''}`} src={`${import.meta.env.BASE_URL}images/${sl.img}`} alt={k === i ? `${sl.title}. ${sl.text}` : ''} aria-hidden={k !== i} style={{ objectPosition: sl.pos }} width="1920" height="1440" decoding="async" fetchpriority={k === 0 ? 'high' : 'low'} />
       ))}
       <div className="stage__shade" aria-hidden />
       <div className="wrap stage__copy">
@@ -82,7 +90,7 @@ export function StageHero({ title, lead, primary, secondary }) {
         </div>
       </div>
       <div className="wrap stage__nav">
-        <Link to={cur.to} className="stage__card">
+        <Link key={cur.id} to={cur.to} className="stage__card">
           <span className="t-card">{cur.title}</span>
           <span className="t-small">{cur.text}</span>
         </Link>
