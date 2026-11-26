@@ -9,6 +9,7 @@ import Character from './pages/Character'
 import { Fees, OpsCalendar, Directions, Faq } from './pages/Guide'
 import { ReserveLayout, Step1, Step2, Step3, Done } from './pages/Reserve'
 import { About, News, NewsDetail, My, NotFound } from './pages/Misc'
+import Project from './pages/Project'
 import MapPage from './pages/MapPage'
 
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/about', element: <About /> },
+      { path: '/project', element: <Project /> },
       { path: '/about/characters', element: <Character /> },
       { path: '/play', element: <PlayList /> },
       { path: '/play/gungame', element: <Gungame /> },

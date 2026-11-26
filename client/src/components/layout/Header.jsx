@@ -60,7 +60,7 @@ export default function Header() {
     return () => document.documentElement.classList.remove('lock')
   }, [mobile])
 
-  const left = menus.filter((m) => ['about', 'play', 'guide'].includes(m.id))
+  const left = menus.filter((m) => ['about', 'play', 'guide', 'project'].includes(m.id))
   const right = []
   const renderItem = (m) => (
     <li key={m.id} onMouseEnter={() => enter(m.id)}>

@@ -56,7 +56,7 @@ export const menus = [
         { label: '겨울 캠핑 데이', to: '/play/season/winter' }
       ] }
     ],
-    promo: { slot: 'poster-winter', label: '겨울 1일 캠핑 데이', text: '오픈 알림을 신청하면 가장 먼저 알려 드려요.', to: '/play/season/winter' }
+    promo: { slot: 'poster-winter', label: '겨울 1일 캠핑 데이', text: '겨울 시즌에 열리는 소나무 숲 캠핑 데이예요.', to: '/play/season/winter' }
   },
   {
     id: 'guide', label: '이용안내', to: '/guide',
@@ -79,6 +79,22 @@ export const menus = [
     promo: { slot: 'site-entrance', label: '행사 날 오시는 길', text: '춘천마라톤 통제 구간과 우회 경로를 미리 확인하세요.', to: '/guide/directions#control' }
   },
   {
+    id: 'project', label: '프로젝트', to: '/project',
+    groups: [
+      { title: '프로젝트 소개', to: '/project', items: [
+        { label: '프로젝트 배경', to: '/project#background' },
+        { label: '프로젝트 목적', to: '/project#purpose' },
+        { label: '프로젝트 진행 과정', to: '/project#process' }
+      ] },
+      { title: '우리가 그리는 육림랜드', to: '/project#vision', items: [
+        { label: '우리가 그리는 미래', to: '/project#vision' },
+        { label: '기대 효과', to: '/project#impact' },
+        { label: '향후 발전 방향', to: '/project#future' }
+      ] }
+    ],
+    promo: { slot: 'map-aerial', label: '육림랜드, 새로운 가능성을 발견하다', text: '프로젝트의 배경과 방향을 소개해요.', to: '/project' }
+  },
+  {
     id: 'news', label: '소식', to: '/news',
     groups: [
       { title: '소식', to: '/news', items: [
@@ -86,7 +102,7 @@ export const menus = [
         { label: '이벤트', to: '/news?type=event' }
       ] }
     ],
-    promo: { slot: 'poster-winter', label: '겨울 1일 캠핑 데이', text: '오픈 알림을 신청하면 가장 먼저 알려 드려요.', to: '/play/season/winter' }
+    promo: { slot: 'poster-winter', label: '겨울 1일 캠핑 데이', text: '겨울 시즌에 열리는 소나무 숲 캠핑 데이예요.', to: '/play/season/winter' }
   }
 ]
 

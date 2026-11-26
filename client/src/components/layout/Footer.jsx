@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="ftr__nav">
         <div className="wrap">
           <nav className="ftr__links" aria-label="바로가기">
-            {[['운영 캘린더', '/guide/calendar'], ['요금 안내', '/guide'], ['오시는 길', '/guide/directions'], ['공간 지도', '/map'], ['리플릿', '/leaflet'], ['자주 묻는 질문', '/guide/faq'], ['소식', '/news']].map(([l, to]) => <Link key={to} to={to} className="t-body">{l}</Link>)}
+            {[['운영 캘린더', '/guide/calendar'], ['요금 안내', '/guide'], ['오시는 길', '/guide/directions'], ['공간 지도', '/map'], ['리플릿', '/leaflet'], ['자주 묻는 질문', '/guide/faq'], ['프로젝트', '/project'], ['소식', '/news']].map(([l, to]) => <Link key={to} to={to} className="t-body">{l}</Link>)}
           </nav>
         </div>
       </div>
