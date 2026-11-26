@@ -54,7 +54,7 @@ export default function Character() {
 
       <section className="wrap section gd-block">
         <header className="gd-head"><h2 className="t-band">캐릭터 설정</h2><p className="t-body c-sub">가디는 이런 친구예요.</p></header>
-        <dl className="kv">{profile.map(([k, v]) => <Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl>
+        <ul className="gd-facts">{profile.map(([k, v]) => <li key={k}><span className="t-small">{k}</span><span className="t-body">{v}</span></li>)}</ul>
 
         <div className="gd-world">
           <div className="stack-4">
