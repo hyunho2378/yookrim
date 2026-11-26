@@ -60,8 +60,8 @@ export default function Header() {
     return () => document.documentElement.classList.remove('lock')
   }, [mobile])
 
-  const left = menus.slice(0, 3)
-  const right = menus.filter((m) => m.id === 'guide')
+  const left = menus.filter((m) => ['about', 'play', 'guide'].includes(m.id))
+  const right = []
   const renderItem = (m) => (
     <li key={m.id} onMouseEnter={() => enter(m.id)}>
       <div className={`hdr__item ${open === m.id ? 'is-open' : ''}`}>
@@ -96,8 +96,7 @@ export default function Header() {
           <nav aria-label="주 메뉴 오른쪽" className="hdr__nav hdr__nav--r">
             <ul className="hdr__menu">
               {right.map(renderItem)}
-              <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/guide/directions" className="t-nav hdr__link hdr__link--solo">오시는 길</NavLink></div></li>
-              <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/map" className="t-nav hdr__link hdr__link--solo">공간 지도</NavLink></div></li>
+              <li onMouseEnter={leave}><div className="hdr__item"><NavLink to="/map" className="t-nav hdr__link hdr__link--solo hdr__link--map">공간 지도</NavLink></div></li>
             </ul>
             <Link to="/reserve" className="hdr__cta t-nav">예약</Link>
           </nav>
@@ -131,7 +130,6 @@ export default function Header() {
               )}
             </div>
           ))}
-          <div className="mmenu__sec"><Link to="/guide/directions" className="mmenu__head t-label">오시는 길</Link></div>
           <div className="mmenu__sec"><Link to="/map" className="mmenu__head t-label">공간 지도</Link></div>
           <div className="mmenu__sec"><Link to="/leaflet" className="mmenu__head t-label">리플릿</Link></div>
           <div className="mmenu__links">

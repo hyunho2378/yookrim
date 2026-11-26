@@ -124,3 +124,7 @@ body:not(.has-bar) .topbtn { bottom: var(--s-5); }
 .toast--on { opacity: 1; transform: translate(-50%, 0); }
 
 .clause { display: inline-block; }
+
+/* 공간 지도 메뉴 강조 */
+.hdr__link--map { align-self: center; min-height: 2.75rem; padding-inline: var(--s-4); background: var(--c-citron); color: var(--c-ink); border-radius: var(--r); font-weight: 700; box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease), transform var(--m-fast) var(--ease); }
+.hdr__link--map:hover { box-shadow: var(--shadow-2); }

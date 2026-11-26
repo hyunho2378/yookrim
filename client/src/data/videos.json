@@ -1,6 +1,11 @@
 {
   "_note": "영상 파일을 public/videos/ 에 넣고 아래 값을 채우면 바로 나온다. 값이 비어 있으면 대표 이미지가 나온다. 홈 첫 화면은 8초에서 20초 루프, 카드는 3초에서 8초 루프, 상세는 15초에서 60초를 쓴다.",
-  "hero": { "src": "", "mobile": "", "poster": "promo-video", "label": "육림랜드 소개 영상" },
+  "hero": {
+    "src": "yuklim-final.mp4",
+    "mobile": "",
+    "poster": "promo-video",
+    "label": "육림랜드 소개 영상"
+  },
   "cards": {},
   "details": {}
 }

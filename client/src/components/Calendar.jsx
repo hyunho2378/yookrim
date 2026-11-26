@@ -28,13 +28,14 @@ export default function Calendar({ month, onMonth, selected, onSelect, info, min
           const past = minDate ? key < minDate : key < today
           const disabled = past || !it.open || !onSelect
           const sel = selected === key
+          const text = past ? '지난 날' : it.text
           return (
             <button key={key} role="gridcell" aria-selected={sel} disabled={!onSelect ? undefined : disabled} tabIndex={onSelect ? undefined : -1}
               className={`cal__cell ${sel ? 'is-sel' : ''} ${past ? 'is-past' : ''} ${!it.open ? 'is-closed' : ''} ${key === today ? 'is-today' : ''} ${!onSelect ? 'is-static' : ''}`}
               onClick={() => onSelect && !disabled && onSelect(key)}
-              aria-label={`${m + 1}월 ${d.getDate()}일 ${it.text}`}>
+              aria-label={`${m + 1}월 ${d.getDate()}일 ${text}`}>
               <span className="cal__date t-strong">{d.getDate()}</span>
-              <span className="cal__info t-small">{it.text}</span>
+              <span className="cal__info t-small">{text}</span>
             </button>
           )
         })}

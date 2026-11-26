@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { StoreProvider } from './lib/store'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
-import { Gungame, Cafe, SeasonList, SeasonDetail } from './pages/Program'
+import { Gungame, NightMission, Cafe, SeasonList, SeasonDetail } from './pages/Program'
 import { PlayList, Attractions } from './pages/Play'
 import Leaflet from './pages/Leaflet'
 import Character from './pages/Character'
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       { path: '/about/characters', element: <Character /> },
       { path: '/play', element: <PlayList /> },
       { path: '/play/gungame', element: <Gungame /> },
+      { path: '/play/night-mission', element: <NightMission /> },
       { path: '/play/cafe', element: <Cafe /> },
       { path: '/play/season', element: <SeasonList /> },
       { path: '/play/season/:id', element: <SeasonDetail /> },

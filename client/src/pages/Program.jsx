@@ -40,7 +40,7 @@ export function Gungame() {
         <CenterTitle title="깃발을 지키는 팀 서바이벌" text="접수하면 팀과 미션 카드를 받아요. 감시탑과 컨테이너, 벙커 사이에서 깃발을 겨뤄요." />
       </section>
       <FactSheet id="gungame" />
-      {p.modes.map((m, i) => (
+      {p.modes.filter((m) => m.id !== 'night').map((m, i) => (
         <Teaser key={m.id} id={`mode-${m.id}`} slot={i === 0 ? 'gungame-obstacles' : i === 1 ? 'gungame-zone-overview' : 'zombie-night'} tone={i} flip={i % 2 === 1} title={m.name} cta={`${m.name} 예약`} to={`/reserve?program=gungame&mode=${m.id}`}>
           <p>{m.desc}</p>
           <dl className="kv">
@@ -50,7 +50,6 @@ export function Gungame() {
           </dl>
         </Teaser>
       ))}
-      <FactSheet id="night-mission" title="야간 미션전 이용 정보" />
       <section className="wrap section">
         <h2 className="t-label tiles__title">진행 순서</h2>
         <Steps items={p.steps} />
@@ -61,7 +60,6 @@ export function Gungame() {
           <dt>대상</dt><dd>{p.target.join(', ')}</dd>
           <dt>인원</dt><dd>회차당 최대 {p.capacity.perSession}명, 최소 {p.capacity.min}명</dd>
           <dt>주간 회차</dt><dd>{p.sessions.join(', ')}</dd>
-          <dt>야간 회차</dt><dd>금요일과 토요일 {p.nightSessions.join(', ')}</dd>
           <dt>장소</dt><dd><Link to="/map?focus=gungame-base" className="inline-link"><MapPin size={20} aria-hidden />총게임 집결지</Link></dd>
           <dt>비 오는 날</dt><dd>{p.rainPolicy}</dd>
         </dl>
@@ -81,6 +79,39 @@ export function Gungame() {
       </section>
       <Faq cat="총게임" />
       <NextActions program="gungame" />
+    </>
+  )
+}
+
+export function NightMission() {
+  const p = program('gungame')
+  const m = p.modes.find((x) => x.id === 'night')
+  return (
+    <>
+      <EventHero slot="gungame-obstacles" tone={3} tag="금요일과 토요일 밤" title={m.name} text={m.desc} cta="야간 미션전 예약" to="/reserve?program=gungame&mode=night" />
+      <section className="wrap section">
+        <CenterTitle title="불 꺼진 놀이공원에서 깃발을 뺏는 밤" text="만 19세 이상이 팀으로 모여 어두운 필드를 달려요. 접수하면 팀과 미션 카드를 받아요." />
+      </section>
+      <FactSheet id="night-mission" title="야간 미션전 이용 정보" />
+      <section className="wrap section">
+        <h2 className="t-label tiles__title">진행 순서</h2>
+        <Steps items={p.steps} />
+      </section>
+      <section className="wrap section">
+        <h2 className="t-label tiles__title">이용 정보</h2>
+        <dl className="kv">
+          <dt>대상</dt><dd>{m.age}</dd>
+          <dt>인원</dt><dd>회차당 최대 {p.capacity.perSession}명, 최소 {p.capacity.min}명</dd>
+          <dt>야간 회차</dt><dd>금요일과 토요일 {p.nightSessions.join(', ')}</dd>
+          <dt>요금</dt><dd>1인 {won(p.price.night)}, {p.price.groupDiscount} 할인</dd>
+          <dt>장소</dt><dd><Link to="/map?focus=gungame-base" className="inline-link"><MapPin size={20} aria-hidden />총게임 집결지</Link></dd>
+        </dl>
+      </section>
+      <Teaser id="safety" slot="gungame-zone-overview" tone={3} title="안전 수칙" cta="지도에서 필드 위치" to="/map?focus=gungame-base">
+        <p>경기 전 10분 안전 교육을 받아요</p>
+        <CheckList items={p.safety} />
+      </Teaser>
+      <NextActions program="gungame" bookTo="/reserve?program=gungame&mode=night" />
     </>
   )
 }

@@ -1,5 +1,5 @@
 // Reserve.jsx  예약 3단계와 완료 티켓. 단계 사이를 오가도 고른 값이 그대로 남는다.
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { Fragment, createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate, useSearchParams, Navigate } from 'react-router-dom'
 import { Minus, Plus, Ticket, MapPin, CalendarDays, Users, Clock } from 'lucide-react'
 import Calendar from '../components/Calendar'
@@ -78,7 +78,7 @@ function Summary() {
     <aside className="rsv-sum">
       <h2 className="t-label">예약 요약</h2>
       <dl className="rsv-sum__list">
-        <div><dt className="t-small"><Ticket size={20} aria-hidden />프로그램</dt><dd className="t-strong">{p?.name}{draft.mode && p?.modes ? ` ${p.modes.find((m) => m.id === draft.mode)?.name}` : ''}{p?.options ? ` ${p.options.find((o) => o.id === draft.mode)?.name || ''}` : ''}</dd></div>
+        <div><dt className="t-small"><Ticket size={20} aria-hidden />프로그램</dt><dd className="t-strong">{p?.id === 'gungame' && draft.mode === 'night' ? '야간 미션전' : p?.name}{draft.mode && p?.modes && draft.mode !== 'night' ? ` ${p.modes.find((m) => m.id === draft.mode)?.name}` : ''}{p?.options ? ` ${p.options.find((o) => o.id === draft.mode)?.name || ''}` : ''}</dd></div>
         <div><dt className="t-small"><CalendarDays size={20} aria-hidden />날짜</dt><dd className="t-strong">{draft.date ? dotDate(draft.date) : '선택 전'}</dd></div>
         <div><dt className="t-small"><Clock size={20} aria-hidden />회차</dt><dd className="t-strong">{draft.time || '선택 전'}</dd></div>
         <div><dt className="t-small"><Users size={20} aria-hidden />인원</dt><dd className="t-strong">{ppl}명</dd></div>
@@ -126,20 +126,28 @@ export function Step1() {
               const op = program(o.id)
               const os = o.season ? season(o.season) : null
               const st = os ? seasonStatus(os) : 'live'
+              const night = draft.program === 'gungame' && draft.mode === 'night'
               return (
-                <button key={o.id} className="choice" aria-pressed={draft.program === o.id} disabled={st !== 'live'} onClick={() => pick({ program: o.id, mode: o.id === 'gungame' ? 'laser' : o.id === 'winter-camp' ? 'day' : null })}>
-                  {op.name}{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
-                </button>
+                <Fragment key={o.id}>
+                  <button className="choice" aria-pressed={draft.program === o.id && !(o.id === 'gungame' && night)} disabled={st !== 'live'} onClick={() => pick({ program: o.id, mode: o.id === 'gungame' ? 'laser' : o.id === 'winter-camp' ? 'day' : null })}>
+                    {op.name}{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
+                  </button>
+                  {o.id === 'gungame' && (
+                    <button className="choice" aria-pressed={night} disabled={st !== 'live'} onClick={() => pick({ program: 'gungame', mode: 'night' })}>
+                      야간 미션전{st !== 'live' && <span className="t-small">{statusText[st]}</span>}
+                    </button>
+                  )}
+                </Fragment>
               )
             })}
           </div>
           {s && <p className="t-small c-sub">{s.season} 시즌 {periodText(s.period)}에만 예약할 수 있어요.</p>}
         </div>
-        {p?.modes && (
+        {p?.modes && draft.mode !== 'night' && (
           <div className="stack-4">
             <h2 className="t-label">게임 모드</h2>
             <div className="choices">
-              {p.modes.map((m) => <button key={m.id} className="choice" aria-pressed={draft.mode === m.id} onClick={() => pick({ mode: m.id, date: draft.mode === 'night' || m.id === 'night' ? null : draft.date })}>{m.name} <span className="t-small">{m.age}</span></button>)}
+              {p.modes.filter((m) => m.id !== 'night').map((m) => <button key={m.id} className="choice" aria-pressed={draft.mode === m.id} onClick={() => pick({ mode: m.id, date: draft.mode === 'night' || m.id === 'night' ? null : draft.date })}>{m.name} <span className="t-small">{m.age}</span></button>)}
             </div>
           </div>
         )}
@@ -256,7 +264,8 @@ export function Step3() {
     setBusy(true)
     const no = `YR${draft.date.replace(/-/g, '').slice(2)}${String(Math.floor(Math.random() * 9000) + 1000)}`
     const modeName = p.modes ? p.modes.find((m) => m.id === draft.mode)?.name : p.options ? p.options.find((o) => o.id === draft.mode)?.name : ''
-    store.addReservation({ no, program: p.id, name: p.name, mode: modeName || '', date: draft.date, time: draft.time, people: t.ppl, total: t.sum, at: new Date().toISOString() })
+    const nightRsv = p.id === 'gungame' && draft.mode === 'night'
+    store.addReservation({ no, program: p.id, name: nightRsv ? '야간 미션전' : p.name, mode: nightRsv ? '' : (modeName || ''), date: draft.date, time: draft.time, people: t.ppl, total: t.sum, at: new Date().toISOString() })
     setTimeout(() => nav(`/reserve/done?no=${no}`), 400)
   }
   return (

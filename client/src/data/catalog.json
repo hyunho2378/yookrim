@@ -30,6 +30,7 @@
     },
     {
       "id": "park",
+      "to": "/play/attractions",
       "name": "놀이동산",
       "text": "1975년부터 자리를 지켜 온 놀이기구",
       "tone": "blue",
@@ -119,7 +120,7 @@
       "id": "night-mission",
       "cat": "night",
       "name": "야간 미션전",
-      "to": "/play/gungame#mode-night",
+      "to": "/play/night-mission",
       "slot": "gungame-obstacles",
       "line": "금요일과 토요일 밤, 조명이 꺼진 놀이공원에서 깃발을 뺏어요.",
       "for": [

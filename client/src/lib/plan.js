@@ -106,7 +106,7 @@ export function visitQA() {
   const open = seasons.filter((s) => seasonStatus(s) !== 'ended')
   return [
     { q: '육림랜드는 어떤 곳인가요?', a: '1975년 춘천에서 문을 연 숲속 놀이공원이에요. 놀이기구와 동물원이 있고, 계절마다 총게임이나 보물찾기 같은 프로그램이 열려요.', to: '/about', cta: '육림랜드 이야기' },
-    { q: '지금 무엇을 할 수 있나요?', a: `놀이기구와 동물원, 먹이 주기, 동물 교감 카페는 운영일마다 이용해요. 시즌 프로그램은 ${now.season} 시즌 ${now.title}, ${periodText(now.period)}에 열려요.`, to: '/play/season', cta: '이번 시즌 보기' },
+    { q: '지금 무엇을 할 수 있나요?', a: `놀이기구와 동물원, 먹이 주기, 동물 교감 카페는 운영일마다 이용해요. 시즌 프로그램은 ${now.season} 시즌 ${now.title}, ${periodText(now.period)}에 열려요.`, to: '/play/season', cta: '사계절 프로그램 보기' },
     { q: '누구와 가면 어떤 놀이가 좋나요?', a: '아이와는 동물 체험과 놀이기구, 친구나 연인과는 총게임과 야간 체험, 단체는 총게임 단체 예약이 잘 맞아요.', to: '/play#audience', cta: '함께 오는 사람별 코스' },
     { q: '비용은 얼마인가요?', a: `입장권은 성인 ${won(a.individual.adult)}, 청소년 ${won(a.individual.youth)}, 어린이 ${won(a.individual.child)}이고 ${a.freeUnder}예요. 총게임은 1인 ${won(gun.price.laser)}부터이고 40분에서 60분 걸려요.`, to: '/guide', cta: '요금 보기' },
     { q: '예약이 필요한가요?', a: '총게임과 동물 교감 카페, 좀비 숲, 1일 캠핑은 예약해야 해요. 입장과 놀이기구, 동물원은 현장에서 바로 이용해요.', to: '/reserve', cta: '예약하기' },

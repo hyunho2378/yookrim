@@ -24,7 +24,7 @@ export const menus = [
       ] },
       { title: '나이트', to: '/play?cat=night#list', items: [
         { label: '한밤의 좀비 숲', to: '/play/season/summer' },
-        { label: '야간 미션전', to: '/play/gungame#mode-night' }
+        { label: '야간 미션전', to: '/play/night-mission' }
       ] },
       { title: '동물 체험', to: '/play?cat=animal#list', items: [
         { label: '동물 교감 카페', to: '/play/cafe' },
@@ -34,14 +34,20 @@ export const menus = [
         { label: '1일 캠핑', to: '/play/season/winter' },
         { label: '캠프촌', to: '/play/attractions#camp' }
       ] },
-      { title: '놀이동산', to: '/play?cat=park#list', items: [
+      { title: '놀이동산', to: '/play/attractions', items: [
         { label: '놀이기구', to: '/play/attractions#rides' }
+      ] },
+      { title: '사계절 프로그램', to: '/play/season', items: [
+        { label: '봄 숲속 보물찾기', to: '/play/season/spring' },
+        { label: '여름 좀비 숲', to: '/play/season/summer' },
+        { label: '가을 총게임 리그', to: '/play/season/autumn' },
+        { label: '겨울 캠핑 데이', to: '/play/season/winter' }
       ] }
     ],
     promo: { slot: 'gungame-zone-overview', label: '숲속 총게임 리그', text: '가을 시즌 11월 30일까지 열려요.', to: '/play/gungame' }
   },
   {
-    id: 'season', label: '이번 시즌', to: '/play/season',
+    id: 'season', label: '사계절 프로그램', to: '/play/season',
     groups: [
       { title: '사계절 프로그램', to: '/play/season', items: [
         { label: '봄 숲속 보물찾기', to: '/play/season/spring' },
@@ -86,7 +92,6 @@ export const menus = [
 
 export const topLinks = [
   { label: '소식', to: '/news' },
-  { label: '오시는 길', to: '/guide/directions' },
   { label: '단체 예약', to: '/play/gungame#group' },
   { label: '자주 묻는 질문', to: '/guide/faq' }
 ]

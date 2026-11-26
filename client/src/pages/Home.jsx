@@ -13,7 +13,7 @@ export default function Home() {
         lead={lead}
         title={['new!! 육림랜드', '50년 숲속 놀이공원에 새 놀이가 생겼어요']}
         primary={{ label: '예약하기', to: '/reserve' }}
-        secondary={{ label: '이번 시즌 보기', to: '/play/season' }}
+        secondary={{ label: '사계절 프로그램 보기', to: '/play/season' }}
       />
       <CategoryTiles title="놀이 종류" text="종류별로 둘러보세요." />
       <Teaser slot={`poster-${now.id}`} tone={0} title={`${now.season} ${now.title}`} cta="시즌 상세 안내" to={`/play/season/${now.id}`}>

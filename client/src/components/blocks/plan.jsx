@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Clock, MapPin, Navigation, Pause, Phone, Play, Ticket, Wallet } from 'lucide-react'
 import { Btn, Photo, Accordion } from '../ui'
-import { site, todayHours, won, pricing } from '../../lib/data'
+import { site, todayHours, won, pricing, currentSeason } from '../../lib/data'
 import { categories, category, audiences, tagsOf, cardPrice, factsOf, visitQA, itemById, items } from '../../lib/plan'
 import videos from '../../data/videos.json'
 
+const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&hl=ko&z=16&output=embed`
 const MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(site.address)}`
 
 // 영상 한 개. 파일이 없거나 움직임 줄이기, 데이터 절약, 느린 연결이면 그리지 않아 대표 이미지만 남는다
@@ -82,9 +83,9 @@ export function CategoryTiles({ title, text }) {
         {text && <p className="t-body c-sub">{text}</p>}
       </div>
       <ul className="ctiles__list">
-        {categories.map((c, i) => (
+        {[...categories, { id: 'seasons', name: '사계절 프로그램', text: '봄부터 겨울까지 계절마다 새로 열려요', tone: 'sun', slot: `poster-${currentSeason().id}`, to: '/play/season' }].map((c, i) => (
           <li key={c.id}>
-            <Link to={`/play?cat=${c.id}#list`} className={`ctile ctile--${c.tone}`}>
+            <Link to={c.to || `/play?cat=${c.id}#list`} className={`ctile ctile--${c.tone}`}>
               <Photo slot={c.slot} fill tone={i} />
               <span className="ctile__shade" aria-hidden />
               <span className="ctile__txt">
@@ -183,8 +184,8 @@ export function FactSheet({ id, title = '이용 정보' }) {
 }
 
 // 상세 화면 맨 아래. 메뉴로 돌아가지 않고 바로 다음 행동으로 이어진다
-export function NextActions({ program: pid, noBook, title = '예약과 문의' }) {
-  const book = pid ? `/reserve?program=${pid}` : '/reserve'
+export function NextActions({ program: pid, noBook, title = '예약과 문의', bookTo }) {
+  const book = bookTo || (pid ? `/reserve?program=${pid}` : '/reserve')
   return (
     <section className="nact">
       <div className="wrap nact__in">
@@ -192,7 +193,7 @@ export function NextActions({ program: pid, noBook, title = '예약과 문의' }
         <div className="nact__btns">
           {!noBook && <Btn to={book}>예약하기</Btn>}
           <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />전화 문의</a>
-          <Btn to="/guide" variant="light">이용 안내</Btn>
+          <Btn to="/guide" variant="light">요금 안내</Btn>
           <a className="btn btn--light" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>
         </div>
       </div>
@@ -266,16 +267,19 @@ export function InfoBand() {
   return (
     <section className="nact nact--final ibar" aria-label="방문 안내">
       <div className="wrap ibar__in">
-        <dl className="ibar__list">
-          <div><dt className="t-small">운영시간</dt><dd className="t-strong">{t.label}, 주말 {site.hours.weekend.replace('-', ' - ')}, {site.hours.closedDay} 휴무</dd></div>
-          <div><dt className="t-small">입장권</dt><dd className="t-strong">성인 {won(a.individual.adult)}, 청소년 {won(a.individual.youth)}, 어린이 {won(a.individual.child)}</dd></div>
-          <div><dt className="t-small">주소</dt><dd className="t-strong">{site.address}</dd></div>
-        </dl>
-        <div className="nact__btns">
-          <a className="btn" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>
-          <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a>
-          <Btn to="/guide" variant="light">요금 안내</Btn>
+        <div className="ibar__info">
+          <dl className="ibar__list">
+            <div><dt className="t-small">운영시간</dt><dd className="t-strong">{t.label}, 주말 {site.hours.weekend.replace('-', ' - ')}, {site.hours.closedDay} 휴무</dd></div>
+            <div><dt className="t-small">입장권</dt><dd className="t-strong">성인 {won(a.individual.adult)}, 청소년 {won(a.individual.youth)}, 어린이 {won(a.individual.child)}</dd></div>
+            <div><dt className="t-small">주소</dt><dd className="t-strong">{site.address}</dd></div>
+          </dl>
+          <div className="nact__btns">
+            <a className="btn" href={MAP_URL} target="_blank" rel="noreferrer"><Navigation size={20} aria-hidden />길찾기</a>
+            <a className="btn btn--light" href={`tel:${site.phone}`}><Phone size={20} aria-hidden />{site.phone}</a>
+            <Btn to="/guide" variant="light">요금 안내</Btn>
+          </div>
         </div>
+        <div className="ibar__map"><iframe title="육림랜드 위치 지도" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
       </div>
     </section>
   )

@@ -129,3 +129,14 @@
 .ftr__form { padding-block: var(--s-6); }
 .ftr__nav { padding-block: var(--s-6); }
 .ftr__info a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* 방문 안내 띠: 왼쪽 안내와 오른쪽 지도 */
+.ibar__in { align-items: stretch; flex-wrap: nowrap; }
+.ibar__info { flex: 1 1 24rem; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s-6); }
+.ibar__info .ibar__list { flex: none; }
+.ibar__map { flex: 1 1 28rem; min-width: 0; min-height: 20rem; border-radius: var(--r); overflow: hidden; background: var(--c-page); box-shadow: var(--shadow-2); }
+.ibar__map iframe { display: block; width: 100%; height: 100%; min-height: 20rem; border: 0; }
+@media (max-width: 900px) { .ibar__in { flex-direction: column; align-items: stretch; } .ibar__map, .ibar__map iframe { min-height: 16rem; } }
+/* 놀이 종류 타일 여섯 개: 가로 세 칸, 두 줄 */
+.ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: span 2; }
+@media (max-width: 1024px) { .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: auto; } .ctiles__list li:last-child { grid-column: auto; } }

@@ -242,3 +242,9 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 .story-video { display: grid; gap: var(--s-5); }
 .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow-2); background: var(--c-ink); }
+
+/* 지난 날짜는 회색 면과 취소선으로 눌 수 없음을 보인다 */
+.cal__cell.is-past:not(.is-sel) { background: #d9d9d9; color: #595959; }
+.cal__cell.is-past:not(.is-sel) .cal__date { text-decoration: line-through; color: #595959; }
+.cal__cell.is-past:not(.is-sel) .cal__info { color: #595959; }
+.cal__cell.is-past.is-closed .cal__info { color: #595959; }
