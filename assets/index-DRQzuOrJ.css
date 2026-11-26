@@ -321,6 +321,10 @@ body:not(.has-bar) .topbtn { bottom: var(--s-5); }
 .toast--on { opacity: 1; transform: translate(-50%, 0); }
 
 .clause { display: inline-block; }
+
+/* 공간 지도 메뉴 강조 */
+.hdr__link--map { align-self: center; min-height: 2.75rem; padding-inline: var(--s-4); background: var(--c-citron); color: var(--c-ink); border-radius: var(--r); font-weight: 700; box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease), transform var(--m-fast) var(--ease); }
+.hdr__link--map:hover { box-shadow: var(--shadow-2); }
 /* blocks.css  블록 치수(1440 기준)를 rem 으로 옮겼다 */
 
 /* 첫 화면 */
@@ -684,6 +688,12 @@ a.inline-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 .story-video { display: grid; gap: var(--s-5); }
 .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow-2); background: var(--c-ink); }
+
+/* 지난 날짜는 회색 면과 취소선으로 눌 수 없음을 보인다 */
+.cal__cell.is-past:not(.is-sel) { background: #d9d9d9; color: #595959; }
+.cal__cell.is-past:not(.is-sel) .cal__date { text-decoration: line-through; color: #595959; }
+.cal__cell.is-past:not(.is-sel) .cal__info { color: #595959; }
+.cal__cell.is-past.is-closed .cal__info { color: #595959; }
 /* elevation.css  면의 높이와 입체감. 그림자 값은 tokens.js 의 shadow 단계만 쓴다.
    화면은 사진과 카드, 단추가 바탕 위에 떠 있는 느낌이 있다. 그 느낌을 그림자 단계로 만든다.
    움직임은 transform 과 box-shadow 의 부드러운 전환만 쓰고 크기나 자리는 바꾸지 않는다. */
@@ -1300,3 +1310,14 @@ a.inline-link { color: var(--c-ink); }
 .ftr__form { padding-block: var(--s-6); }
 .ftr__nav { padding-block: var(--s-6); }
 .ftr__info a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* 방문 안내 띠: 왼쪽 안내와 오른쪽 지도 */
+.ibar__in { align-items: stretch; flex-wrap: nowrap; }
+.ibar__info { flex: 1 1 24rem; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s-6); }
+.ibar__info .ibar__list { flex: none; }
+.ibar__map { flex: 1 1 28rem; min-width: 0; min-height: 20rem; border-radius: var(--r); overflow: hidden; background: var(--c-page); box-shadow: var(--shadow-2); }
+.ibar__map iframe { display: block; width: 100%; height: 100%; min-height: 20rem; border: 0; }
+@media (max-width: 900px) { .ibar__in { flex-direction: column; align-items: stretch; } .ibar__map, .ibar__map iframe { min-height: 16rem; } }
+/* 놀이 종류 타일 여섯 개: 가로 세 칸, 두 줄 */
+.ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: span 2; }
+@media (max-width: 1024px) { .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: auto; } .ctiles__list li:last-child { grid-column: auto; } }
