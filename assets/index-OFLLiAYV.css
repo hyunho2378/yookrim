@@ -1321,3 +1321,5 @@ a.inline-link { color: var(--c-ink); }
 /* 놀이 종류 타일 여섯 개: 가로 세 칸, 두 줄 */
 .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: span 2; }
 @media (max-width: 1024px) { .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: auto; } .ctiles__list li:last-child { grid-column: auto; } }
+/* 영상 아래쪽에 박힌 자막 띠가 보이지 않게 위쪽 기준으로 확대해 아래를 잘라 낸다 */
+.stage .loopv { transform: scale(1.24); transform-origin: 50% 6%; }
