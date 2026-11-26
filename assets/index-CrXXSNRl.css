@@ -1728,3 +1728,14 @@ body { background-position: center 14rem, 0 0; }
 @media (max-width: 900px) { .gd-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .gd-facts { grid-template-columns: 1fr; } }
 .teaser .kv, .fact__box .kv { background: transparent; box-shadow: none; padding: 0; }
+
+/* 프로젝트 소개 */
+.pj { padding-block: var(--s-6) var(--s-7); }
+.pj__list { display: flex; flex-direction: column; gap: var(--s-4); }
+.pj__item { display: grid; grid-template-columns: minmax(14rem, 0.4fr) minmax(0, 1fr); gap: var(--s-6); align-items: start; padding: var(--s-6); border-radius: var(--r); background: #fff; box-shadow: 0 12px 24px rgba(20, 90, 140, 0.18); scroll-margin-top: 9rem; }
+.pj__head { display: flex; flex-direction: column; gap: var(--s-1); }
+.pj__no { color: var(--c-grassDeep); line-height: 1; }
+.pj__head .t-card { color: var(--c-forestDark); }
+.pj__en { color: var(--c-textSub); }
+.pj__text { max-width: 46rem; line-height: 1.8; text-wrap: pretty; }
+@media (max-width: 768px) { .pj__item { grid-template-columns: 1fr; gap: var(--s-3); padding: var(--s-5); } }
