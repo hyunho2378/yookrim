@@ -44,7 +44,7 @@ body {
 .hdr__cta { border-radius: 1rem; background: #E5322D; color: #fff; font-family: var(--font-game); font-weight: 400; box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22); }
 .hdr__cta:hover { background: #F0463F; }
 .hdr__link--map { min-height: var(--z-button) !important; padding-inline: var(--s-5) !important; border-radius: 1rem; background: var(--c-sun); color: var(--c-sunText) !important; text-shadow: none !important; box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22); }
-.hdr__link--map:hover { box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22); }
+
 
 /* 펼침 메뉴: 짙은 초록 판 */
 .mega { background: rgba(31, 90, 42, 0.97); border-radius: 0 0 1.75rem 1.75rem; box-shadow: 0 22px 40px rgba(10, 50, 20, 0.35); }
@@ -58,17 +58,17 @@ body {
   transition: transform var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease), filter var(--m-fast) var(--ease);
   min-height: 3.25rem; padding-inline: var(--s-6); text-shadow: none;
 }
-.btn:hover, .btn.btn:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 16px 22px rgba(20, 90, 140, 0.28) !important; }
+
 .btn:active { transform: translateY(1px); box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22) !important; }
 .btn--deep, .btn--primary, :is(.nact, .band-blue, .ftr__form) .btn--deep {
   background: rgba(31, 90, 42, 0.94) !important; color: #fff !important; box-shadow: 0 12px 18px rgba(10, 50, 20, 0.28) !important;
 }
-.btn--deep:hover, .btn--primary:hover { box-shadow: 0 16px 22px rgba(10, 50, 20, 0.3) !important; }
+
 .btn--deep:active, .btn--primary:active { box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22) !important; }
 .btn--light, :is(.stage, .nact, .ehero, .bbar, .band-blue, .phero) .btn--light {
   background: #fff !important; color: var(--c-strokeBlue) !important; box-shadow: 0 12px 18px rgba(20, 90, 140, 0.22) !important;
 }
-.btn--light:hover { box-shadow: 0 16px 22px rgba(20, 90, 140, 0.25) !important; }
+
 .btn--light:active { box-shadow: 0 8px 18px rgba(20, 90, 140, 0.22) !important; }
 .btn--sm { min-height: 2.75rem; padding-inline: var(--s-5); }
 .btn[disabled], .btn[aria-disabled='true'] { opacity: 0.45; filter: grayscale(0.4); }
@@ -92,7 +92,7 @@ body {
   border-radius: 1.75rem;
 }
 .ctile { box-shadow: 0 22px 34px rgba(20, 90, 140, 0.25); }
-.ctile:hover { box-shadow: 0 28px 40px rgba(20, 90, 140, 0.3); transform: translateY(-3px); }
+
 .ctile { transition: transform var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease); }
 .ctile__shade { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(15, 70, 40, 0.88) 100%); }
 .ctile__txt .t-card { color: #fff; text-shadow: 0 2px 12px rgba(10, 40, 20, 0.5); font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
@@ -180,3 +180,7 @@ body { background-position: center 14rem, 0 0; }
 .stage__shade { background: linear-gradient(90deg, rgba(8, 40, 70, 0.5) 0%, rgba(8, 40, 70, 0.24) 40%, rgba(8, 40, 70, 0) 68%); }
 .stage .t-display, .stage__lead { text-shadow: 0 2px 16px rgba(0, 20, 40, 0.55); }
 @media (max-width: 768px) { .stage__shade { background: linear-gradient(0deg, rgba(8, 40, 70, 0.6) 0%, rgba(8, 40, 70, 0.2) 55%, transparent 100%); } }
+
+/* 마우스를 올려도 움직이거나 번지지 않는다. 색만 살짝 바뀐다 */
+.btn:hover { opacity: 0.92; }
+.btn--sm:hover, .btn:active { transform: none; }

@@ -8,7 +8,7 @@
 
 /* 단추 */
 .btn, .hdr__cta { box-shadow: var(--shadow-btn); transition: background-color var(--m-fast) var(--ease), box-shadow var(--m-fast) var(--ease), transform var(--m-fast) var(--ease); }
-.btn:hover, .hdr__cta:hover { box-shadow: var(--shadow-1); }
+
 .btn:active, .hdr__cta:active { box-shadow: var(--shadow-0); transform: translateY(1px); }
 .btn--light { box-shadow: var(--shadow-btn); }
 .hero__arrow { box-shadow: var(--shadow-1); }
@@ -26,15 +26,15 @@
 }
 .promo__item, .prod { background: var(--c-page); border-radius: var(--r); padding: var(--s-4) var(--s-4) var(--s-5); box-shadow: var(--shadow-1); }
 .promo__item .photo--round, .prod .photo--round { box-shadow: var(--shadow-0); }
-.promo__item:hover, .prod:hover { box-shadow: var(--shadow-3); transform: translateY(-4px); }
-.tiles__item:hover .photo--round, .pkgs__item:hover .photo--round, .rlist__item:hover .photo--round { box-shadow: var(--shadow-3); }
-.tiles__item:hover, .pkgs__item:hover, .rlist__item:hover { transform: translateY(-4px); }
+
+
+
 .mosaic__cell { box-shadow: var(--shadow-1); transition: box-shadow var(--m-base) var(--ease), transform var(--m-base) var(--ease); }
-.mosaic__cell:hover { box-shadow: var(--shadow-3); transform: translateY(-3px); }
+
 
 /* 첫 화면 위로 올라온 흰 바로가기 칸 */
 .quick__link { box-shadow: var(--shadow-2); }
-.quick__link:hover { box-shadow: var(--shadow-3); }
+
 @media (max-width: 1024px) { .quick__link { box-shadow: var(--shadow-2); } }
 
 /* 사진 위 글자 */
@@ -60,7 +60,7 @@
 /* 줄과 칸 */
 .acc__item, .news__row, .myres__item, .ctr, .cal__cell:not(.cal__cell--empty), .mapp__row { box-shadow: var(--shadow-0); }
 .mapp__row.is-sel { box-shadow: var(--shadow-1); }
-.news__row:hover, .acc__item:hover { box-shadow: var(--shadow-1); }
+
 .kv { box-shadow: var(--shadow-1); }
 .ticket { box-shadow: var(--shadow-2); }
 .rsv-sum { box-shadow: var(--shadow-2); }
@@ -75,10 +75,10 @@
 .photo__slot { background: var(--g-slot); }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo__item:hover, .prod:hover, .tiles__item:hover, .pkgs__item:hover, .rlist__item:hover, .mosaic__cell:hover { transform: none; }
+
 }
 @media (hover: none) {
-  .promo__item:hover, .prod:hover, .tiles__item:hover, .pkgs__item:hover, .rlist__item:hover, .mosaic__cell:hover { transform: none; }
+
 }
 
 .hero__slide .photo[data-loaded]::after, .subhero .photo[data-loaded]::after { content: ''; position: absolute; inset: 0; pointer-events: none; }

@@ -24,19 +24,19 @@
 .ctiles__list li { grid-column: span 2; }
 .ctiles__list li:nth-child(n + 4) { grid-column: span 3; }
 .ctile { position: relative; display: block; height: clamp(14rem, 22vw, 19rem); border-radius: var(--r); overflow: hidden; color: var(--c-textOnColor); box-shadow: var(--shadow-2); transition: box-shadow var(--m-fast) var(--ease); }
-.ctile:hover { box-shadow: var(--shadow-3); }
+
 .ctile .photo { position: absolute; inset: 0; }
 .ctile__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(10, 28, 60, 0.82) 100%); }
 .ctile__txt { position: absolute; left: var(--s-5); right: var(--s-8); bottom: var(--s-5); display: flex; flex-direction: column; gap: var(--s-1); text-shadow: var(--shadow-text); }
 .ctile__go { position: absolute; right: var(--s-5); bottom: var(--s-5); transition: transform var(--m-fast) var(--ease); }
-.ctile:hover .ctile__go { transform: translateX(4px); }
+
 @media (max-width: 1024px) { .ctiles__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ctiles__list li, .ctiles__list li:nth-child(n + 4) { grid-column: auto; } .ctiles__list li:last-child { grid-column: 1 / -1; } .ctile { height: clamp(12rem, 30vw, 17rem); } }
 @media (max-width: 520px) { .ctiles__list { grid-template-columns: 1fr; } .ctile { height: 13rem; } }
 
 /* 콘텐츠 카드 */
 .cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6) var(--s-5); }
 .ccard { display: flex; flex-direction: column; height: 100%; border-radius: var(--r); overflow: hidden; background: var(--c-page); box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease); }
-.ccard:hover { box-shadow: var(--shadow-3); }
+
 .ccard__media { position: relative; display: block; }
 .ccard__media .photo { border-radius: 0; }
 .ccard__media .loopv { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -63,7 +63,7 @@
 /* 방문자별 안내 */
 .aud__list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-4); }
 .aud__item { display: flex; flex-direction: column; gap: var(--s-3); height: 100%; width: 100%; text-align: left; padding: var(--s-5); border-radius: var(--r); background: var(--c-kiwi); color: var(--c-text); box-shadow: var(--shadow-1); transition: box-shadow var(--m-fast) var(--ease), background-color var(--m-fast) var(--ease); }
-.aud__item:hover { box-shadow: var(--shadow-3); }
+
 .aud__item.is-on { background: var(--c-leaf); color: var(--c-textOnColor); }
 .aud__name { color: var(--c-leaf); }
 .aud__item.is-on .aud__name { color: var(--c-textOnColor); }

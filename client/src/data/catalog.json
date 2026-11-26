@@ -3,7 +3,7 @@
     {
       "id": "adventure",
       "name": "어드벤처",
-      "text": "팀으로 달리고 단서를 찾아요",
+      "text": "팀을 이뤄 달리며 단서를 찾는 체험",
       "tone": "hot",
       "slot": "gungame-zone-overview"
     },
@@ -17,14 +17,14 @@
     {
       "id": "animal",
       "name": "동물 체험",
-      "text": "동물을 만나고 먹이를 줘요",
+      "text": "동물을 만나고 먹이를 주는 체험",
       "tone": "sun",
       "slot": "cafe-interior"
     },
     {
       "id": "stay",
       "name": "캠핑 숙박",
-      "text": "소나무 숲에서 텐트를 치고 하룻밤",
+      "text": "소나무 숲에서 텐트를 치는 하룻밤 캠핑",
       "tone": "hot",
       "slot": "camp-winter"
     },
@@ -32,7 +32,7 @@
       "id": "park",
       "to": "/play/attractions",
       "name": "놀이동산",
-      "text": "1975년부터 자리를 지켜 온 놀이기구",
+      "text": "1975년부터 이어 온 놀이기구",
       "tone": "blue",
       "slot": "site-rides"
     }
@@ -76,7 +76,7 @@
       "name": "숲속 총게임",
       "to": "/play/gungame",
       "slot": "gungame-zone-overview",
-      "line": "팀을 나눠 깃발을 지키고 빼앗는 서바이벌이에요.",
+      "line": "팀을 나눠 깃발을 지키고 빼앗는 서바이벌 게임",
       "for": [
         "friends",
         "group"
@@ -92,7 +92,7 @@
       "name": "숲속 보물찾기",
       "to": "/play/season/spring",
       "slot": "poster-spring",
-      "line": "지도와 힌트를 들고 숲 곳곳의 보물을 찾아요.",
+      "line": "지도와 힌트로 숲 곳곳의 보물을 찾는 체험",
       "for": [
         "family"
       ],
@@ -106,7 +106,7 @@
       "name": "한밤의 좀비 숲",
       "to": "/play/season/summer",
       "slot": "zombie-night",
-      "line": "불 꺼진 숲에서 좀비를 피해 길을 찾는 야간 체험이에요.",
+      "line": "불 꺼진 숲에서 좀비를 피해 길을 찾는 야간 체험",
       "for": [
         "friends",
         "night"
@@ -122,7 +122,7 @@
       "name": "야간 미션전",
       "to": "/play/night-mission",
       "slot": "gungame-obstacles",
-      "line": "금요일과 토요일 밤, 조명이 꺼진 놀이공원에서 깃발을 뺏어요.",
+      "line": "금요일과 토요일 밤, 조명이 꺼진 놀이공원의 깃발 뺏기",
       "for": [
         "friends",
         "group",
@@ -139,7 +139,7 @@
       "name": "동물 교감 카페",
       "to": "/play/cafe",
       "slot": "cafe-interior",
-      "line": "미어캣과 기니피그를 가까이에서 만나는 실내 카페예요.",
+      "line": "미어캣과 기니피그를 가까이에서 만나는 실내 카페",
       "for": [
         "family",
         "first"
@@ -154,7 +154,7 @@
       "name": "동물원과 먹이 주기",
       "to": "/play/attractions#zoo",
       "slot": "site-feeding",
-      "line": "양과 사슴, 염소, 토끼에게 직접 먹이를 줘요.",
+      "line": "양과 사슴, 염소, 토끼에게 직접 먹이를 주는 체험",
       "for": [
         "family",
         "first"
@@ -168,7 +168,7 @@
       "name": "소나무 숲 1일 캠핑",
       "to": "/play/season/winter",
       "slot": "camp-winter",
-      "line": "당일 캠핑과 1박 숙박 가운데 골라 숲에서 하루를 보내요.",
+      "line": "당일 캠핑과 1박 숙박 중 고르는 숲속 캠핑",
       "for": [
         "family",
         "friends",
@@ -185,7 +185,7 @@
       "name": "캠프촌",
       "to": "/play/attractions#camp",
       "slot": "site-camp",
-      "line": "숲 그늘 아래 텐트를 치고 쉬어 가는 곳이에요.",
+      "line": "숲 그늘 아래 텐트를 치고 쉬는 캠핑 구역",
       "for": [
         "family",
         "friends",
@@ -205,7 +205,7 @@
       "name": "놀이기구",
       "to": "/play/attractions#rides",
       "slot": "site-rides",
-      "line": "바이킹과 범퍼카, 회전그네, 회전목마, 기차를 타요.",
+      "line": "바이킹, 범퍼카, 회전그네, 회전목마, 기차 등 놀이기구",
       "for": [
         "family",
         "first"

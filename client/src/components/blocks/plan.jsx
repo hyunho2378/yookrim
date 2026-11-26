@@ -51,9 +51,9 @@ export function LoopVideo({ src, mobile, label, controls = true, className = '' 
 
 // 홈 첫 화면. 사진 네 장이 천천히 바뀌며 기획안의 체험을 차례로 보여 주고, 위에 핵심 문장과 행동 단추 둘이 얹힌다
 const heroSlides = [
-  { id: 'stamp', img: 'hero/stamp.jpg', pos: '50% 60%', title: '미션 스탬프 챌린지', text: '도장 다섯 개를 모으면 굿즈를 받아요', to: '/leaflet#goods' },
-  { id: 'treasure', img: 'hero/treasure.jpg', pos: '50% 75%', title: '숲속 보물찾기', text: '지도와 힌트 카드로 숲 곳곳의 보물을 찾아요', to: '/play/season/spring' },
-  { id: 'camp', img: 'hero/camp.jpg', pos: '50% 55%', title: '1일 캠핑 데이', text: '소나무 숲에서 하룻밤, 모닥불과 야간 체험', to: '/play/season/winter' },
+  { id: 'stamp', img: 'hero/stamp.jpg', pos: '50% 60%', title: '미션 스탬프 챌린지', text: '도장 다섯 개를 모으면 받는 굿즈', to: '/leaflet#goods' },
+  { id: 'treasure', img: 'hero/treasure.jpg', pos: '50% 75%', title: '숲속 보물찾기', text: '지도와 힌트 카드로 숲 곳곳의 보물을 찾는 체험', to: '/play/season/spring' },
+  { id: 'camp', img: 'hero/camp.jpg', pos: '50% 55%', title: '1일 캠핑 데이', text: '소나무 숲에서 보내는 하룻밤, 모닥불과 야간 체험', to: '/play/season/winter' },
   { id: 'friends', img: 'hero/friends.jpg', pos: '50% 55%', title: '동물 친구와 포토존', text: '동물 교감 카페와 먹이 주기 체험', to: '/play/cafe' }
 ]
 export function StageHero({ title, lead, primary, secondary }) {
@@ -117,7 +117,7 @@ export function CategoryTiles({ title, text }) {
         {text && <p className="t-body c-sub">{text}</p>}
       </div>
       <ul className="ctiles__list">
-        {[...categories, { id: 'seasons', name: '사계절 프로그램', text: '봄부터 겨울까지 계절마다 새로 열려요', tone: 'sun', slot: `poster-${currentSeason().id}`, to: '/play/season' }].map((c, i) => (
+        {[...categories, { id: 'seasons', name: '사계절 프로그램', text: '봄부터 겨울까지 계절마다 새로 열리는 프로그램', tone: 'sun', slot: `poster-${currentSeason().id}`, to: '/play/season' }].map((c, i) => (
           <li key={c.id}>
             <Link to={c.to || `/play?cat=${c.id}#list`} className={`ctile ctile--${c.tone}`}>
               <Photo slot={c.slot} fill tone={i} />

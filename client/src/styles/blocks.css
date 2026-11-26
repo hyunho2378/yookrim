@@ -91,7 +91,7 @@
 .mosaic__link { position: absolute; inset: 0; display: block; color: var(--c-textOnColor); }
 .mosaic__tag { position: absolute; left: 0; top: 0; background: var(--c-primary); color: var(--c-textOnColor); padding: var(--s-2) var(--s-3); border-radius: 0 0 var(--r-sm) 0; }
 .mosaic__hover { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--s-4) var(--s-5); background: var(--c-scrim); opacity: 0; transform: translateY(0.5rem); transition: opacity var(--m-base) var(--ease), transform var(--m-base) var(--ease); }
-.mosaic__link:hover .mosaic__hover, .mosaic__link:focus-visible .mosaic__hover { opacity: 1; transform: none; }
+.mosaic__link:hover .mosaic__hover, .mosaic__link:focus-visible .mosaic__hover { opacity: 1; }
 @media (hover: none) { .mosaic__hover { opacity: 1; transform: none; } }
 @media (max-width: 768px) {
   .mosaic__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 10rem; }
