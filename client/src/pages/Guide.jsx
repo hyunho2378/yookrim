@@ -39,7 +39,7 @@ export function Fees() {
             note={`20인 이상 단체 성인 ${won(a.group20plus.adult)}, 청소년 ${won(a.group20plus.youth)}, 어린이 ${won(a.group20plus.child)}`} />
           <Product slot="site-rides" tone={1} title="놀이기구 이용권" items={pricing.rides.options.map((o) => o.name)}
             price={pricing.rides.options.map((o) => ({ k: o.name, v: won(o.price) }))} />
-          <Product slot="goods" tone={2} title="연간 회원권" items={['1년 이용', '가족 4인 묶음']}
+          <Product slot="site-photozone" tone={2} title="연간 회원권" items={['1년 이용', '가족 4인 묶음']}
             price={[{ k: '1인', v: won(a.annualPass.perPerson) }, { k: '가족 4인', v: won(a.annualPass.family4) }]} />
         </div>
       </section>

@@ -6,7 +6,6 @@ export const slots = {
   'poster-summer': { file: 'poster-summer.jpg', label: '여름 좀비 숲 포스터' },
   'poster-autumn': { file: 'poster-autumn.jpg', label: '가을 총게임 리그 포스터' },
   'poster-winter': { file: 'poster-winter.jpg', label: '겨울 캠핑 데이 포스터' },
-  'goods': { file: 'goods.jpg', label: '굿즈 목업' },
   'map-aerial': { file: 'map-aerial.jpg', label: '육림랜드 조감도' },
   'gungame-zone-overview': { file: 'gungame-zone-overview.jpg', label: '총게임 필드 전체' },
   'gungame-obstacles': { file: 'gungame-obstacles.jpg', label: '총게임 장애물 배치' },
