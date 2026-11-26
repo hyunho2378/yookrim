@@ -1514,3 +1514,7 @@ body { background-position: center 14rem, 0 0; }
 .stage__shade { background: linear-gradient(90deg, rgba(8, 40, 70, 0.72) 0%, rgba(8, 40, 70, 0.4) 42%, rgba(8, 40, 70, 0.05) 72%, transparent 100%); }
 @media (max-width: 768px) { .stage__shade { background: linear-gradient(0deg, rgba(8, 40, 70, 0.72) 0%, rgba(8, 40, 70, 0.3) 55%, transparent 100%); } }
 @media (max-width: 768px) { .stage__copy { bottom: 5.5rem; } .stage { height: clamp(34rem, 90dvh, 42rem); } }
+.stage__img { filter: brightness(1.1) saturate(1.12) contrast(1.02); }
+.stage__shade { background: linear-gradient(90deg, rgba(8, 40, 70, 0.5) 0%, rgba(8, 40, 70, 0.24) 40%, rgba(8, 40, 70, 0) 68%); }
+.stage .t-display, .stage__lead { text-shadow: 0 2px 16px rgba(0, 20, 40, 0.55); }
+@media (max-width: 768px) { .stage__shade { background: linear-gradient(0deg, rgba(8, 40, 70, 0.6) 0%, rgba(8, 40, 70, 0.2) 55%, transparent 100%); } }
